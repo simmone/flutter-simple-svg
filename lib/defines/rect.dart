@@ -1,8 +1,10 @@
+import 'shape.dart';
+
 class Rect implements Shape {
-  final double width;
-  final double height;
-  double? radiusX;
-  double? radiusY;
+  final num width;
+  final num height;
+  num? radiusX;
+  num? radiusY;
   
   Rect(this.width, this.height, [this.radiusX, this.radiusY]);
   
@@ -10,16 +12,16 @@ class Rect implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
     
-    buffer.write('    <rect id=\"$shapeId\" ');
+    buffer.write('    <rect id="$shapeId" ');
 
-    buffer.write('width=\"$this.width\" height=\"$this.height\"');
+    buffer.write('width="$width" height="$height"');
     
-    if this.radiusX.isNotEmpty && this.radiusY.isNotEmpty {
-      buffer.write(' rx=\"$this.radiusX\" ry=\"$this.radiusY\"');
+    if (radiusX != null && radiusY != null) {
+      buffer.write(' rx="$radiusX" ry="$radiusY"');
     }
     
-    buffer.write(' />');
+    buffer.write(' />\n');
     
-    buffer.toString();
+    return buffer.toString();
   }
 }

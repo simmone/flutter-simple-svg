@@ -1,8 +1,10 @@
+import 'shape.dart';
+
 class Svg {
   final num width;
   final num height;
-  var int widgetIdCount;
-  var Map<String, Shape> shapeDefineMap;
+  int widgetIdCount = 0;
+  Map<String, Shape> shapeDefineMap = {};
 
   Svg(this.width, this.height);
 }
