@@ -25,12 +25,18 @@ void main() {
     expect(rect.radiusX, 10.0);
     expect(rect.radiusY, 5.0);
   });
-  
-  test('format', () {
-      final rect = Rect(30, 20);
-      
-      expect(
-        rect.format('1'),
-        "    <rect id=\"1\" width=\"30\" height=\"20\" />\n");
+
+  test('format1', () {
+    final rect = Rect(30, 20);
+
+    expect(
+        rect.format('1'), "    <rect id=\"1\" width=\"30\" height=\"20\" />\n");
+  });
+
+  test('format2', () {
+    final rect = Rect(30, 20, 10, 5.0);
+
+    expect(rect.format('1'),
+        "    <rect id=\"1\" width=\"30\" height=\"20\" rx=\"10\" ry=\"5.0\" />\n");
   });
 }
