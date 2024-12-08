@@ -4,13 +4,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/simple_svg.dart';
 
 void main() {
-  test('basic empty svg out', () {
+  test('basic empty svg out', () async {
     final simpleSvg = SimpleSvg(30, 20);
+    final file = new File('showcase/basic/empty.svg');
+    final emptySvgFile = await file.readAsString();
     
-    await File('../../showcase/basic/empty.svg').readAsString().then((String contents) {
-        expect(
-          simpleSvg.out(),
-          contents);
-    });
+    expect(simpleSvg.out(), emptySvgFile);
   });
 }
