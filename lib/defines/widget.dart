@@ -8,4 +8,6 @@ class Widget {
   String? markerStartId;
   String? markerMidId;
   String? markerEndId;
+  
+  Widget(this.shapeId);
 }
