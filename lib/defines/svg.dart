@@ -7,10 +7,10 @@ class Svg {
   Map<String, Shape> shapeDefineMap = {};
 
   Svg(this.width, this.height);
-  
+
   String defShape(Shape shape) {
     widgetIdCount += 1;
-    String shapeId = 's${widgetIdCount}';
+    String shapeId = 's$widgetIdCount';
     shapeDefineMap[shapeId] = shape;
     return shapeId;
   }

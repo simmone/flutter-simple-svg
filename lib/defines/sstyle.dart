@@ -35,4 +35,6 @@ class Sstyle {
   num? skewX;
   num? skewY;
   String? fillGradient;
+
+  Sstyle();
 }
