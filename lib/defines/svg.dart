@@ -1,10 +1,13 @@
 import 'shape.dart';
+import 'group.dart';
 
 class Svg {
   final num width;
   final num height;
   int widgetIdCount = 0;
   Map<String, Shape> shapeDefineMap = {};
+  Map<String, Group> groupDefineMap = {};
+  List<Group> groupShowList = [];
 
   Svg(this.width, this.height);
 

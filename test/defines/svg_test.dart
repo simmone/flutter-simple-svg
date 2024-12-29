@@ -19,5 +19,8 @@ void main() {
     final rect2 = Rect(30.0, 20.0);
     svg.defShape(rect2);
     expect(svg.shapeDefineMap.length, 2);
+
+    expect(svg.groupDefineMap.length, 0);
+    expect(svg.groupShowList.length, 0);
   });
 }

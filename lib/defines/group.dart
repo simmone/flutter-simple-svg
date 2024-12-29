@@ -1,3 +1,7 @@
-abstract interface class Group {
-  String format(String groupId);
+import 'widget.dart';
+
+class Group {
+  List<Widget> widgetList = [];
+
+  Group();
 }
