@@ -1,10 +1,23 @@
+export 'package:simple_svg/defines/rect.dart' show Rect;
+export 'package:simple_svg/defines/group.dart' show Group;
+export 'package:simple_svg/defines/svg.dart' show Svg;
+
 import 'package:simple_svg/defines/svg.dart';
+import 'package:simple_svg/defines/shape.dart';
 
 class SimpleSvg {
   Svg? svg;
 
   SimpleSvg(num width, num height) {
     svg = Svg(width, height);
+  }
+  
+  String defShape(Shape shape) {
+    if ( svg != null ) {
+      return svg.defShape(shape);
+    } else {
+      return "";
+    }
   }
 
   String out() {
