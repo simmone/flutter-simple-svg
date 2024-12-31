@@ -10,11 +10,11 @@ void main() {
     final rect = Rect(100.0, 100.0);
     svg.defShape(rect);
     
-    let defaultGroup = Group();
+    var defaultGroup = Group();
 
-    final file = File('showcase/basic/rect.svg');
+    final file = File('showcase/shapes/rect/rect.svg');
     final rectSvgFile = await file.readAsString();
 
-    expect(simpleSvg.out(), rectSvgFile);
+    expect(svg.out(), rectSvgFile);
   });
 }

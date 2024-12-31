@@ -6,7 +6,7 @@ import 'package:simple_svg/defines/svg.dart';
 import 'package:simple_svg/defines/shape.dart';
 
 class SimpleSvg {
-  Svg? svg;
+  Svg? svg = null;
 
   SimpleSvg(num width, num height) {
     svg = Svg(width, height);
@@ -14,7 +14,7 @@ class SimpleSvg {
   
   String defShape(Shape shape) {
     if ( svg != null ) {
-      return svg.defShape(shape);
+      return svg!.defShape(shape);
     } else {
       return "";
     }
