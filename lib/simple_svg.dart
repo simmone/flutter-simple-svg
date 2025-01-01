@@ -1,4 +1,5 @@
 export 'package:simple_svg/defines/rect.dart' show Rect;
+export 'package:simple_svg/defines/widget.dart' show Widget;
 export 'package:simple_svg/defines/group.dart' show Group;
 export 'package:simple_svg/defines/svg.dart' show Svg;
 

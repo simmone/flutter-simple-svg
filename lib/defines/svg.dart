@@ -26,11 +26,13 @@ class Svg {
   
   String addGroup(Group group) {
     widgetIdCount += 1;
-    groupId = 'g$widgetIdCount';
-    addNameGroup(groupId, group)
+    var groupId = 'g$widgetIdCount';
+    addNameGroup(groupId, group);
+    return groupId;
   }
   
   String addDefaultGroup(Group group) {
-    addNameGroup(Constants.defaultGroupId, group)
+    var groupId = addNameGroup(Constants.defaultGroupId, group);
+    return groupId;
   }
 }
