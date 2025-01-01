@@ -1,5 +1,6 @@
 import 'shape.dart';
 import 'group.dart';
+import '../assets/constants.dart' as Constants;
 
 class Svg {
   final num width;
@@ -16,5 +17,20 @@ class Svg {
     String shapeId = 's$widgetIdCount';
     shapeDefineMap[shapeId] = shape;
     return shapeId;
+  }
+  
+  String addNameGroup(String groupId, Group group) {
+    groupDefineMap[groupId] = group;
+    return groupId;
+  }
+  
+  String addGroup(Group group) {
+    widgetIdCount += 1;
+    groupId = 'g$widgetIdCount';
+    addNameGroup(groupId, group)
+  }
+  
+  String addDefaultGroup(Group group) {
+    addNameGroup(Constants.defaultGroupId, group)
   }
 }
