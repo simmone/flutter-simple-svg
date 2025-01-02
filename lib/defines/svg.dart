@@ -18,19 +18,19 @@ class Svg {
     shapeDefineMap[shapeId] = shape;
     return shapeId;
   }
-  
+
   String addNameGroup(String groupId, Group group) {
     groupDefineMap[groupId] = group;
     return groupId;
   }
-  
+
   String addGroup(Group group) {
     widgetIdCount += 1;
     var groupId = 'g$widgetIdCount';
     addNameGroup(groupId, group);
     return groupId;
   }
-  
+
   String addDefaultGroup(Group group) {
     var groupId = addNameGroup(Constants.defaultGroupId, group);
     return groupId;

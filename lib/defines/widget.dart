@@ -10,4 +10,14 @@ class Widget {
   String? markerEndId;
 
   Widget(this.shapeId);
+
+  String format() {
+    final outItems = <String>[];
+
+    outItems.add('<use xlink:href="#$shapeId"');
+
+    outItems.add('/>');
+
+    return outItems.join(' ');
+  }
 }
