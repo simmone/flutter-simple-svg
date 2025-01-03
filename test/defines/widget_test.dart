@@ -13,15 +13,14 @@ void main() {
     final widget = Widget('s1');
     expect(widget.format(), '<use xlink:href="#s1" />');
   });
-  
+
   test('format fill', () {
-      var sstyle = Sstyle();
-      sstyle.fill = '#BBC42A';
+    var sstyle = Sstyle();
+    sstyle.fill = '#BBC42A';
 
-      var widget = Widget('s1');
-      widget.sstyle = sstyle;
+    var widget = Widget('s1');
+    widget.sstyle = sstyle;
 
-      expect(widget.format(),
-        "<use xlink:href=\"#s1\" fill=\"#BBC42A\" />");
+    expect(widget.format(), "<use xlink:href=\"#s1\" fill=\"#BBC42A\" />");
   });
 }
