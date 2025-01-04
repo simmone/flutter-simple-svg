@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:simple_svg/defines/svg.dart';
-import '../../lib/assets/constants.dart' as Constants;
+import 'package:simple_svg/assets/constants.dart' as constants;
 
 import 'package:simple_svg/defines/rect.dart';
 import 'package:simple_svg/defines/group.dart';
@@ -38,6 +38,6 @@ void main() {
 
     svg.addDefaultGroup(Group());
     expect(svg.groupDefineMap.length, 2);
-    expect(svg.groupDefineMap.containsKey(Constants.defaultGroupId), true);
+    expect(svg.groupDefineMap.containsKey(constants.defaultGroupId), true);
   });
 }

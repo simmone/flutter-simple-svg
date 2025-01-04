@@ -1,6 +1,6 @@
 import 'shape.dart';
 import 'group.dart';
-import '../assets/constants.dart' as Constants;
+import '../assets/constants.dart' as constants;
 
 class Svg {
   final num width;
@@ -32,7 +32,7 @@ class Svg {
   }
 
   String addDefaultGroup(Group group) {
-    var groupId = addNameGroup(Constants.defaultGroupId, group);
+    var groupId = addNameGroup(constants.defaultGroupId, group);
     return groupId;
   }
 }

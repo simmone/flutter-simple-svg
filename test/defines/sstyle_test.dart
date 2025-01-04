@@ -7,7 +7,7 @@ void main() {
     expect(sstyle.fill, null);
   });
 
-  test('format fill', () {
+  test('format fill1', () {
     var sstyle = Sstyle();
     sstyle.fillRule = FillRule.nonzero;
     sstyle.fillGradient = 's1';
@@ -15,5 +15,44 @@ void main() {
 
     expect(sstyle.format(),
         'fill="url(#s1)" fill-rule="nonzero" fill-opacity="0.5"');
+  });
+
+  test('format fill2', () {
+    var sstyle = Sstyle();
+
+    sstyle.fill = 'red';
+    sstyle.fillRule = FillRule.nonzero;
+    sstyle.fillOpacity = 30;
+
+    expect(sstyle.format(),
+        "fill=\"red\" fill-rule=\"nonzero\" fill-opacity=\"30\"");
+  });
+
+  test('format stroke', () {
+    var sstyle = Sstyle();
+
+    sstyle.strokeWidth = 5;
+    sstyle.stroke = '#ABABAB';
+    sstyle.strokeLineJoin = StrokeLineJoin.round;
+    sstyle.strokeLineCap = StrokeLineCap.square;
+    sstyle.strokeMiterLimit = 2;
+    sstyle.strokeDashArray = '40,10';
+    sstyle.strokeDashOffset = 5;
+
+    expect(sstyle.format(),
+        "fill=\"none\" stroke-width=\"5\" stroke=\"#ABABAB\" stroke-linejoin=\"round\" stroke-linecap=\"square\" stroke-miterlimit=\"2\" stroke-dasharray=\"40,10\" stroke-dashoffset=\"5\"");
+  });
+
+  test('format transform', () {
+    var sstyle = Sstyle();
+
+    sstyle.translate = (0.1, 0.2);
+    sstyle.rotate = 30;
+    sstyle.scaleAll = 1;
+    sstyle.skewX = 2;
+    sstyle.skewY = 3;
+
+    expect(sstyle.format(),
+        "fill=\"none\" transform=\"translate(0.1 0.2) rotate(30) scale(1) skewX(2) skewY(3)\"");
   });
 }

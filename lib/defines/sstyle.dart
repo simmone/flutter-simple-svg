@@ -24,10 +24,38 @@ enum StrokeLineCap {
   inherit,
 }
 
+extension StrokeLineCapExtension on StrokeLineCap {
+  String get name {
+    switch (this) {
+      case StrokeLineCap.butt:
+        return 'butt';
+      case StrokeLineCap.round:
+        return 'round';
+      case StrokeLineCap.square:
+        return 'square';
+      case StrokeLineCap.inherit:
+        return 'inherit';
+    }
+  }
+}
+
 enum StrokeLineJoin {
   miter,
   round,
   bevel,
+}
+
+extension StrokeLineJoinExtension on StrokeLineJoin {
+  String get name {
+    switch (this) {
+      case StrokeLineJoin.miter:
+        return 'miter';
+      case StrokeLineJoin.round:
+        return 'round';
+      case StrokeLineJoin.bevel:
+        return 'bevel';
+    }
+  }
 }
 
 class Sstyle {
@@ -36,7 +64,7 @@ class Sstyle {
   num? fillOpacity;
   String? stroke;
   num? strokeWidth;
-  StrokeLineCap? strokeLinecap;
+  StrokeLineCap? strokeLineCap;
   StrokeLineJoin? strokeLineJoin;
   num? strokeMiterLimit;
   String? strokeDashArray;
@@ -70,6 +98,69 @@ class Sstyle {
 
     if (fillOpacity != null) {
       outItems.add('fill-opacity="$fillOpacity"');
+    }
+
+    if (strokeWidth != null) {
+      outItems.add('stroke-width="$strokeWidth"');
+    }
+
+    if (stroke != null) {
+      outItems.add('stroke="$stroke"');
+    }
+
+    if (strokeLineJoin != null) {
+      outItems.add('stroke-linejoin="${strokeLineJoin!.name}"');
+    }
+
+    if (strokeLineCap != null) {
+      outItems.add('stroke-linecap="${strokeLineCap!.name}"');
+    }
+
+    if (strokeMiterLimit != null) {
+      outItems.add('stroke-miterlimit="$strokeMiterLimit"');
+    }
+
+    if (strokeDashArray != null) {
+      outItems.add('stroke-dasharray="$strokeDashArray"');
+    }
+
+    if (strokeDashOffset != null) {
+      outItems.add('stroke-dashoffset="$strokeDashOffset"');
+    }
+
+    if ((translate != null) ||
+        (rotate != null) ||
+        (scaleAll != null) ||
+        (scaleXy != null) ||
+        (skewX != null) ||
+        (skewY != null)) {
+      var transforms = <String>[];
+
+      if (translate != null) {
+        transforms.add('translate(${translate!.$1} ${translate!.$2})');
+      }
+
+      if (rotate != null) {
+        transforms.add('rotate($rotate)');
+      }
+
+      if ((scaleAll != null) || (scaleXy != null)) {
+        if (scaleAll != null) {
+          transforms.add('scale($scaleAll)');
+        } else {
+          transforms.add('scale(${scaleXy!.$1} ${scaleXy!.$2})');
+        }
+      }
+
+      if (skewX != null) {
+        transforms.add('skewX($skewX)');
+      }
+
+      if (skewY != null) {
+        transforms.add('skewY($skewY)');
+      }
+
+      outItems.add('transform="${transforms.join(' ')}"');
     }
 
     return outItems.join(' ');
