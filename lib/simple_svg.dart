@@ -30,6 +30,7 @@ class SimpleSvg {
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
     outBuffer.write('    width="${svg?.width}" height="${svg?.height}"\n');
     outBuffer.write('    >\n');
+    outBuffer.write(svg!.flushData());
     outBuffer.write('</svg>\n');
 
     return outBuffer.toString();
