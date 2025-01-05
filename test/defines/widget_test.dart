@@ -21,6 +21,27 @@ void main() {
     var widget = Widget('s1');
     widget.sstyle = sstyle;
 
-    expect(widget.format(), "<use xlink:href=\"#s1\" fill=\"#BBC42A\" />");
+    expect(widget.format(), '<use xlink:href="#s1" fill="#BBC42A" />');
+  });
+
+  test('format at', () {
+    var widget1 = Widget('s1');
+    widget1.at = (0, 0);
+    expect(widget1.format(), '<use xlink:href="#s1" />');
+
+    var widget2 = Widget('s1');
+    widget2.at = (100, 50);
+    expect(widget2.format(), '<use xlink:href="#s1" x="100" y="50" />');
+  });
+
+  test('format else', () {
+    var widget = Widget('s1');
+    widget.filterId = 's2';
+    widget.markerStartId = 's3';
+    widget.markerMidId = 's4';
+    widget.markerEndId = 's5';
+
+    expect(widget.format(),
+        '<use xlink:href="#s1" filter="url(#s2)" marker-start="url(#s3)" marker-mid="url(#s4)" marker-end="url(#s5)" />');
   });
 }
