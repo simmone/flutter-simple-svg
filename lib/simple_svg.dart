@@ -1,24 +1,87 @@
 export 'package:simple_svg/defines/rect.dart' show Rect;
 export 'package:simple_svg/defines/widget.dart' show Widget;
 export 'package:simple_svg/defines/group.dart' show Group;
-export 'package:simple_svg/defines/svg.dart' show Svg;
+export 'package:simple_svg/defines/sstyle.dart' show Sstyle;
 
-import 'package:simple_svg/defines/svg.dart';
 import 'package:simple_svg/defines/shape.dart';
+import 'package:simple_svg/defines/group.dart';
 
-class SimpleSvg {
-  Svg? svg;
+import '../assets/constants.dart' as constants;
 
-  SimpleSvg(num width, num height) {
-    svg = Svg(width, height);
-  }
+class Svg {
+  final num width;
+  final num height;
+  int widgetIdCount = 0;
+  Map<String, Shape> shapeDefineMap = {};
+  Map<String, Group> groupDefineMap = {};
+  List<Group> groupShowList = [];
+
+  Svg(this.width, this.height);
 
   String defShape(Shape shape) {
-    if (svg != null) {
-      return svg!.defShape(shape);
-    } else {
-      return "";
+    widgetIdCount += 1;
+    String shapeId = 's$widgetIdCount';
+    shapeDefineMap[shapeId] = shape;
+    return shapeId;
+  }
+
+  String addNameGroup(String groupId, Group group) {
+    groupDefineMap[groupId] = group;
+    return groupId;
+  }
+
+  String addGroup(Group group) {
+    widgetIdCount += 1;
+    var groupId = 'g$widgetIdCount';
+    addNameGroup(groupId, group);
+    return groupId;
+  }
+
+  String addDefaultGroup(Group group) {
+    var groupId = addNameGroup(constants.defaultGroupId, group);
+    return groupId;
+  }
+
+  String flushData() {
+    final outBuffer = StringBuffer();
+
+    if (shapeDefineMap.isNotEmpty) {
+      outBuffer.write("  <defs>\n");
+      var sortedKeys = List.from(shapeDefineMap.keys);
+      sortedKeys.sort();
+      for (final shapeId in sortedKeys) {
+        var shape = shapeDefineMap[shapeId];
+
+        outBuffer.write(shape!.format(shapeId));
+      }
+      outBuffer.write("  </defs>\n\n");
     }
+
+    var defaultGroup = groupDefineMap[constants.defaultGroupId];
+
+    if (defaultGroup != null) {
+      if (defaultGroup.widgetList.isNotEmpty) {
+        outBuffer.write(showGroupWidgets(constants.defaultGroupId, '  '));
+      }
+    }
+
+    return outBuffer.toString();
+  }
+
+  String showGroupWidgets(String groupId, String prefix) {
+    var group = groupDefineMap[groupId];
+
+    var groupBuffer = StringBuffer();
+
+    if (group != null) {
+      for (final widget in group.widgetList) {
+        groupBuffer.write(prefix);
+        groupBuffer.write(widget.format());
+        groupBuffer.write('\n');
+      }
+    }
+
+    return groupBuffer.toString();
   }
 
   String out() {
@@ -28,9 +91,9 @@ class SimpleSvg {
     outBuffer.write('    version="1.1"\n');
     outBuffer.write('    xmlns="http://www.w3.org/2000/svg"\n');
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
-    outBuffer.write('    width="${svg?.width}" height="${svg?.height}"\n');
+    outBuffer.write('    width="$width" height="$height"\n');
     outBuffer.write('    >\n');
-    outBuffer.write(svg!.flushData());
+    outBuffer.write(flushData());
     outBuffer.write('</svg>\n');
 
     return outBuffer.toString();
