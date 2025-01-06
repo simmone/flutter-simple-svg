@@ -35,14 +35,22 @@ class Svg {
     var groupId = addNameGroup(constants.defaultGroupId, group);
     return groupId;
   }
-  
+
   String flushData() {
     final outBuffer = StringBuffer();
-    
-    if (shapeDefineMap.length > 0) {
+
+    if (shapeDefineMap.isNotEmpty) {
       outBuffer.write("  <defs>\n");
+      var sortedKeys = List.from(shapeDefineMap.keys);
+      sortedKeys.sort();
+      for (final shapeId in sortedKeys) {
+        var shape = shapeDefineMap[shapeId];
+
+        outBuffer.write(shape!.format(shapeId));
+      }
+      outBuffer.write("  </defs>\n");
     }
-    
+
     return outBuffer.toString();
   }
 }

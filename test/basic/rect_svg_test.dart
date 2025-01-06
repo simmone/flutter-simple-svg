@@ -7,7 +7,7 @@ void main() {
   test('basic rect svg out', () async {
     final svg = SimpleSvg(100, 100);
 
-    final rect = Rect(100.0, 100.0);
+    final rect = Rect(100, 100);
     svg.defShape(rect);
 
     var defaultGroup = Group();
