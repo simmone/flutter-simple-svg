@@ -51,6 +51,30 @@ class Svg {
       outBuffer.write("  </defs>\n");
     }
 
+    var defaultGroup = groupDefineMap[constants.defaultGroupId];
+    
+    if (defaultGroup != null) {
+      if (defaultGroup!.widgetList.isNotEmpty) {
+        outBuffer.write(showGroupWidgets(constants.defaultGroupId, '  '));
+      }
+    }
+
     return outBuffer.toString();
+  }
+
+  String showGroupWidgets(String groupId, String prefix) {
+    var group = groupDefineMap[groupId];
+    
+    var groupBuffer = StringBuffer();
+
+    if (group != null) {
+      for (final widget in group.widgetList) {
+        groupBuffer.write(prefix);
+        groupBuffer.write(widget.format());
+        groupBuffer.write('\n');
+      }
+    }
+
+    return groupBuffer.toString();
   }
 }

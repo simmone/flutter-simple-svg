@@ -16,6 +16,8 @@ void main() {
     final file = File('showcase/shapes/rect/rect.svg');
     final rectSvgFile = await file.readAsString();
 
+    svg.addDefaultGroup(defaultGroup);
+
     expect(svg.out(), rectSvgFile);
   });
 }
