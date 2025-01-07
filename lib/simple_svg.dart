@@ -1,3 +1,5 @@
+/// Here is the start.
+
 export 'package:simple_svg/defines/rect.dart' show Rect;
 export 'package:simple_svg/defines/widget.dart' show Widget;
 export 'package:simple_svg/defines/group.dart' show Group;
@@ -8,6 +10,7 @@ import 'package:simple_svg/defines/group.dart';
 
 import '../assets/constants.dart' as constants;
 
+/// Svg a library to generate svg file easily.
 class Svg {
   final num width;
   final num height;
