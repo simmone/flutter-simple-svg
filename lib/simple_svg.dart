@@ -59,11 +59,12 @@ class Svg {
 
         outBuffer.write(shape!.format(shapeId));
       }
-      outBuffer.write("  </defs>\n\n");
+      outBuffer.write("  </defs>\n");
     }
-    
-    final noDefaultGroupIds = groupDefineMap.keys.skipWhile((groupId) => groupId != constants.defaultGroupId);
-    
+
+    final noDefaultGroupIds = groupDefineMap.keys
+        .where((groupId) => groupId != constants.defaultGroupId);
+
     for (final groupId in noDefaultGroupIds) {
       outBuffer.write('\n');
       outBuffer.write('  <symbol id="$groupId">\n');
@@ -77,6 +78,23 @@ class Svg {
       if (defaultGroup.widgetList.isNotEmpty) {
         outBuffer.write(showGroupWidgets(constants.defaultGroupId, '  '));
       }
+    }
+
+    final groupShows =
+        groupShowList.where((rec) => rec.$1 != constants.defaultGroupId);
+
+    for (final groupShow in groupShows) {
+      final groupId = groupShow.$1;
+      final groupPos = groupShow.$2;
+
+      outBuffer.write('\n');
+      outBuffer.write('  <use xlink:href="#$groupId" ');
+
+      if (groupPos != (0, 0)) {
+        outBuffer.write('x="${groupPos.$1}" y="${groupPos.$2}" ');
+      }
+
+      outBuffer.write('/>\n');
     }
 
     return outBuffer.toString();
@@ -107,11 +125,11 @@ class Svg {
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
     outBuffer.write('    width="$width" height="$height"\n');
     outBuffer.write('    >\n');
-    
+
     if (background != null) {
       final rect = Rect(width, height);
       defShape(rect);
-      
+
       var sstyle = Sstyle();
       sstyle.fill = background;
       var widget = Widget('s1');
@@ -121,7 +139,7 @@ class Svg {
       backgroundGroup.placeWidget(widget);
 
       addNameGroup(constants.backgroundGroupId, backgroundGroup);
-      
+
       groupShowList.add((constants.backgroundGroupId, (0, 0)));
     }
 
