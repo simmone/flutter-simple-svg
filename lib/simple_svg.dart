@@ -4,6 +4,9 @@ export 'package:simple_svg/defines/group.dart' show Group;
 export 'package:simple_svg/defines/sstyle.dart' show Sstyle;
 
 import 'package:simple_svg/defines/shape.dart';
+import 'package:simple_svg/defines/rect.dart';
+import 'package:simple_svg/defines/widget.dart';
+import 'package:simple_svg/defines/sstyle.dart';
 import 'package:simple_svg/defines/group.dart';
 
 import '../assets/constants.dart' as constants;
@@ -16,7 +19,7 @@ class Svg {
   int widgetIdCount = 0;
   Map<String, Shape> shapeDefineMap = {};
   Map<String, Group> groupDefineMap = {};
-  List<Group> groupShowList = [];
+  List<(String, (num, num))> groupShowList = [];
 
   Svg(this.width, this.height);
 
@@ -58,6 +61,15 @@ class Svg {
       }
       outBuffer.write("  </defs>\n\n");
     }
+    
+    final noDefaultGroupIds = groupDefineMap.keys.skipWhile((groupId) => groupId != constants.defaultGroupId);
+    
+    for (final groupId in noDefaultGroupIds) {
+      outBuffer.write('\n');
+      outBuffer.write('  <symbol id="$groupId">\n');
+      outBuffer.write(showGroupWidgets(groupId, "    "));
+      outBuffer.write('  </symbol>\n');
+    }
 
     var defaultGroup = groupDefineMap[constants.defaultGroupId];
 
@@ -95,6 +107,23 @@ class Svg {
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
     outBuffer.write('    width="$width" height="$height"\n');
     outBuffer.write('    >\n');
+    
+    if (background != null) {
+      final rect = Rect(width, height);
+      defShape(rect);
+      
+      var sstyle = Sstyle();
+      sstyle.fill = background;
+      var widget = Widget('s1');
+      widget.sstyle = sstyle;
+
+      var backgroundGroup = Group();
+      backgroundGroup.placeWidget(widget);
+
+      addNameGroup(constants.backgroundGroupId, backgroundGroup);
+      
+      groupShowList.add((constants.backgroundGroupId, (0, 0)));
+    }
 
     outBuffer.write(flushData());
 
