@@ -1,5 +1,3 @@
-/// Here is the start.
-
 export 'package:simple_svg/defines/rect.dart' show Rect;
 export 'package:simple_svg/defines/widget.dart' show Widget;
 export 'package:simple_svg/defines/group.dart' show Group;
@@ -14,6 +12,7 @@ import '../assets/constants.dart' as constants;
 class Svg {
   final num width;
   final num height;
+  String? background;
   int widgetIdCount = 0;
   Map<String, Shape> shapeDefineMap = {};
   Map<String, Group> groupDefineMap = {};
@@ -96,7 +95,9 @@ class Svg {
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
     outBuffer.write('    width="$width" height="$height"\n');
     outBuffer.write('    >\n');
+
     outBuffer.write(flushData());
+
     outBuffer.write('</svg>\n');
 
     return outBuffer.toString();
