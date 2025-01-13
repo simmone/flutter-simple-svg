@@ -76,6 +76,7 @@ class Svg {
 
     if (defaultGroup != null) {
       if (defaultGroup.widgetList.isNotEmpty) {
+        outBuffer.write('\n');
         outBuffer.write(showGroupWidgets(constants.defaultGroupId, '  '));
       }
     }
@@ -83,17 +84,18 @@ class Svg {
     final groupShows =
         groupShowList.where((rec) => rec.$1 != constants.defaultGroupId);
 
+    if (groupShows.isNotEmpty) {
+      outBuffer.write('\n');
+    }
+
     for (final groupShow in groupShows) {
       final groupId = groupShow.$1;
       final groupPos = groupShow.$2;
 
-      outBuffer.write('\n');
       outBuffer.write('  <use xlink:href="#$groupId" ');
-
       if (groupPos != (0, 0)) {
         outBuffer.write('x="${groupPos.$1}" y="${groupPos.$2}" ');
       }
-
       outBuffer.write('/>\n');
     }
 
