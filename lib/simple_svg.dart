@@ -47,6 +47,22 @@ class Svg {
     return groupId;
   }
 
+  void setBackground(String _background) {
+    background = _background;
+
+    final rectId = defShape(Rect(width, height));
+
+    var sstyle = Sstyle();
+    sstyle.fill = background;
+    var widget = Widget(rectId);
+    widget.sstyle = sstyle;
+
+    var backgroundGroup = Group();
+    backgroundGroup.placeWidget(widget);
+
+    addNameGroup(constants.backgroundGroupId, backgroundGroup);
+  }
+
   String flushData() {
     final outBuffer = StringBuffer();
 
@@ -72,15 +88,6 @@ class Svg {
       outBuffer.write('  </symbol>\n');
     }
 
-    var defaultGroup = groupDefineMap[constants.defaultGroupId];
-
-    if (defaultGroup != null) {
-      if (defaultGroup.widgetList.isNotEmpty) {
-        outBuffer.write('\n');
-        outBuffer.write(showGroupWidgets(constants.defaultGroupId, '  '));
-      }
-    }
-
     final groupShows =
         groupShowList.where((rec) => rec.$1 != constants.defaultGroupId);
 
@@ -97,6 +104,15 @@ class Svg {
         outBuffer.write('x="${groupPos.$1}" y="${groupPos.$2}" ');
       }
       outBuffer.write('/>\n');
+    }
+
+    var defaultGroup = groupDefineMap[constants.defaultGroupId];
+
+    if (defaultGroup != null) {
+      if (defaultGroup.widgetList.isNotEmpty) {
+        outBuffer.write('\n');
+        outBuffer.write(showGroupWidgets(constants.defaultGroupId, '  '));
+      }
     }
 
     return outBuffer.toString();
@@ -129,20 +145,15 @@ class Svg {
     outBuffer.write('    >\n');
 
     if (background != null) {
-      final rect = Rect(width, height);
-      defShape(rect);
-
-      var sstyle = Sstyle();
-      sstyle.fill = background;
-      var widget = Widget('s1');
-      widget.sstyle = sstyle;
-
-      var backgroundGroup = Group();
-      backgroundGroup.placeWidget(widget);
-
-      addNameGroup(constants.backgroundGroupId, backgroundGroup);
-
       groupShowList.add((constants.backgroundGroupId, (0, 0)));
+    }
+
+    var defaultGroup = groupDefineMap[constants.defaultGroupId];
+
+    if (defaultGroup != null) {
+      if (defaultGroup.widgetList.isNotEmpty) {
+        groupShowList.add((constants.defaultGroupId, (0, 0)));
+      }
     }
 
     outBuffer.write(flushData());

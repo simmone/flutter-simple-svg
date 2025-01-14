@@ -16,12 +16,12 @@ class Widget {
 
     outItems.add('<use xlink:href="#$shapeId"');
 
-    if (sstyle != null) {
-      outItems.add(sstyle!.format());
-    }
-
     if ((at != null) && (at != (0, 0))) {
       outItems.add('x="${at!.$1}" y="${at!.$2}"');
+    }
+
+    if (sstyle != null) {
+      outItems.add(sstyle!.format());
     }
 
     if (filterId != null) {
