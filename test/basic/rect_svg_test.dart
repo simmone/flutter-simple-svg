@@ -7,14 +7,13 @@ void main() {
   test('basic rect svg out', () async {
     final svg = Svg(100, 100);
 
-    final rect = Rect(100, 100);
-    svg.defShape(rect);
+    final rectId = svg.defShape(Rect(100, 100));
 
     var defaultGroup = Group();
 
     var sstyle = Sstyle();
     sstyle.fill = '#BBC42A';
-    var widget = Widget(rect);
+    var widget = Widget(rectId);
     widget.sstyle = sstyle;
 
     defaultGroup.placeWidget(widget);

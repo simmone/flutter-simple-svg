@@ -6,7 +6,7 @@ import 'package:simple_svg/simple_svg.dart';
 void main() {
   test('basic background svg out', () async {
     final svg = Svg(100, 100);
-    svg.background = '#BBC42A';
+    svg.setBackground('#BBC42A');
 
     final file = File('showcase/basic/background.svg');
     final rectSvgFile = await file.readAsString();
