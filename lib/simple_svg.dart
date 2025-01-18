@@ -47,8 +47,8 @@ class Svg {
     return groupId;
   }
 
-  void setBackground(String _background) {
-    background = _background;
+  void setBackground(String backgroundColor) {
+    background = backgroundColor;
 
     final rectId = defShape(Rect(width, height));
 
