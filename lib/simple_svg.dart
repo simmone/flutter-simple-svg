@@ -16,6 +16,7 @@ class Svg {
   final num width;
   final num height;
   String? background;
+  (num, num, num, num)? viewBox;
   int widgetIdCount = 0;
   Map<String, Shape> shapeDefineMap = {};
   Map<String, Group> groupDefineMap = {};
@@ -61,6 +62,10 @@ class Svg {
     backgroundGroup.placeWidget(widget);
 
     addNameGroup(constants.backgroundGroupId, backgroundGroup);
+  }
+
+  void setViewBox(num minX, num minY, num width, num height) {
+    viewBox = (minX, minY, width, height);
   }
 
   String flushData() {
@@ -142,6 +147,12 @@ class Svg {
     outBuffer.write('    xmlns="http://www.w3.org/2000/svg"\n');
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
     outBuffer.write('    width="$width" height="$height"\n');
+
+    if (viewBox != null) {
+      outBuffer.write(
+          '    viewBox="${viewBox!.$1} ${viewBox!.$2} ${viewBox!.$3} ${viewBox!.$4}"\n');
+    }
+
     outBuffer.write('    >\n');
 
     if (background != null) {
