@@ -7,7 +7,7 @@ void main() {
   test('basic circle svg out', () async {
     final svg = Svg(100, 100);
 
-    final circleId = svg.defShape(Circle(100, 100));
+    final circleId = svg.defShape(Circle(50));
 
     var defaultGroup = Group();
 
@@ -15,6 +15,7 @@ void main() {
     sstyle.fill = '#BBC42A';
     var widget = Widget(circleId);
     widget.sstyle = sstyle;
+    widget.at = (50, 50);
 
     defaultGroup.placeWidget(widget);
     svg.addDefaultGroup(defaultGroup);
