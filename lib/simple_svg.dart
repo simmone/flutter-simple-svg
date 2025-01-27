@@ -1,5 +1,7 @@
 export 'package:simple_svg/defines/rect.dart' show Rect;
 export 'package:simple_svg/defines/circle.dart' show Circle;
+export 'package:simple_svg/defines/ellipse.dart' show Ellipse;
+export 'package:simple_svg/defines/line.dart' show Line;
 export 'package:simple_svg/defines/widget.dart' show Widget;
 export 'package:simple_svg/defines/group.dart' show Group;
 export 'package:simple_svg/defines/sstyle.dart' show Sstyle;
@@ -7,6 +9,8 @@ export 'package:simple_svg/defines/sstyle.dart' show Sstyle;
 import 'package:simple_svg/defines/shape.dart';
 import 'package:simple_svg/defines/rect.dart';
 import 'package:simple_svg/defines/circle.dart';
+import 'package:simple_svg/defines/ellipse.dart';
+import 'package:simple_svg/defines/line.dart';
 import 'package:simple_svg/defines/widget.dart';
 import 'package:simple_svg/defines/sstyle.dart';
 import 'package:simple_svg/defines/group.dart';

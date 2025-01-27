@@ -1,0 +1,25 @@
+import 'shape.dart';
+
+class Line implements Shape {
+  num startX = 0;
+  num startY = 0;
+  num endX = 0;
+  num endY = 0;
+
+  Line((num, num) startPoint, (num, num) endPoint) {
+    this.startX = startPoint.$1;
+    this.startY = startPoint.$2;
+    this.endX = endPoint.$1;
+    this.endY = endPoint.$2;
+  }
+
+  @override
+  String format(String shapeId) {
+    final buffer = StringBuffer();
+
+    buffer.write(
+        '    <line id="$shapeId" x1="$startX" y1="$startY" x2="$endX" y2="$endY" />\n');
+
+    return buffer.toString();
+  }
+}

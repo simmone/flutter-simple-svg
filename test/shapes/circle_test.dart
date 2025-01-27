@@ -26,7 +26,7 @@ void main() {
     expect(svg.out(), circleSvgFile);
   });
 
-  test('3 circles', () async {
+  test('4 circles', () async {
     final svg = Svg(200, 200);
 
     final circleId = svg.defShape(Circle(50));
