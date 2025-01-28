@@ -7,10 +7,10 @@ class Line implements Shape {
   num endY = 0;
 
   Line((num, num) startPoint, (num, num) endPoint) {
-    this.startX = startPoint.$1;
-    this.startY = startPoint.$2;
-    this.endX = endPoint.$1;
-    this.endY = endPoint.$2;
+    startX = startPoint.$1;
+    startY = startPoint.$2;
+    endX = endPoint.$1;
+    endY = endPoint.$2;
   }
 
   @override
