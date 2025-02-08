@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/simple_svg.dart';
 
 void main() {
-  test('baic ellipse', () async {
+  test('basic ellipse', () async {
     final svg = Svg(200, 100);
 
     final ellipseId = svg.defShape(Ellipse(100, 50));

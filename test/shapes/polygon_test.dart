@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/simple_svg.dart';
 
 void main() {
-  test('baic polygon', () async {
+  test('basic polygon', () async {
     final svg = Svg(110, 110);
 
     final polygonId = svg.defShape(Polygon([

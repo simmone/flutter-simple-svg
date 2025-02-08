@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/simple_svg.dart';
 
 void main() {
-  test('baic circle', () async {
+  test('basic circle', () async {
     final svg = Svg(100, 100);
 
     final circleId = svg.defShape(Circle(50));

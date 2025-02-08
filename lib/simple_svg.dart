@@ -22,7 +22,8 @@ class Svg {
   final num height;
   String? background;
   (num, num, num, num)? viewBox;
-  int widgetIdCount = 0;
+  int shapeIdCount = 0;
+  int groupIdCount = 0;
   Map<String, Shape> shapeDefineMap = {};
   Map<String, Group> groupDefineMap = {};
   List<(String, (num, num))> groupShowList = [];
@@ -30,8 +31,8 @@ class Svg {
   Svg(this.width, this.height);
 
   String defShape(Shape shape) {
-    widgetIdCount += 1;
-    String shapeId = 's$widgetIdCount';
+    shapeIdCount += 1;
+    String shapeId = 's$shapeIdCount';
     shapeDefineMap[shapeId] = shape;
     return shapeId;
   }
@@ -42,8 +43,8 @@ class Svg {
   }
 
   String addGroup(Group group) {
-    widgetIdCount += 1;
-    var groupId = 'g$widgetIdCount';
+    groupIdCount += 1;
+    var groupId = 'g$groupIdCount';
     addNameGroup(groupId, group);
     return groupId;
   }

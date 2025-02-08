@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/simple_svg.dart';
 
 void main() {
-  test('baic polyline', () async {
+  test('basic polyline', () async {
     final svg = Svg(130, 130);
 
     final polylineId = svg.defShape(Polyline([

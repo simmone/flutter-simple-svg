@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/simple_svg.dart';
 
 void main() {
-  test('baic line', () async {
+  test('basic line', () async {
     final svg = Svg(110, 110);
 
     final lineId = svg.defShape(Line((0, 0), (100, 100)));
