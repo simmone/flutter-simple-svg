@@ -38,7 +38,7 @@ void main() {
     starGroup.placeWidget(widgetLine2);
     starGroup.placeWidget(widgetLine3);
     starGroup.placeWidget(widgetLine4);
-    
+
     final starGroupId = svg.addGroup(starGroup);
 
     var defaultGroup = Group();
@@ -98,9 +98,9 @@ void main() {
 
     var widgetRect = Widget(rectId);
     widgetRect.sstyle = rectSstyle;
-    
+
     patternGroup.placeWidget(widgetRect);
-    
+
     var crossLineWidget1 = Widget(crossLineGroupId);
     crossLineWidget1.at = (0, 0);
     patternGroup.placeWidget(crossLineWidget1);
@@ -120,11 +120,11 @@ void main() {
     var crossLineWidget5 = Widget(crossLineGroupId);
     crossLineWidget5.at = (40, 0);
     patternGroup.placeWidget(crossLineWidget5);
-    
+
     final patternGroupId = svg.addGroup(patternGroup);
-    
+
     var defaultGroup = Group();
-    
+
     var patternWidget1 = Widget(patternGroupId);
     patternWidget1.at = (0, 0);
     defaultGroup.placeWidget(patternWidget1);
@@ -144,6 +144,94 @@ void main() {
     svg.addDefaultGroup(defaultGroup);
 
     final file = File('showcase/group/group2.svg');
+    final rectSvgFile = await file.readAsString();
+
+    expect(svg.out(), rectSvgFile);
+  });
+
+  test('five circle group', () async {
+    final svg = Svg(1000, 600);
+
+    final circleId = svg.defShape(Circle(60));
+
+    var circle1Sstyle = Sstyle();
+    circle1Sstyle.stroke = 'rgb(11, 112, 191)';
+
+    var circle2Sstyle = Sstyle();
+    circle2Sstyle.stroke = 'rgb(240, 183, 0)';
+
+    var circle3Sstyle = Sstyle();
+    circle3Sstyle.stroke = 'rgb(0, 0, 0)';
+
+    var circle4Sstyle = Sstyle();
+    circle4Sstyle.stroke = 'rgb(13, 146, 38)';
+
+    var circle5Sstyle = Sstyle();
+    circle5Sstyle.stroke = 'rgb(214, 0, 23)';
+
+    var fiveCircleGroup = Group();
+
+    var widgetCircle1 = Widget(circleId);
+    widgetCircle1.sstyle = circle1Sstyle;
+    widgetCircle1.at = (120, 120);
+    fiveCircleGroup.placeWidget(widgetCircle1);
+
+    var widgetCircle2 = Widget(circleId);
+    widgetCircle2.sstyle = circle2Sstyle;
+    widgetCircle2.at = (180, 180);
+    fiveCircleGroup.placeWidget(widgetCircle2);
+
+    var widgetCircle3 = Widget(circleId);
+    widgetCircle3.sstyle = circle3Sstyle;
+    widgetCircle3.at = (260, 120);
+    fiveCircleGroup.placeWidget(widgetCircle3);
+
+    var widgetCircle4 = Widget(circleId);
+    widgetCircle4.sstyle = circle4Sstyle;
+    widgetCircle4.at = (320, 180);
+    fiveCircleGroup.placeWidget(widgetCircle4);
+
+    var widgetCircle5 = Widget(circleId);
+    widgetCircle5.sstyle = circle5Sstyle;
+    widgetCircle5.at = (400, 120);
+    fiveCircleGroup.placeWidget(widgetCircle5);
+
+    final fiveCircleGroupId = svg.addGroup(fiveCircleGroup);
+
+    var defaultGroup = Group();
+
+    var groupSstyle = Sstyle();
+    groupSstyle.strokeWidth = 12;
+
+    final filterId = svg.defShape(Filter());
+
+    var widget1 = Widget(fiveCircleGroupId);
+    widget1.sstyle = groupSstyle;
+    widget1.filterId = filterId;
+    widget1.at = (0, 0);
+    defaultGroup.placeWidget(widget1);
+
+    var widget2 = Widget(fiveCircleGroupId);
+    widget2.sstyle = groupSstyle;
+    widget2.filterId = filterId;
+    widget2.at = (0, 300);
+    defaultGroup.placeWidget(widget2);
+
+    var widget3 = Widget(fiveCircleGroupId);
+    widget3.sstyle = groupSstyle;
+    widget3.filterId = filterId;
+    widget3.at = (500, 0);
+    defaultGroup.placeWidget(widget3);
+
+    var widget4 = Widget(fiveCircleGroupId);
+    widget4.sstyle = groupSstyle;
+    widget4.filterId = filterId;
+    widget4.at = (500, 300);
+    defaultGroup.placeWidget(widget4);
+
+    svg.addDefaultGroup(defaultGroup);
+
+    final file = File('showcase/group/group3.svg');
     final rectSvgFile = await file.readAsString();
 
     expect(svg.out(), rectSvgFile);

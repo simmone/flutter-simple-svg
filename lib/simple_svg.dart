@@ -4,6 +4,7 @@ export 'package:simple_svg/defines/ellipse.dart' show Ellipse;
 export 'package:simple_svg/defines/line.dart' show Line;
 export 'package:simple_svg/defines/polygon.dart' show Polygon;
 export 'package:simple_svg/defines/polyline.dart' show Polyline;
+export 'package:simple_svg/defines/filter.dart' show Filter;
 export 'package:simple_svg/defines/widget.dart' show Widget;
 export 'package:simple_svg/defines/group.dart' show Group;
 export 'package:simple_svg/defines/sstyle.dart' show Sstyle;
