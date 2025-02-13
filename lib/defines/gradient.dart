@@ -94,3 +94,71 @@ class LinearGradient implements Shape {
     return buffer.toString();
   }
 }
+
+class RadialGradient implements Shape {
+  List<(num, String, num)> stops;
+  num? cx;
+  num? cy;
+  num? fx;
+  num? fy;
+  num? r;
+  GradientUnits? gradientUnits;
+  SpreadMethod? spreadMethod;
+
+  RadialGradient(this.stops);
+
+  @override
+  String format(String shapeId) {
+    final buffer = StringBuffer();
+
+    buffer.write('    <radialGradient id="$shapeId" ');
+
+    final outItems = <String>[];
+
+    if (cx != null) {
+      outItems.add('cx="$cx"');
+    }
+
+    if (cy != null) {
+      outItems.add('cy="$cy"');
+    }
+
+    if (fx != null) {
+      outItems.add('fx="$fx"');
+    }
+
+    if (fy != null) {
+      outItems.add('fy="$fy"');
+    }
+
+    if (r != null) {
+      outItems.add('r="$r"');
+    }
+
+    if (gradientUnits != null) {
+      outItems.add('gradientUnits="${gradientUnits!.name}"');
+    }
+
+    if (spreadMethod != null) {
+      outItems.add('spreadMethod="${spreadMethod!.name}"');
+    }
+
+    buffer.write(outItems.join(' '));
+
+    buffer.write('>\n');
+
+    for (final stop in stops) {
+      buffer.write('      <stop offset="${stop.$1}%" stop-color="${stop.$2}" ');
+
+      if (stop.$3 != 1.0) {
+        buffer.write('stop-opacity="${stop.$3}" ');
+      }
+
+      buffer.write('/>\n');
+    }
+
+    buffer.write('    </radialGradient>\n');
+
+    return buffer.toString();
+  }
+}

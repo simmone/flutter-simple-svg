@@ -22,4 +22,24 @@ void main() {
 
     expect(gradient.format('s1'), linearDefineFile);
   });
+
+  test('radial gradient format', () async {
+    final gradient = RadialGradient([
+      (0, '#BBC42A', 1),
+      (100, '#ED6E46', 1),
+    ]);
+
+    gradient.cx = 0;
+    gradient.cy = 1;
+    gradient.fx = 2;
+    gradient.fy = 3;
+    gradient.r = 4;
+    gradient.gradientUnits = GradientUnits.userSpaceOnUse;
+    gradient.spreadMethod = SpreadMethod.repeat;
+
+    final file = File('test/defines/gradient/radial_gradient_define.svg');
+    final radialDefineFile = await file.readAsString();
+
+    expect(gradient.format('s1'), radialDefineFile);
+  });
 }
