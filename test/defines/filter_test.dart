@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/defines/filter.dart';
 
 void main() {
-  test('filter', () {
+  test('filter define', () {
     final filter = Filter();
     expect(filter.blur, 2);
     expect(filter.dropdownOffset, 3);
