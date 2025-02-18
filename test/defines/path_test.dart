@@ -11,18 +11,15 @@ void main() {
     var path = Path();
     path.defs.add('path strs');
 
-    expect(path.format('1'),
-      () {
-        final buffer = StringBuffer();
-        
-        buffer.write('    <path id="1"\n');
-        buffer.write('          d="\n');
-        buffer.write('             path strs\n');
-        buffer.write('            "/>\n');
+    expect(path.format('1'), () {
+      final buffer = StringBuffer();
 
-        return buffer.toString();
-      }());
-    });
+      buffer.write('    <path id="1"\n');
+      buffer.write('          d="\n');
+      buffer.write('             path strs\n');
+      buffer.write('            "/>\n');
+
+      return buffer.toString();
+    }());
+  });
 }
-
-

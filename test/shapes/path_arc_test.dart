@@ -6,7 +6,7 @@ import 'package:simple_svg/simple_svg.dart';
 void main() {
   test('path arc', () async {
     final svg = Svg(300, 130);
-    
+
     var arc1Path = Path();
     arc1Path.movetoAbs((130, 45));
     arc1Path.arcAbs((170, 85), (80, 40), ArcDirection.leftBig);
@@ -26,34 +26,35 @@ void main() {
     arc4Path.movetoAbs((130, 45));
     arc4Path.arcAbs((170, 85), (80, 40), ArcDirection.rightSmall);
     final arc4Id = svg.defShape(arc4Path);
-    
-    var arcSstyle = Sstyle();
-    arcSstyle.strokeWidth = 3;
 
     var defaultGroup = Group();
 
-    var arc1Sstyle = arcSstyle.clone();
+    var arc1Sstyle = Sstyle();
+    arc1Sstyle.strokeWidth = 3;
     arc1Sstyle.stroke = '#ccccff';
 
     var arc1Widget = Widget(arc1Id);
     arc1Widget.sstyle = arc1Sstyle;
     defaultGroup.placeWidget(arc1Widget);
 
-    var arc2Sstyle = arcSstyle.clone();
+    var arc2Sstyle = Sstyle();
+    arc2Sstyle.strokeWidth = 3;
     arc2Sstyle.stroke = 'green';
 
     var arc2Widget = Widget(arc2Id);
     arc2Widget.sstyle = arc2Sstyle;
     defaultGroup.placeWidget(arc2Widget);
 
-    var arc3Sstyle = arcSstyle.clone();
+    var arc3Sstyle = Sstyle();
+    arc3Sstyle.strokeWidth = 3;
     arc3Sstyle.stroke = 'blue';
 
     var arc3Widget = Widget(arc3Id);
     arc3Widget.sstyle = arc3Sstyle;
     defaultGroup.placeWidget(arc3Widget);
 
-    var arc4Sstyle = arcSstyle.clone();
+    var arc4Sstyle = Sstyle();
+    arc4Sstyle.strokeWidth = 3;
     arc4Sstyle.stroke = 'yellow';
 
     var arc4Widget = Widget(arc4Id);
@@ -61,7 +62,7 @@ void main() {
     defaultGroup.placeWidget(arc4Widget);
 
     var circleSstyle = Sstyle();
-    circleSstyle.stroke = 'red';
+    circleSstyle.fill = 'red';
 
     final circleId = svg.defShape(Circle(5));
 

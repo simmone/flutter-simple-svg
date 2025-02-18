@@ -15,9 +15,9 @@ extension ArcDirectionExtension on ArcDirection {
       case ArcDirection.leftSmall:
         return '0,0';
       case ArcDirection.rightBig:
-        return '1,0';
+        return '1,1';
       case ArcDirection.rightSmall:
-        return '0,0';
+        return '0,1';
     }
   }
 }
@@ -26,13 +26,15 @@ class Path implements Shape {
   List<String> defs = [];
 
   Path();
-  
+
   void arcAbs((num?, num?) point, (num?, num?) radius, ArcDirection section) {
-    defs.add('A${radius.$1},${radius.$2} 0 $section ${point.$1},${point.$2}');
+    defs.add(
+        'A${radius.$1},${radius.$2} 0 ${section!.name} ${point.$1},${point.$2}');
   }
 
   void arcRel((num?, num?) point, (num?, num?) radius, ArcDirection section) {
-    defs.add('a${radius.$1},${radius.$2} 0 $section ${point.$1},${point.$2}');
+    defs.add(
+        'a${radius.$1},${radius.$2} 0 ${section!.name} ${point.$1},${point.$2}');
   }
 
   void movetoAbs((num?, num?) point) {
