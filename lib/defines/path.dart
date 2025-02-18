@@ -43,6 +43,26 @@ class Path implements Shape {
     defs.add('m${point.$1},${point.$2}');
   }
 
+  void linetoAbs((num?, num?) point) {
+    defs.add('L${point.$1},${point.$2}');
+  }
+
+  void linetoRel((num?, num?) point) {
+    defs.add('l${point.$1},${point.$2}');
+  }
+
+  void linetoHol(num? length) {
+    defs.add('h$length');
+  }
+
+  void linetoVer(num? length) {
+    defs.add('v$length');
+  }
+
+  void close() {
+    defs.add('z');
+  }
+
   @override
   String format(String shapeId) {
     final buffer = StringBuffer();
