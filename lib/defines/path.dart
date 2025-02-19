@@ -29,12 +29,12 @@ class Path implements Shape {
 
   void arcAbs((num, num) point, (num, num) radius, ArcDirection section) {
     defs.add(
-        'A${radius.$1},${radius.$2} 0 ${section!.name} ${point.$1},${point.$2}');
+        'A${radius.$1},${radius.$2} 0 ${section.name} ${point.$1},${point.$2}');
   }
 
   void arcRel((num, num) point, (num, num) radius, ArcDirection section) {
     defs.add(
-        'a${radius.$1},${radius.$2} 0 ${section!.name} ${point.$1},${point.$2}');
+        'a${radius.$1},${radius.$2} 0 ${section.name} ${point.$1},${point.$2}');
   }
 
   void movetoAbs((num, num) point) {
@@ -59,6 +59,24 @@ class Path implements Shape {
 
   void linetoVer(num length) {
     defs.add('v$length');
+  }
+
+  void ccurveAbs((num, num) point1, (num, num) point2, (num, num) point3) {
+    defs.add(
+        'C${point1.$1},${point1.$2} ${point2.$1},${point2.$2} ${point3.$1},${point3.$2}');
+  }
+
+  void ccurveRel((num, num) point1, (num, num) point2, (num, num) point3) {
+    defs.add(
+        'c${point1.$1},${point1.$2} ${point2.$1},${point2.$2} ${point3.$1},${point3.$2}');
+  }
+
+  void qcurveAbs((num, num) point1, (num, num) point2) {
+    defs.add('Q${point1.$1},${point1.$2} ${point2.$1},${point2.$2}');
+  }
+
+  void qcurveRel((num, num) point1, (num, num) point2) {
+    defs.add('q${point1.$1},${point1.$2} ${point2.$1},${point2.$2}');
   }
 
   void close() {

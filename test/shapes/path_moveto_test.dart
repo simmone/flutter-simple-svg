@@ -21,7 +21,7 @@ void main() {
     var moveWidget = Widget(moveId);
     moveWidget.sstyle = moveSstyle;
     defaultGroup.placeWidget(moveWidget);
-    
+
     var circleSstyle = Sstyle();
     circleSstyle.fill = 'red';
     var circleWidget = Widget(circleId);
@@ -54,7 +54,7 @@ void main() {
     var moveWidget = Widget(moveId);
     moveWidget.sstyle = moveSstyle;
     defaultGroup.placeWidget(moveWidget);
-    
+
     var circleSstyle = Sstyle();
     circleSstyle.fill = 'red';
     var circleWidget = Widget(circleId);
