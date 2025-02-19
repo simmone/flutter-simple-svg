@@ -27,37 +27,37 @@ class Path implements Shape {
 
   Path();
 
-  void arcAbs((num?, num?) point, (num?, num?) radius, ArcDirection section) {
+  void arcAbs((num, num) point, (num, num) radius, ArcDirection section) {
     defs.add(
         'A${radius.$1},${radius.$2} 0 ${section!.name} ${point.$1},${point.$2}');
   }
 
-  void arcRel((num?, num?) point, (num?, num?) radius, ArcDirection section) {
+  void arcRel((num, num) point, (num, num) radius, ArcDirection section) {
     defs.add(
         'a${radius.$1},${radius.$2} 0 ${section!.name} ${point.$1},${point.$2}');
   }
 
-  void movetoAbs((num?, num?) point) {
+  void movetoAbs((num, num) point) {
     defs.add('M${point.$1},${point.$2}');
   }
 
-  void movetoRel((num?, num?) point) {
+  void movetoRel((num, num) point) {
     defs.add('m${point.$1},${point.$2}');
   }
 
-  void linetoAbs((num?, num?) point) {
+  void linetoAbs((num, num) point) {
     defs.add('L${point.$1},${point.$2}');
   }
 
-  void linetoRel((num?, num?) point) {
+  void linetoRel((num, num) point) {
     defs.add('l${point.$1},${point.$2}');
   }
 
-  void linetoHol(num? length) {
+  void linetoHor(num length) {
     defs.add('h$length');
   }
 
-  void linetoVer(num? length) {
+  void linetoVer(num length) {
     defs.add('v$length');
   }
 
