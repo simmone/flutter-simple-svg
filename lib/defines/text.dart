@@ -1,36 +1,31 @@
 import 'shape.dart';
 
-class TextKerningC {
+class TextKerning {
   String type;
   num? val;
   
-  TextKerningC.optional(this.type, [this.val = 0]);
+  TextKerning.optional(this.type, [this.val = 0]);
   
   String formatted() {
-    switch (this.type) {
-      case TextKerning.number:
-        return '$this.number';
-      default:
-        return this.type;
+    if val != null {
+      return '$this.val';
+    } else {
+      return type;
     }
   }
 }
 
-enum TextSpace {
-  number,
-  normal,
-  inherit,
-}
+class TextSpace {
+  String type;
+  num? val;
+  
+  TextSpace.optional(this.type, [this.val = 0]);
 
-extension TextSpaceExtension on TextSpace {
-  String get name {
-    switch (this) {
-      case TextSpace.number(num n):
-        return '$n';
-      case TextSpace.normal:
-        return 'normal';
-      case TextSpace.inherit:
-        return 'inerit';
+  String formated() {
+    if val != null {
+      return '$this.val';
+    } else {
+      return type;
     }
   }
 }
@@ -75,7 +70,42 @@ class Text implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
 
-    buffer.write('    <text id="$shapeId"\n');
+    buffer.write('    <text id="$shapeId"');
+    
+    buffer.write(
+      {
+        var options = <String>[];
+        
+        if this.dx != null {
+          options.add('dx="$this.dx"');
+        }
+
+        if this.dy != null {
+          options.add('dy="$this.dy"');
+        }
+
+        if this.fontSize != null {
+          options.add('font-size="$this.fontSize"');
+        }
+
+        if this.fontFamily != null {
+          options.add('font-family="$this.fontFamily"');
+        }
+        
+        if this.rotate != null {
+          options.add(
+            {
+              var rotateItems = <String>[];
+              
+              for (final item in rotateItems) {
+                rotateItems.add('$item');
+              }
+
+              return rotaateItems.join(' ');
+            });
+          }
+      }
+
     buffer.write('          d="\n');
     for (final def in defs) {
       buffer.write('             $def\n');
