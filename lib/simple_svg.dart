@@ -6,13 +6,13 @@ export 'package:simple_svg/defines/polygon.dart' show Polygon;
 export 'package:simple_svg/defines/polyline.dart' show Polyline;
 export 'package:simple_svg/defines/filter.dart' show Filter;
 export 'package:simple_svg/defines/path.dart' show Path, ArcDirection;
+export 'package:simple_svg/defines/text.dart' show Text, TextKerning, TextSpace, TextDecoration;
 export 'package:simple_svg/defines/gradient.dart'
     show LinearGradient, RadialGradient;
 export 'package:simple_svg/defines/widget.dart' show Widget;
 export 'package:simple_svg/defines/group.dart' show Group;
 export 'package:simple_svg/defines/sstyle.dart'
     show Sstyle, StrokeLineJoin, FillRule, StrokeLineCap;
-
 import 'package:simple_svg/defines/shape.dart';
 import 'package:simple_svg/defines/rect.dart';
 import 'package:simple_svg/defines/widget.dart';
