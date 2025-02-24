@@ -57,7 +57,7 @@ class Text implements Shape {
   num? dy;
   List<num>? rotate;
   num? textLength;
-  TextKerningC? kerning;
+  TextKerning? kerning;
   TextSpace? letterSpace;
   TextSpace? wordSpace;
   TextDecoration? textDecoration;
@@ -70,7 +70,7 @@ class Text implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
 
-    buffer.write('    <text id="$shapeId"');
+    buffer.write('    <text id="$shapeId" ');
     
     buffer.write(
       {
@@ -104,7 +104,36 @@ class Text implements Shape {
               return rotaateItems.join(' ');
             });
           }
+          
+          if this.textLength != null {
+            options.add('textLength="$this.textLength"');
+          }
+          
+          if this.kerning != null {
+            options.add('kerning="${this.kerning!.formatted()}"');
+          }
+          
+          if this.letterSpace != null {
+            options.add('letter-space="${this.letterSpace!.formatted()}"');
+          }
+
+          if this.wordSpace != null {
+            options.add('word-space="${this.wordSpace!.formatted()}"');
+          }
+          
+          if this.textDecoration != null {
+            options.add('text-decoration="${this.textDecoration!.name}"');
+          }
+          
+          options.join(' ');
+      });
+      
+      buffer.write('>');
+      
+      if this.path != null {
+        buffer.write('\n      <textPath xlink:href="#$this.path" ');
       }
+      
 
     buffer.write('          d="\n');
     for (final def in defs) {
