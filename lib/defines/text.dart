@@ -23,7 +23,8 @@ class TextKerning {
   TextKerningType type;
   num? val;
   
-  TextKerning(this.type, [this.val = 0]);
+  TextKerning(this.type);
+  TextKerning.optional(this.type, [this.val = 0]);
   
   String formatted() {
     if (val != null) {
@@ -57,7 +58,8 @@ class TextSpace {
   TextSpaceType type;
   num? val;
   
-  TextSpace(this.type, [this.val = 0]);
+  TextSpace(this.type);
+  TextSpace.optional(this.type, [this.val = 0]);
 
   String formatted() {
     if (val != null) {
@@ -183,7 +185,7 @@ class Text implements Shape {
 
       var options = <String>[];
 
-      options.add('xlink:href="#$path" ');
+      options.add('xlink:href="#$path"');
       
       if (pathStartOffset != null) {
         options.add('startOffset="$pathStartOffset%"');
