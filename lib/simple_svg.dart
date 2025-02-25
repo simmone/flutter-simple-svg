@@ -6,7 +6,8 @@ export 'package:simple_svg/defines/polygon.dart' show Polygon;
 export 'package:simple_svg/defines/polyline.dart' show Polyline;
 export 'package:simple_svg/defines/filter.dart' show Filter;
 export 'package:simple_svg/defines/path.dart' show Path, ArcDirection;
-export 'package:simple_svg/defines/text.dart' show Text, TextKerning, TextSpace, TextDecoration;
+export 'package:simple_svg/defines/text.dart'
+    show Text, TextKerning, TextSpace, TextDecoration;
 export 'package:simple_svg/defines/gradient.dart'
     show LinearGradient, RadialGradient;
 export 'package:simple_svg/defines/widget.dart' show Widget;

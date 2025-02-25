@@ -10,11 +10,11 @@ extension TextKerningTypeExtension on TextKerningType {
   String get name {
     switch (this) {
       case TextKerningType.number:
-      return 'number';
+        return 'number';
       case TextKerningType.auto:
-      return 'auto';
+        return 'auto';
       case TextKerningType.inherit:
-      return 'inherit';
+        return 'inherit';
     }
   }
 }
@@ -22,10 +22,10 @@ extension TextKerningTypeExtension on TextKerningType {
 class TextKerning {
   TextKerningType type;
   num? val;
-  
+
   TextKerning(this.type);
   TextKerning.optional(this.type, [this.val = 0]);
-  
+
   String formatted() {
     if (val != null) {
       return '$this.val';
@@ -45,11 +45,11 @@ extension TextSpaceTypeExtension on TextSpaceType {
   String get name {
     switch (this) {
       case TextSpaceType.number:
-      return 'number';
+        return 'number';
       case TextSpaceType.normal:
-      return 'normal';
+        return 'normal';
       case TextSpaceType.inherit:
-      return 'inherit';
+        return 'inherit';
     }
   }
 }
@@ -57,7 +57,7 @@ extension TextSpaceTypeExtension on TextSpaceType {
 class TextSpace {
   TextSpaceType type;
   num? val;
-  
+
   TextSpace(this.type);
   TextSpace.optional(this.type, [this.val = 0]);
 
@@ -80,11 +80,11 @@ extension TextDecorationExtension on TextDecoration {
   String get name {
     switch (this) {
       case TextDecoration.overLine:
-      return 'overline';
+        return 'overline';
       case TextDecoration.underLine:
-      return 'underline';
+        return 'underline';
       case TextDecoration.lineThrough:
-      return 'line-through';
+        return 'line-through';
     }
   }
 }
@@ -110,87 +110,85 @@ class Text implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
 
-    buffer.write('    <text id="$shapeId" ');
-    
-    buffer.write(
-      (){
-        var options = <String>[];
-        
-        if (dx != null) {
-          options.add('dx="$dx"');
-        }
+    buffer.write('    <text ');
 
-        if (dy != null) {
-          options.add('dy="$dy"');
-        }
+    buffer.write(() {
+      var options = <String>[];
 
-        if (fontSize != null) {
-          options.add('font-size="$fontSize"');
-        }
+      options.add('id="$shapeId"');
 
-        if (fontFamily != null) {
-          options.add('font-family="$fontFamily"');
-        }
-        
-        if (rotate != null) {
-          options.add(
-            () {
-            var rotateBuffer = StringBuffer();
+      if (dx != null) {
+        options.add('dx="$dx"');
+      }
 
-            rotateBuffer.write('rotate="');
-            rotateBuffer.write(
-              () {
-                var rotateItems = <String>[];
-                
-                for (final item in rotate!) {
-                  rotateItems.add('$item');
-                }
+      if (dy != null) {
+        options.add('dy="$dy"');
+      }
 
-                return rotateItems.join(' ');
-              }());
-            rotateBuffer.write('"');
-            
-            return rotateBuffer.toString();
-            }());
-        }
-        
-        if (textLength != null) {
-          options.add('textLength="$textLength"');
-        }
-        
-        if (kerning != null) {
-          options.add('kerning="${kerning!.formatted()}"');
-        }
-        
-        if (letterSpace != null) {
-          options.add('letter-space="${letterSpace!.formatted()}"');
-        }
+      if (fontSize != null) {
+        options.add('font-size="$fontSize"');
+      }
 
-        if (wordSpace != null) {
-          options.add('word-space="${wordSpace!.formatted()}"');
-        }
-        
-        if (textDecoration != null) {
-          options.add('text-decoration="${textDecoration!.name}"');
-        }
-        
-        return options.join(' ');
-      }()
-    );
-    
+      if (fontFamily != null) {
+        options.add('font-family="$fontFamily"');
+      }
+
+      if (rotate != null) {
+        options.add(() {
+          var rotateBuffer = StringBuffer();
+
+          rotateBuffer.write('rotate="');
+          rotateBuffer.write(() {
+            var rotateItems = <String>[];
+
+            for (final item in rotate!) {
+              rotateItems.add('$item');
+            }
+
+            return rotateItems.join(' ');
+          }());
+          rotateBuffer.write('"');
+
+          return rotateBuffer.toString();
+        }());
+      }
+
+      if (textLength != null) {
+        options.add('textLength="$textLength"');
+      }
+
+      if (kerning != null) {
+        options.add('kerning="${kerning!.formatted()}"');
+      }
+
+      if (letterSpace != null) {
+        options.add('letter-space="${letterSpace!.formatted()}"');
+      }
+
+      if (wordSpace != null) {
+        options.add('word-space="${wordSpace!.formatted()}"');
+      }
+
+      if (textDecoration != null) {
+        options.add('text-decoration="${textDecoration!.name}"');
+      }
+
+      return options.join(' ');
+    }());
+
     buffer.write('>');
-    
+
     if (path != null) {
       buffer.write('\n      <textPath ');
 
       var options = <String>[];
 
       options.add('xlink:href="#$path"');
-      
+
       if (pathStartOffset != null) {
         options.add('startOffset="$pathStartOffset%"');
       }
-      
+
       buffer.write(options.join(' '));
 
       buffer.write('>$text</textPath>\n    ');
