@@ -14,24 +14,22 @@ enum MarkerType {
 
 class Marker implements Shape {
   MarkerType shape;
-  num size;
-  num x;
-  String path;
+  num size = 0;
+  num x = 0;
+  String path = '';
   
-  Marker(this.shape, this.size, this.x, this.path);
-
-  Marker.fromShape(this.shape) {
+  Marker(this.shape) {
     switch(this.shape) {
-      case MarkerType.triangle1: this(this.shape, 6, 1, '<path d="M0,0 L10,5 L0,10 z"');
-      case MarkerType.triangle2: this(this.shape, 6, 1, '<path d="M0,0 L15,5 L0,10 z"');
-      case MarkerType.circle: this(this.shape, 6, 5, '<circle r="5" cx="5" cy="5"');
-      case MarkerType.indent1: this(this.shape, 6, 4, '<path d="M0,0 L10,5 L0,10 L5,5 z"');
-      case MarkerType.indent2: this(this.shape, 6, 4, '<path d="M0,0 L15,5 L0,10 L5,5 z"');
-      case MarkerType.diamond1: this(this.shape, 6, 1, '<path d="M3,0 L10,5 L3,10 L0,5 z"');
-      case MarkerType.diamond2: this(this.shape, 6, 1, '<path d="M3,0 L15,5 L3,10 L0,5 z"');
-      case MarkerType.curve1: this(this.shape, 6, 2, '<path d="M0,0 L10,5 L0,10 C0,10 5,5 0,0 z"');
-      case MarkerType.curve2: this(this.shape, 6, 2, '<path d="M0,0 L15,5 L0,10 C0,10 5,5 0,0 z"');
-    }
+      case MarkerType.triangle1: this.size = 6; this.x = 1; this.path = '<path d="M0,0 L10,5 L0,10 z"';
+      case MarkerType.triangle2: this.size = 6; this.x = 1; this.path = '<path d="M0,0 L15,5 L0,10 z"';
+      case MarkerType.circle: this.size = 6; this.x = 5; this.path = '<circle r="5" cx="5" cy="5"';
+      case MarkerType.indent1: this.size = 6; this.x = 4; this.path = '<path d="M0,0 L10,5 L0,10 L5,5 z"';
+      case MarkerType.indent2: this.size = 6; this.x = 4; this.path = '<path d="M0,0 L15,5 L0,10 L5,5 z"';
+      case MarkerType.diamond1: this.size = 6; this.x = 1; this.path = '<path d="M3,0 L10,5 L3,10 L0,5 z"';
+      case MarkerType.diamond2: this.size = 6; this.x = 1; this.path = '<path d="M3,0 L15,5 L3,10 L0,5 z"';
+      case MarkerType.curve1: this.size = 6; this.x = 2; this.path = '<path d="M0,0 L10,5 L0,10 C0,10 5,5 0,0 z"';
+      case MarkerType.curve2: this.size = 6; this.x = 2; this.path = '<path d="M0,0 L15,5 L0,10 C0,10 5,5 0,0 z"';
+    };
   }
 
   @override
