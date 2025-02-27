@@ -36,93 +36,9 @@ class Marker implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
 
-    buffer.write('    <marker ');
-
-    buffer.write(() {
-      var options = <String>[];
-
-      options.add('id="$shapeId"');
-
-      if (dx != null) {
-        options.add('dx="$dx"');
-      }
-
-      if (dy != null) {
-        options.add('dy="$dy"');
-      }
-
-      if (fontSize != null) {
-        options.add('font-size="$fontSize"');
-      }
-
-      if (fontFamily != null) {
-        options.add('font-family="$fontFamily"');
-      }
-
-      if (rotate != null) {
-        options.add(() {
-          var rotateBuffer = StringBuffer();
-
-          rotateBuffer.write('rotate="');
-          rotateBuffer.write(() {
-            var rotateItems = <String>[];
-
-            for (final item in rotate!) {
-              rotateItems.add('$item');
-            }
-
-            return rotateItems.join(' ');
-          }());
-          rotateBuffer.write('"');
-
-          return rotateBuffer.toString();
-        }());
-      }
-
-      if (markerLength != null) {
-        options.add('markerLength="$markerLength"');
-      }
-
-      if (kerning != null) {
-        options.add('kerning="${kerning!.formatted()}"');
-      }
-
-      if (letterSpace != null) {
-        options.add('letter-space="${letterSpace!.formatted()}"');
-      }
-
-      if (wordSpace != null) {
-        options.add('word-space="${wordSpace!.formatted()}"');
-      }
-
-      if (markerDecoration != null) {
-        options.add('marker-decoration="${markerDecoration!.name}"');
-      }
-
-      return options.join(' ');
-    }());
-
-    buffer.write('>');
-
-    if (path != null) {
-      buffer.write('\n      <markerPath ');
-
-      var options = <String>[];
-
-      options.add('xlink:href="#$path"');
-
-      if (pathStartOffset != null) {
-        options.add('startOffset="$pathStartOffset%"');
-      }
-
-      buffer.write(options.join(' '));
-
-      buffer.write('>$marker</markerPath>\n    ');
-    } else {
-      buffer.write(marker);
-    }
-
-    buffer.write('</marker>\n');
+    buffer.write('    <marker id="$shapeId" markerWidth="$size" markerHeight="$size" orient="auto-start-reverse" viewBox="0 0 15 15" refX="$x" refY="5" markerUnits="strokeWidth">\n');
+    buffer.write('      $path fill="context-stroke" />\n');
+    buffer.write('    </marker>\n');
 
     return buffer.toString();
   }

@@ -14,6 +14,8 @@ export 'package:simple_svg/defines/widget.dart' show Widget;
 export 'package:simple_svg/defines/group.dart' show Group;
 export 'package:simple_svg/defines/sstyle.dart'
     show Sstyle, StrokeLineJoin, FillRule, StrokeLineCap;
+export 'package:simple_svg/defines/marker.dart'
+    show Marker, MarkerType;
 import 'package:simple_svg/defines/shape.dart';
 import 'package:simple_svg/defines/rect.dart';
 import 'package:simple_svg/defines/widget.dart';
