@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'shape.dart';
 
 class Arrow implements Shape {
@@ -19,17 +21,55 @@ class Arrow implements Shape {
 
     final preTowardLef =
       if (startX > preEndX) {
-        true
+        return true;
       } else {
-        false
+        return false;
       };
       
     final preTowardUpdown =
       if (startX == preEndY) {
-        true
+        return true;
       } else {
-        false
-      }
+        return false;
+      };
+      
+    final preTowardUp = 
+      if ((startX == preEndX) && (startY > preEndY)) {
+        return true;
+      } else {
+        return false;
+      };
+      
+    final preXOffset = preEndX - startX;
+    
+    final preYOffset = preEndY - startY;
+    
+    final preTheta =
+      atan(
+        if (preXOffset == 0.0) {
+          return 0.0;
+        } else {
+          return preYOffset / preXOffset;
+        });
+        
+    final preDeltaR = (
+      headHeight * cos(preTheta),
+      headHeight * sin(preTheta)
+    );
+    
+    final preRSub1 =
+      if (preTowardUpdown) {
+        return preDeltaR.$2;
+      } else {
+        return preDeltaR.$1;
+      };
+
+    final preRSub0 = 
+      if (preTowardUpdown) {
+        return preDeltaR.$1;
+      } else {
+        return preDeltaR.$2;
+      };
 
     final buffer = StringBuffer();
 
