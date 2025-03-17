@@ -13,6 +13,24 @@ class Arrow implements Shape {
 
   @override
   String format(String shapeId) {
+    final totalBase = handleBase + headBase;
+    final preEndX = endX;
+    final preEndY = endY;
+
+    final preTowardLef =
+      if (startX > preEndX) {
+        true
+      } else {
+        false
+      };
+      
+    final preTowardUpdown =
+      if (startX == preEndY) {
+        true
+      } else {
+        false
+      }
+
     final buffer = StringBuffer();
 
     return buffer.toString();
