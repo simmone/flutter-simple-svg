@@ -19,7 +19,7 @@ class Arrow implements Shape {
     final preEndX = endX;
     final preEndY = endY;
 
-    final preTowardLef =
+    final preTowardLeft =
       if (startX > preEndX) {
         return true;
       } else {
@@ -70,7 +70,45 @@ class Arrow implements Shape {
       } else {
         return preDeltaR.$2;
       };
+      
+    final preR = (
+      if (preTowardLeft) {
+        preEndX + preRSub1
+      } else {
+        preEndX - preRSub1
+      },
+      if (preTowardUp || preTowardLeft) {
+        preEndY + preRSub0
+      } else {
+        preEndY - preRSub0
+      }
+    );
+    
+    final newEndX = preR.$1;
 
+    final newEndY = preR.$2;
+
+    final towardLeft = 
+      if (startX > newEndX) {
+        true
+      } else {
+        false
+      };
+
+    final towardUpdown =
+      if (startX == newEndX) {
+        true
+      } else {
+        false
+      };
+      
+    final towardUp =
+      if ((startX == newEndX) && (startY > newEndY)) {
+        true
+      } else {
+        false
+      };
+      
     final buffer = StringBuffer();
 
     return buffer.toString();
