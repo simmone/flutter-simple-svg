@@ -19,95 +19,41 @@ class Arrow implements Shape {
     final preEndX = endX;
     final preEndY = endY;
 
-    final preTowardLeft =
-      if (startX > preEndX) {
-        return true;
-      } else {
-        return false;
-      };
+    final preTowardLeft = startX > preEndX ? true : false;
       
-    final preTowardUpdown =
-      if (startX == preEndY) {
-        return true;
-      } else {
-        return false;
-      };
+    final preTowardUpdown =  startX == preEndY ? true : false;
       
-    final preTowardUp = 
-      if ((startX == preEndX) && (startY > preEndY)) {
-        return true;
-      } else {
-        return false;
-      };
+    final preTowardUp = (startX == preEndX) && (startY > preEndY) ? true : false;
       
     final preXOffset = preEndX - startX;
     
     final preYOffset = preEndY - startY;
     
-    final preTheta =
-      atan(
-        if (preXOffset == 0.0) {
-          return 0.0;
-        } else {
-          return preYOffset / preXOffset;
-        });
+    final preTheta = atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset;
         
     final preDeltaR = (
       headHeight * cos(preTheta),
       headHeight * sin(preTheta)
     );
     
-    final preRSub1 =
-      if (preTowardUpdown) {
-        return preDeltaR.$2;
-      } else {
-        return preDeltaR.$1;
-      };
+    final preRSub1 = preTowardUpdown ? preDeltaR.$2 : preDeltaR.$1;
 
-    final preRSub0 = 
-      if (preTowardUpdown) {
-        return preDeltaR.$1;
-      } else {
-        return preDeltaR.$2;
-      };
+    final preRSub0 = preTowardUpdown ? preDeltaR.$1 : preDeltaR.$2;
       
     final preR = (
-      if (preTowardLeft) {
-        preEndX + preRSub1
-      } else {
-        preEndX - preRSub1
-      },
-      if (preTowardUp || preTowardLeft) {
-        preEndY + preRSub0
-      } else {
-        preEndY - preRSub0
-      }
+      preTowardLeft ? preEndX + preRSub1 : preEndX - preRSub1,
+      preTowardUp || preTowardLeft ? preEndY + preRSub0 : preEndY - preRSub0
     );
     
     final newEndX = preR.$1;
 
     final newEndY = preR.$2;
 
-    final towardLeft = 
-      if (startX > newEndX) {
-        true
-      } else {
-        false
-      };
+    final towardLeft = startX > newEndX ? true : false;
 
-    final towardUpdown =
-      if (startX == newEndX) {
-        true
-      } else {
-        false
-      };
+    final towardUpdown = startX == newEndX ? true : false;
       
-    final towardUp =
-      if ((startX == newEndX) && (startY > newEndY)) {
-        true
-      } else {
-        false
-      };
+    final towardUp = (startX == newEndX) && (startY > newEndY) ? true : false;
       
     final buffer = StringBuffer();
 
