@@ -29,7 +29,7 @@ class Arrow implements Shape {
     
     final preYOffset = preEndY - startY;
     
-    final preTheta = atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset;
+    final preTheta = atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset);
         
     final preDeltaR = (
       headHeight * cos(preTheta),

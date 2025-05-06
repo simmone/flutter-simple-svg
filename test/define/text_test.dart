@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:simple_svg/defines/text.dart';
+import 'package:simple_svg/define/shape/text.dart';
 
 void main() {
   test('text format', () {
