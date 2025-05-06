@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:simple_svg/defines/widget.dart';
-import 'package:simple_svg/defines/sstyle.dart';
+import 'package:simple_svg/define/widget.dart';
+import 'package:simple_svg/define/sstyle.dart';
 
 void main() {
   test('widget', () {

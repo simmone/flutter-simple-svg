@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:simple_svg/defines/filter.dart';
+import 'package:simple_svg/define/shape/filter.dart';
 
 void main() {
   test('filter define', () {

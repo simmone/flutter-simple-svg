@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'shape.dart';
+import 'package:simple_svg/define/shape.dart';
 
 class Arrow implements Shape {
   num startX;

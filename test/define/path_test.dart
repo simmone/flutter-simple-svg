@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:simple_svg/defines/path.dart';
+import 'package:simple_svg/define/shape/path.dart';
 
 void main() {
   test('path', () {

@@ -1,26 +1,26 @@
-export 'package:simple_svg/defines/rect.dart' show Rect;
-export 'package:simple_svg/defines/circle.dart' show Circle;
-export 'package:simple_svg/defines/ellipse.dart' show Ellipse;
-export 'package:simple_svg/defines/line.dart' show Line;
-export 'package:simple_svg/defines/polygon.dart' show Polygon;
-export 'package:simple_svg/defines/polyline.dart' show Polyline;
-export 'package:simple_svg/defines/filter.dart' show Filter;
-export 'package:simple_svg/defines/path.dart' show Path, ArcDirection;
-export 'package:simple_svg/defines/text.dart'
+export 'package:simple_svg/define/shape/rect.dart' show Rect;
+export 'package:simple_svg/define/shape/circle.dart' show Circle;
+export 'package:simple_svg/define/shape/ellipse.dart' show Ellipse;
+export 'package:simple_svg/define/shape/line.dart' show Line;
+export 'package:simple_svg/define/shape/polygon.dart' show Polygon;
+export 'package:simple_svg/define/shape/polyline.dart' show Polyline;
+export 'package:simple_svg/define/shape/filter.dart' show Filter;
+export 'package:simple_svg/define/shape/path.dart' show Path, ArcDirection;
+export 'package:simple_svg/define/shape/text.dart'
     show Text, TextKerning, TextSpace, TextDecoration;
-export 'package:simple_svg/defines/gradient.dart'
+export 'package:simple_svg/define/shape/gradient.dart'
     show LinearGradient, RadialGradient;
-export 'package:simple_svg/defines/widget.dart' show Widget;
-export 'package:simple_svg/defines/group.dart' show Group;
-export 'package:simple_svg/defines/sstyle.dart'
+export 'package:simple_svg/define/widget.dart' show Widget;
+export 'package:simple_svg/define/group.dart' show Group;
+export 'package:simple_svg/define/sstyle.dart'
     show Sstyle, StrokeLineJoin, FillRule, StrokeLineCap;
-export 'package:simple_svg/defines/marker.dart'
+export 'package:simple_svg/define/shape/marker.dart'
     show Marker, MarkerType;
-import 'package:simple_svg/defines/shape.dart';
-import 'package:simple_svg/defines/rect.dart';
-import 'package:simple_svg/defines/widget.dart';
-import 'package:simple_svg/defines/sstyle.dart';
-import 'package:simple_svg/defines/group.dart';
+import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/define/shape/rect.dart';
+import 'package:simple_svg/define/widget.dart';
+import 'package:simple_svg/define/sstyle.dart';
+import 'package:simple_svg/define/group.dart';
 
 import '../assets/constants.dart' as constants;
 

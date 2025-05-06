@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:simple_svg/defines/gradient.dart';
+import 'package:simple_svg/define/shape/gradient.dart';
 
 void main() {
   test('linear gradient format', () async {
@@ -17,7 +17,7 @@ void main() {
     gradient.gradientUnits = GradientUnits.userSpaceOnUse;
     gradient.spreadMethod = SpreadMethod.repeat;
 
-    final file = File('test/defines/gradient/linear_gradient_define.svg');
+    final file = File('test/define/gradient/linear_gradient_define.svg');
     final linearDefineFile = await file.readAsString();
 
     expect(gradient.format('s1'), linearDefineFile);
@@ -37,7 +37,7 @@ void main() {
     gradient.gradientUnits = GradientUnits.userSpaceOnUse;
     gradient.spreadMethod = SpreadMethod.repeat;
 
-    final file = File('test/defines/gradient/radial_gradient_define.svg');
+    final file = File('test/define/gradient/radial_gradient_define.svg');
     final radialDefineFile = await file.readAsString();
 
     expect(gradient.format('s1'), radialDefineFile);

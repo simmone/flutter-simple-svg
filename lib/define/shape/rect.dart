@@ -1,4 +1,4 @@
-import 'shape.dart';
+import 'package:simple_svg/define/shape.dart';
 
 class Rect implements Shape {
   final num width;

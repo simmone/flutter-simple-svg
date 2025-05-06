@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:simple_svg/defines/rect.dart';
+import 'package:simple_svg/define/shape/rect.dart';
 
 void main() {
   test('rect', () {

@@ -1,4 +1,4 @@
-import 'shape.dart';
+import 'package:simple_svg/define/shape.dart';
 
 class Filter implements Shape {
   num? blur;
