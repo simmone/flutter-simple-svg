@@ -8,7 +8,7 @@ export 'package:simple_svg/define/shape/filter.dart' show Filter;
 export 'package:simple_svg/define/shape/path.dart' show Path, ArcDirection;
 export 'package:simple_svg/define/shape/text.dart'
     show Text, TextKerning, TextSpace, TextDecoration;
-export 'package:simple_svg/define/shape/arrow.dart' show Arrow;
+export 'package:simple_svg/define/shape/arrow.dart' show Arrow, ArrowType;
 export 'package:simple_svg/define/shape/gradient.dart'
     show LinearGradient, RadialGradient;
 export 'package:simple_svg/define/widget.dart' show Widget;
