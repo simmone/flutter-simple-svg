@@ -55,11 +55,13 @@ class Arrow implements Shape {
       
     final towardUp = (startX == newEndX) && (startY > newEndY) ? true : false;
 
-    final preXOffset = preEndX - startX;
+    final xOffset = preEndX - startX;
     
-    final preYOffset = preEndY - startY;
+    final yOffset = preEndY - startY;
 
     final preTheta = atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset);
+
+    final alpha = dart::math::pi / 2.0 - preTheta;
 
     final preDeltaR = (
       headHeight * cos(preTheta),
@@ -75,16 +77,6 @@ class Arrow implements Shape {
       preTowardUp || preTowardLeft ? preEndY + preRSub0 : preEndY - preRSub0
     );
     
-    final newEndX = preR.$1;
-    
-    final newEndY = preR.$2;
-    
-    final towardLeft = startX > newEndX ? true : false;
-
-    final towardUpdown = startX == newEndX ? true : false;
-
-    final towardUp = (startX == newEndX) && (startY > newEndY) ? true : false;
-      
     final buffer = StringBuffer();
 
     return buffer.toString();
