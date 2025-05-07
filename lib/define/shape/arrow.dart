@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:math' as math;
 
 import 'package:simple_svg/define/shape.dart';
 
@@ -61,7 +61,7 @@ class Arrow implements Shape {
 
     final preTheta = atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset);
 
-    final alpha = dart::math::pi / 2.0 - preTheta;
+    final alpha = math.pi / 2.0 - preTheta;
 
     final preDeltaR = (
       headHeight * cos(preTheta),
