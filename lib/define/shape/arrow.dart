@@ -103,6 +103,17 @@ class Arrow implements Shape {
     
     final buffer = StringBuffer();
 
+    buffer.write('    <polygon id=%shapeId\n');
+    buffer.write('          points="\n');
+    buffer.write('            ${handleBottomLeft.$1.toStringAsFixed(4), ${handleBottomLeft.$2.toStringAsFixed(4)}}\n');
+                (printf "            ~a,~a\n" (precision (car handle_bottom_right)) (precision (cdr handle_bottom_right)))
+                (printf "            ~a,~a\n" (precision (car Q)) (precision (cdr Q)))
+                (printf "            ~a,~a\n" (precision (car R)) (precision (cdr R)))
+                (printf "            ~a,~a\n" (precision (car S)) (precision (cdr S)))
+                (printf "            ~a,~a\n" (precision (car handle_top_right)) (precision (cdr handle_top_right)))
+                (printf "            ~a,~a\n" (precision (car handle_top_left)) (precision (cdr handle_top_left)))
+                (printf "            \"/>\n")
+
     return buffer.toString();
   }
 }
