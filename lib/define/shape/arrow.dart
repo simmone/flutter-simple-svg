@@ -16,7 +16,9 @@ class Arrow implements Shape {
   @override
   String format(String shapeId) {
     final totalBase = handleBase + headBase;
+
     final preEndX = endX;
+
     final preEndY = endY;
 
     final preTowardLeft = startX > preEndX ? true : false;
@@ -55,27 +57,49 @@ class Arrow implements Shape {
       
     final towardUp = (startX == newEndX) && (startY > newEndY) ? true : false;
 
-    final xOffset = preEndX - startX;
+    final xOffset = newEndX - startX;
     
-    final yOffset = preEndY - startY;
+    final yOffset = newEndY - startY;
 
-    final preTheta = atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset);
+    final theta = atan(xOffset == 0.0 ? 0.0 : yOffset / xOffset);
 
-    final alpha = math.pi / 2.0 - preTheta;
+    final alpha = math.pi / 2.0 - theta;
 
-    final preDeltaR = (
-      headHeight * cos(preTheta),
-      headHeight * sin(preTheta)
+    final deltaR = (
+      headHeight * cos(theta),
+      headHeight * sin(theta)
     );
 
-    final preRSub1 = preTowardUpdown ? preDeltaR.$2 : preDeltaR.$1;
+    final rSub1 = towardUpdown ? deltaR.$2 : deltaR.$1;
     
-    final preRSub0 = preTowardUpdown ? preDeltaR.$1 : preDeltaR.$2;
+    final rSub0 = towardUpdown ? deltaR.$1 : deltaR.$2;
     
-    final preR = (
-      preTowardLeft ? preEndX + preRSub1,
-      preTowardUp || preTowardLeft ? preEndY + preRSub0 : preEndY - preRSub0
+    final r = (
+      towardLeft ? endX - rSub1 : endX + rSub1,
+      towardUp || towardLeft ? endY - rSub0 : dndY + rSub0
     );
+    
+    final handleDeltaQ = (handleBase * cos(alpha), handleBase * sin(alpha));
+
+    final handleDeltaQByTowardUpdown0 = towardUpdown? handleDeltaQ.$1 : handleDeltaQ.$2;
+    
+    final handleDeltaQByTowardUpdown1 = towardUpdown? handleDeltaQ.$2 : handleDeltaQ.$1;
+    
+    final handleBottomLeft = (
+      towardLeft? startX + handleDeltaQByTowardUpdown1 : startX - handleDeltaQByTowardUpdown1,
+      towardLeft? startY - handleDeltaQByTowardUpdown0 : startY + handleDeltaQByTowardUpdown0);
+
+    final handleBottomRight = (
+      towardLeft? endX + handleDeltaQByTowardUpdown1 : endX - handleDeltaQByTowardUpdown1,
+      towardLeft? endY - handleDeltaQByTowardUpdown0 : endY + handleDeltaQByTowardUpdown0);
+
+    final handleTopLeft = (
+      towardLeft? startX - handleDeltaQByTowardUpdown1 : startX + handleDeltaQByTowardUpdown1,
+      towardLeft? startY + handleDeltaQByTowardUpdown0 : startY - handleDeltaQByTowardUpdown0);
+
+    final handleTopRight = (
+      towardLeft? endX - handleDeltaQByTowardUpdown1 : endX + handleDeltaQByTowardUpdown1,
+      towardLeft? endY + handleDeltaQByTowardUpdown0 : endY - handleDeltaQByTowardUpdown0);
     
     final buffer = StringBuffer();
 
