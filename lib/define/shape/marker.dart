@@ -19,17 +19,17 @@ class Marker implements Shape {
   String path = '';
   
   Marker(this.shape) {
-    switch(this.shape) {
-      case MarkerType.triangle1: this.size = 6; this.x = 1; this.path = '<path d="M0,0 L10,5 L0,10 z"';
-      case MarkerType.triangle2: this.size = 6; this.x = 1; this.path = '<path d="M0,0 L15,5 L0,10 z"';
-      case MarkerType.circle: this.size = 6; this.x = 5; this.path = '<circle r="5" cx="5" cy="5"';
-      case MarkerType.indent1: this.size = 6; this.x = 4; this.path = '<path d="M0,0 L10,5 L0,10 L5,5 z"';
-      case MarkerType.indent2: this.size = 6; this.x = 4; this.path = '<path d="M0,0 L15,5 L0,10 L5,5 z"';
-      case MarkerType.diamond1: this.size = 6; this.x = 1; this.path = '<path d="M3,0 L10,5 L3,10 L0,5 z"';
-      case MarkerType.diamond2: this.size = 6; this.x = 1; this.path = '<path d="M3,0 L15,5 L3,10 L0,5 z"';
-      case MarkerType.curve1: this.size = 6; this.x = 2; this.path = '<path d="M0,0 L10,5 L0,10 C0,10 5,5 0,0 z"';
-      case MarkerType.curve2: this.size = 6; this.x = 2; this.path = '<path d="M0,0 L15,5 L0,10 C0,10 5,5 0,0 z"';
-    };
+    switch(shape) {
+      case MarkerType.triangle1: size = 6; x = 1; path = '<path d="M0,0 L10,5 L0,10 z"';
+      case MarkerType.triangle2: size = 6; x = 1; path = '<path d="M0,0 L15,5 L0,10 z"';
+      case MarkerType.circle: size = 6; x = 5; path = '<circle r="5" cx="5" cy="5"';
+      case MarkerType.indent1: size = 6; x = 4; path = '<path d="M0,0 L10,5 L0,10 L5,5 z"';
+      case MarkerType.indent2: size = 6; x = 4; path = '<path d="M0,0 L15,5 L0,10 L5,5 z"';
+      case MarkerType.diamond1: size = 6; x = 1; path = '<path d="M3,0 L10,5 L3,10 L0,5 z"';
+      case MarkerType.diamond2: size = 6; x = 1; path = '<path d="M3,0 L15,5 L3,10 L0,5 z"';
+      case MarkerType.curve1: size = 6; x = 2; path = '<path d="M0,0 L10,5 L0,10 C0,10 5,5 0,0 z"';
+      case MarkerType.curve2: size = 6; x = 2; path = '<path d="M0,0 L15,5 L0,10 C0,10 5,5 0,0 z"';
+    }
   }
 
   @override

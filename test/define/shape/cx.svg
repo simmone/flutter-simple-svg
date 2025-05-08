@@ -1,0 +1,87 @@
+Changing current working directory to: /home/chenxiao770117/me/flutter-simple-svg
+00:00 +0: loading /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/arrow_test.dart                                                                                                         00:00 +0 -1: loading /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/1 [E]                                                                                                                
+  Failed to load "/home/chenxiao770117/me/flutter-simple-svg/test/define/shape/1": Does not exist.
+
+To run this test again: /home/chenxiao770117/dev/flutter/bin/cache/dart-sdk/bin/dart test /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/1 -p vm --plain-name 'loading /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/1'
+00:02 +0 -1: loading /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/arrow_test.dart                                                                                                      00:02 +0 -1: /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/arrow_test.dart: arrow 1                                                                                                     00:02 +0 -1: /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/arrow_test.dart: arrow 1                                                                                                     
+<svg
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="300" height="300"
+    >
+  <defs>
+    <polygon id="s1"
+          points="
+            21.7157,78.2843
+            195.1472,251.7157
+            166.8629,280.0000
+            280.0000,280.0000
+            280.0000,166.8629
+            251.7157,195.1472
+            78.2843,21.7157
+            "/>
+  </defs>
+
+  <use xlink:href="#s1" fill="lavender" stroke-width="5" stroke="teal" />
+</svg>
+
+
+00:02 +0 -2: /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/arrow_test.dart: arrow 1 [E]                                                                                                 
+  Expected: '<svg\n'
+              '    version="1.1"\n'
+              '    xmlns="http://www.w3.org/2000/svg"\n'
+              '    xmlns:xlink="http://www.w3.org/1999/xlink"\n'
+              '    width="300" height="300"\n'
+              '    >\n'
+              '  <defs>\n'
+              '    <polygon id="s1"\n'
+              '          points="\n'
+              '            21.7157,78.2843\n'
+              '            195.1472,251.7157\n'
+              '            166.8629,280\n'
+              '            280,280\n'
+              '            280,166.8629\n'
+              '            251.7157,195.1472\n'
+              '            78.2843,21.7157\n'
+              '            "/>\n'
+              '  </defs>\n'
+              '\n'
+              '  <use xlink:href="#s1" fill="lavender" stroke-width="5" stroke="teal" />\n'
+              '</svg>\n'
+              ''
+    Actual: '<svg\n'
+              '    version="1.1"\n'
+              '    xmlns="http://www.w3.org/2000/svg"\n'
+              '    xmlns:xlink="http://www.w3.org/1999/xlink"\n'
+              '    width="300" height="300"\n'
+              '    >\n'
+              '  <defs>\n'
+              '    <polygon id="s1"\n'
+              '          points="\n'
+              '            21.7157,78.2843\n'
+              '            195.1472,251.7157\n'
+              '            166.8629,280.0000\n'
+              '            280.0000,280.0000\n'
+              '            280.0000,166.8629\n'
+              '            251.7157,195.1472\n'
+              '            78.2843,21.7157\n'
+              '            "/>\n'
+              '  </defs>\n'
+              '\n'
+              '  <use xlink:href="#s1" fill="lavender" stroke-width="5" stroke="teal" />\n'
+              '</svg>\n'
+              ''
+     Which: is different.
+            Expected: ... 6.8629,280\n         ...
+              Actual: ... 6.8629,280.0000\n    ...
+                                    ^
+             Differ at offset 286
+  
+  package:matcher                                     expect
+  package:flutter_test/src/widget_tester.dart 474:18  expect
+  test/define/shape/arrow_test.dart 31:5              main.<fn>
+  
+
+To run this test again: /home/chenxiao770117/dev/flutter/bin/cache/dart-sdk/bin/dart test /home/chenxiao770117/me/flutter-simple-svg/test/define/shape/arrow_test.dart -p vm --plain-name 'arrow 1'
+00:02 +0 -2: Some tests failed.                                                                                                                                                                        

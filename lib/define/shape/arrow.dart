@@ -12,6 +12,14 @@ class Arrow implements Shape {
   num headHeight;
 
   Arrow(this.startX, this.startY, this.endX, this.endY, this.handleBase, this.headBase, this.headHeight);
+  
+  String precision(num arg, int precision) {
+    if (arg is int || arg == arg.roundToDouble()) {
+      return arg.toInt().toString();
+    } else {
+      return arg.toStringAsFixed(precision);
+    }
+  }
 
   @override
   String format(String shapeId) {
@@ -31,11 +39,11 @@ class Arrow implements Shape {
     
     final preYOffset = preEndY - startY;
     
-    final preTheta = atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset);
+    final preTheta = math.atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset);
         
     final preDeltaR = (
-      headHeight * cos(preTheta),
-      headHeight * sin(preTheta)
+      headHeight * math.cos(preTheta),
+      headHeight * math.sin(preTheta)
     );
     
     final preRSub1 = preTowardUpdown ? preDeltaR.$2 : preDeltaR.$1;
@@ -61,13 +69,13 @@ class Arrow implements Shape {
     
     final yOffset = newEndY - startY;
 
-    final theta = atan(xOffset == 0.0 ? 0.0 : yOffset / xOffset);
+    final theta = math.atan(xOffset == 0.0 ? 0.0 : yOffset / xOffset);
 
     final alpha = math.pi / 2.0 - theta;
 
     final deltaR = (
-      headHeight * cos(theta),
-      headHeight * sin(theta)
+      headHeight * math.cos(theta),
+      headHeight * math.sin(theta)
     );
 
     final rSub1 = towardUpdown ? deltaR.$2 : deltaR.$1;
@@ -75,11 +83,11 @@ class Arrow implements Shape {
     final rSub0 = towardUpdown ? deltaR.$1 : deltaR.$2;
     
     final r = (
-      towardLeft ? endX - rSub1 : endX + rSub1,
-      towardUp || towardLeft ? endY - rSub0 : dndY + rSub0
+      towardLeft ? newEndX - rSub1 : newEndX + rSub1,
+      towardUp || towardLeft ? newEndY - rSub0 : newEndY + rSub0
     );
     
-    final handleDeltaQ = (handleBase * cos(alpha), handleBase * sin(alpha));
+    final handleDeltaQ = (handleBase * math.cos(alpha), handleBase * math.sin(alpha));
 
     final handleDeltaQByTowardUpdown0 = towardUpdown? handleDeltaQ.$1 : handleDeltaQ.$2;
     
@@ -90,42 +98,42 @@ class Arrow implements Shape {
       towardLeft? startY - handleDeltaQByTowardUpdown0 : startY + handleDeltaQByTowardUpdown0);
 
     final handleBottomRight = (
-      towardLeft? endX + handleDeltaQByTowardUpdown1 : endX - handleDeltaQByTowardUpdown1,
-      towardLeft? endY - handleDeltaQByTowardUpdown0 : endY + handleDeltaQByTowardUpdown0);
+      towardLeft? newEndX + handleDeltaQByTowardUpdown1 : newEndX - handleDeltaQByTowardUpdown1,
+      towardLeft? newEndY - handleDeltaQByTowardUpdown0 : newEndY + handleDeltaQByTowardUpdown0);
 
     final handleTopLeft = (
       towardLeft? startX - handleDeltaQByTowardUpdown1 : startX + handleDeltaQByTowardUpdown1,
       towardLeft? startY + handleDeltaQByTowardUpdown0 : startY - handleDeltaQByTowardUpdown0);
 
     final handleTopRight = (
-      towardLeft? endX - handleDeltaQByTowardUpdown1 : endX + handleDeltaQByTowardUpdown1,
-      towardLeft? endY + handleDeltaQByTowardUpdown0 : endY - handleDeltaQByTowardUpdown0);
+      towardLeft? newEndX - handleDeltaQByTowardUpdown1 : newEndX + handleDeltaQByTowardUpdown1,
+      towardLeft? newEndY + handleDeltaQByTowardUpdown0 : newEndY - handleDeltaQByTowardUpdown0);
     
-    final headDeltaQ = (totalBase * cos(alpha), totalBase * sin(alpha));
+    final headDeltaQ = (totalBase * math.cos(alpha), totalBase * math.sin(alpha));
     
     final headDeltaQByTowardUpdown0 = towardUpdown? headDeltaQ.$1 : headDeltaQ.$2;
 
     final headDeltaQByTowardUpdown1 = towardUpdown? headDeltaQ.$2 : headDeltaQ.$1;
     
     final q = (
-      towardLeft? endX + headDeltaQByTowardUpdown1 : endX - headDeltaQByTowardUpdown0,
-      towardLeft? endY - headDeltaQByTowardUpdown0 : endY + headDeltaQByTowardUpdown0);
+      towardLeft? newEndX + headDeltaQByTowardUpdown1 : newEndX - headDeltaQByTowardUpdown0,
+      towardLeft? newEndY - headDeltaQByTowardUpdown0 : newEndY + headDeltaQByTowardUpdown0);
 
     final s = (
-      towardLeft? endX - headDeltaQByTowardUpdown1 : endX + headDeltaQByTowardUpdown0,
-      towardLeft? endY + headDeltaQByTowardUpdown0 : endY - headDeltaQByTowardUpdown0);
+      towardLeft? newEndX - headDeltaQByTowardUpdown1 : newEndX + headDeltaQByTowardUpdown0,
+      towardLeft? newEndY + headDeltaQByTowardUpdown0 : newEndY - headDeltaQByTowardUpdown0);
     
     final buffer = StringBuffer();
 
-    buffer.write('    <polygon id=%shapeId\n');
+    buffer.write('    <polygon id="$shapeId"\n');
     buffer.write('          points="\n');
-    buffer.write('            ${handleBottomLeft.$1.toStringAsFixed(4)},${handleBottomLeft.$2.toStringAsFixed(4)}\n');
-    buffer.write('            ${handleBottomRight.$1.toStringAsFixed(4)},${handleBottomRight.$2.toStringAsFixed(4)}\n');
-    buffer.write('            ${q.$1.toStringAsFixed(4)},${q.$2.toStringAsFixed(4)}\n');
-    buffer.write('            ${r.$1.toStringAsFixed(4)},${r.$2.toStringAsFixed(4)}\n');
-    buffer.write('            ${s.$1.toStringAsFixed(4)},${s.$2.toStringAsFixed(4)}\n');
-    buffer.write('            ${handleTopRight.$1.toStringAsFixed(4)},${handleTopRight.$2.toStringAsFixed(4)}\n');
-    buffer.write('            ${handleTopLeft.$1.toStringAsFixed(4)},${handleTopLeft.$2.toStringAsFixed(4)}\n');
+    buffer.write('            ${precision(handleBottomLeft.$1, 4)},${precision(handleBottomLeft.$2, 4)}\n');
+    buffer.write('            ${precision(handleBottomRight.$1, 4)},${precision(handleBottomRight.$2, 4)}\n');
+    buffer.write('            ${precision(q.$1, 4)},${precision(q.$2, 4)}\n');
+    buffer.write('            ${precision(r.$1, 4)},${precision(r.$2, 4)}\n');
+    buffer.write('            ${precision(s.$1, 4)},${precision(s.$2, 4)}\n');
+    buffer.write('            ${precision(handleTopRight.$1, 4)},${precision(handleTopRight.$2, 4)}\n');
+    buffer.write('            ${precision(handleTopLeft.$1, 4)},${precision(handleTopLeft.$2, 4)}\n');
     buffer.write('            "/>\n');
 
     return buffer.toString();

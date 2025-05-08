@@ -11,7 +11,7 @@ void main() {
 
     var arrowSstyle = Sstyle();
     arrowSstyle.stroke = 'teal';
-    arrowSstyle.fill = 'lavendar';
+    arrowSstyle.fill = 'lavender';
     arrowSstyle.strokeWidth = 5;
 
     var defaultGroup = Group();
@@ -25,7 +25,7 @@ void main() {
 
     final file = File('showcase/arrow/arrow1.svg');
     final arrowSvgFile = await file.readAsString();
-
+    
     expect(svg.out(), arrowSvgFile);
   });
 }
