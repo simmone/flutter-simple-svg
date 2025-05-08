@@ -101,18 +101,32 @@ class Arrow implements Shape {
       towardLeft? endX - handleDeltaQByTowardUpdown1 : endX + handleDeltaQByTowardUpdown1,
       towardLeft? endY + handleDeltaQByTowardUpdown0 : endY - handleDeltaQByTowardUpdown0);
     
+    final headDeltaQ = (totalBase * cos(alpha), totalBase * sin(alpha));
+    
+    final headDeltaQByTowardUpdown0 = towardUpdown? headDeltaQ.$1 : headDeltaQ.$2;
+
+    final headDeltaQByTowardUpdown1 = towardUpdown? headDeltaQ.$2 : headDeltaQ.$1;
+    
+    final q = (
+      towardLeft? endX + headDeltaQByTowardUpdown1 : endX - headDeltaQByTowardUpdown0,
+      towardLeft? endY - headDeltaQByTowardUpdown0 : endY + headDeltaQByTowardUpdown0);
+
+    final s = (
+      towardLeft? endX - headDeltaQByTowardUpdown1 : endX + headDeltaQByTowardUpdown0,
+      towardLeft? endY + headDeltaQByTowardUpdown0 : endY - headDeltaQByTowardUpdown0);
+    
     final buffer = StringBuffer();
 
     buffer.write('    <polygon id=%shapeId\n');
     buffer.write('          points="\n');
-    buffer.write('            ${handleBottomLeft.$1.toStringAsFixed(4), ${handleBottomLeft.$2.toStringAsFixed(4)}}\n');
-                (printf "            ~a,~a\n" (precision (car handle_bottom_right)) (precision (cdr handle_bottom_right)))
-                (printf "            ~a,~a\n" (precision (car Q)) (precision (cdr Q)))
-                (printf "            ~a,~a\n" (precision (car R)) (precision (cdr R)))
-                (printf "            ~a,~a\n" (precision (car S)) (precision (cdr S)))
-                (printf "            ~a,~a\n" (precision (car handle_top_right)) (precision (cdr handle_top_right)))
-                (printf "            ~a,~a\n" (precision (car handle_top_left)) (precision (cdr handle_top_left)))
-                (printf "            \"/>\n")
+    buffer.write('            ${handleBottomLeft.$1.toStringAsFixed(4)},${handleBottomLeft.$2.toStringAsFixed(4)}\n');
+    buffer.write('            ${handleBottomRight.$1.toStringAsFixed(4)},${handleBottomRight.$2.toStringAsFixed(4)}\n');
+    buffer.write('            ${q.$1.toStringAsFixed(4)},${q.$2.toStringAsFixed(4)}\n');
+    buffer.write('            ${r.$1.toStringAsFixed(4)},${r.$2.toStringAsFixed(4)}\n');
+    buffer.write('            ${s.$1.toStringAsFixed(4)},${s.$2.toStringAsFixed(4)}\n');
+    buffer.write('            ${handleTopRight.$1.toStringAsFixed(4)},${handleTopRight.$2.toStringAsFixed(4)}\n');
+    buffer.write('            ${handleTopLeft.$1.toStringAsFixed(4)},${handleTopLeft.$2.toStringAsFixed(4)}\n');
+    buffer.write('            "/>\n');
 
     return buffer.toString();
   }
