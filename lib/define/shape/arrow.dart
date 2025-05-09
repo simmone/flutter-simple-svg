@@ -30,9 +30,9 @@ class Arrow implements Shape {
     final preEndY = endY;
 
     final preTowardLeft = startX > preEndX ? true : false;
-      
-    final preTowardUpdown =  startX == preEndY ? true : false;
-      
+
+    final preTowardUpdown =  startX == preEndX ? true : false;
+
     final preTowardUp = (startX == preEndX) && (startY > preEndY) ? true : false;
       
     final preXOffset = preEndX - startX;
@@ -40,12 +40,12 @@ class Arrow implements Shape {
     final preYOffset = preEndY - startY;
     
     final preTheta = math.atan(preXOffset == 0.0 ? 0.0 : preYOffset / preXOffset);
-        
+
     final preDeltaR = (
       headHeight * math.cos(preTheta),
       headHeight * math.sin(preTheta)
     );
-    
+
     final preRSub1 = preTowardUpdown ? preDeltaR.$2 : preDeltaR.$1;
 
     final preRSub0 = preTowardUpdown ? preDeltaR.$1 : preDeltaR.$2;
@@ -54,7 +54,7 @@ class Arrow implements Shape {
       preTowardLeft ? preEndX + preRSub1 : preEndX - preRSub1,
       preTowardUp || preTowardLeft ? preEndY + preRSub0 : preEndY - preRSub0
     );
-    
+
     final newEndX = preR.$1;
 
     final newEndY = preR.$2;
@@ -62,11 +62,11 @@ class Arrow implements Shape {
     final towardLeft = startX > newEndX ? true : false;
 
     final towardUpdown = startX == newEndX ? true : false;
-      
+    
     final towardUp = (startX == newEndX) && (startY > newEndY) ? true : false;
 
     final xOffset = newEndX - startX;
-    
+
     final yOffset = newEndY - startY;
 
     final theta = math.atan(xOffset == 0.0 ? 0.0 : yOffset / xOffset);
@@ -88,7 +88,7 @@ class Arrow implements Shape {
     );
     
     final handleDeltaQ = (handleBase * math.cos(alpha), handleBase * math.sin(alpha));
-
+    
     final handleDeltaQByTowardUpdown0 = towardUpdown? handleDeltaQ.$1 : handleDeltaQ.$2;
     
     final handleDeltaQByTowardUpdown1 = towardUpdown? handleDeltaQ.$2 : handleDeltaQ.$1;
@@ -110,17 +110,17 @@ class Arrow implements Shape {
       towardLeft? newEndY + handleDeltaQByTowardUpdown0 : newEndY - handleDeltaQByTowardUpdown0);
     
     final headDeltaQ = (totalBase * math.cos(alpha), totalBase * math.sin(alpha));
-    
+
     final headDeltaQByTowardUpdown0 = towardUpdown? headDeltaQ.$1 : headDeltaQ.$2;
 
     final headDeltaQByTowardUpdown1 = towardUpdown? headDeltaQ.$2 : headDeltaQ.$1;
     
     final q = (
-      towardLeft? newEndX + headDeltaQByTowardUpdown1 : newEndX - headDeltaQByTowardUpdown0,
+      towardLeft? newEndX + headDeltaQByTowardUpdown1 : newEndX - headDeltaQByTowardUpdown1,
       towardLeft? newEndY - headDeltaQByTowardUpdown0 : newEndY + headDeltaQByTowardUpdown0);
-
+    
     final s = (
-      towardLeft? newEndX - headDeltaQByTowardUpdown1 : newEndX + headDeltaQByTowardUpdown0,
+      towardLeft? newEndX - headDeltaQByTowardUpdown1 : newEndX + headDeltaQByTowardUpdown1,
       towardLeft? newEndY + headDeltaQByTowardUpdown0 : newEndY - headDeltaQByTowardUpdown0);
     
     final buffer = StringBuffer();

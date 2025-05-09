@@ -51,8 +51,6 @@ void main() {
     final file = File('showcase/arrow/arrow_align.svg');
     final arrowSvgFile = await file.readAsString();
 
-    print('${svg.out()}\n');
-    
     expect(svg.out(), arrowSvgFile);
   });
 
@@ -134,4 +132,5 @@ void main() {
     
     expect(svg.out(), arrowSvgFile);
   });
+
 }

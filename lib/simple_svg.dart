@@ -89,7 +89,7 @@ class Svg {
     if (shapeDefineMap.isNotEmpty) {
       outBuffer.write("  <defs>\n");
       var sortedKeys = List.from(shapeDefineMap.keys);
-      sortedKeys.sort();
+      sortedKeys.sort((a, b) => int.parse(a.substring(1)) - int.parse(b.substring(1)));
       for (final shapeId in sortedKeys) {
         var shape = shapeDefineMap[shapeId];
 
