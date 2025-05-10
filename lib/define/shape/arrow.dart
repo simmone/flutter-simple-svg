@@ -13,11 +13,17 @@ class Arrow implements Shape {
 
   Arrow(this.startX, this.startY, this.endX, this.endY, this.handleBase, this.headBase, this.headHeight);
   
-  String precision(num arg, int precision) {
+  static String roundTo(num arg, int precision) {
     if (arg is int || arg == arg.roundToDouble()) {
       return arg.toInt().toString();
     } else {
-      return arg.toStringAsFixed(precision);
+      final roundArg = num.parse(arg.toStringAsFixed(precision));
+
+      if (roundArg == roundArg.roundToDouble()) {
+        return roundArg.toInt().toString();
+      } else {
+        return roundArg.toString();
+      }
     }
   }
 
@@ -127,13 +133,13 @@ class Arrow implements Shape {
 
     buffer.write('    <polygon id="$shapeId"\n');
     buffer.write('          points="\n');
-    buffer.write('            ${precision(handleBottomLeft.$1, 4)},${precision(handleBottomLeft.$2, 4)}\n');
-    buffer.write('            ${precision(handleBottomRight.$1, 4)},${precision(handleBottomRight.$2, 4)}\n');
-    buffer.write('            ${precision(q.$1, 4)},${precision(q.$2, 4)}\n');
-    buffer.write('            ${precision(r.$1, 4)},${precision(r.$2, 4)}\n');
-    buffer.write('            ${precision(s.$1, 4)},${precision(s.$2, 4)}\n');
-    buffer.write('            ${precision(handleTopRight.$1, 4)},${precision(handleTopRight.$2, 4)}\n');
-    buffer.write('            ${precision(handleTopLeft.$1, 4)},${precision(handleTopLeft.$2, 4)}\n');
+    buffer.write('            ${roundTo(handleBottomLeft.$1, 4)},${roundTo(handleBottomLeft.$2, 4)}\n');
+    buffer.write('            ${roundTo(handleBottomRight.$1, 4)},${roundTo(handleBottomRight.$2, 4)}\n');
+    buffer.write('            ${roundTo(q.$1, 4)},${roundTo(q.$2, 4)}\n');
+    buffer.write('            ${roundTo(r.$1, 4)},${roundTo(r.$2, 4)}\n');
+    buffer.write('            ${roundTo(s.$1, 4)},${roundTo(s.$2, 4)}\n');
+    buffer.write('            ${roundTo(handleTopRight.$1, 4)},${roundTo(handleTopRight.$2, 4)}\n');
+    buffer.write('            ${roundTo(handleTopLeft.$1, 4)},${roundTo(handleTopLeft.$2, 4)}\n');
     buffer.write('            "/>\n');
 
     return buffer.toString();
