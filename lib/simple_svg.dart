@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 export 'package:simple_svg/define/shape/rect.dart' show Rect;
 export 'package:simple_svg/define/shape/circle.dart' show Circle;
 export 'package:simple_svg/define/shape/ellipse.dart' show Ellipse;
@@ -33,17 +35,24 @@ class Svg {
   (num, num, num, num)? viewBox;
   int shapeIdCount = 0;
   int groupIdCount = 0;
-  Map<String, Shape> shapeDefineMap = {};
+  Map<String, String> jasonToIdMap = {};
+  Map<String, Shape> idToShapeMap = {};
   Map<String, Group> groupDefineMap = {};
   List<(String, (num, num))> groupShowList = [];
+  final JsonEncoder jason = JsonEncoder();
 
   Svg(this.width, this.height);
 
   String defShape(Shape shape) {
-    shapeIdCount += 1;
-    String shapeId = 's$shapeIdCount';
-    shapeDefineMap[shapeId] = shape;
-    return shapeId;
+    if(jasonToIdMap.containsKey(jason.convert(shape))) {
+      return jasonToIdMap[jason.convert(shape)]!;
+    } else {
+      shapeIdCount += 1;
+      String shapeId = 's$shapeIdCount';
+      jasonToIdMap[jason.convert(shape)] = shapeId;
+      idToShapeMap[shapeId] = shape;
+      return shapeId;
+    }
   }
 
   String addNameGroup(String groupId, Group group) {
@@ -86,12 +95,12 @@ class Svg {
   String flushData() {
     final outBuffer = StringBuffer();
 
-    if (shapeDefineMap.isNotEmpty) {
+    if (idToShapeMap.isNotEmpty) {
       outBuffer.write("  <defs>\n");
-      var sortedKeys = List.from(shapeDefineMap.keys);
+      var sortedKeys = List.from(idToShapeMap.keys);
       sortedKeys.sort((a, b) => int.parse(a.substring(1)) - int.parse(b.substring(1)));
       for (final shapeId in sortedKeys) {
-        var shape = shapeDefineMap[shapeId];
+        var shape = idToShapeMap[shapeId];
 
         outBuffer.write(shape!.format(shapeId));
       }
