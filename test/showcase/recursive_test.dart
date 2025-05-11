@@ -3,14 +3,14 @@ import 'package:simple_svg/define/shape/recursive.dart';
 
 void main() {
   test('recursive circles', () {
-    final svg = Svg(100, 100);
+    final svg = Svg(400, 400);
 
-    final rectId = svg.defShape(Rect(100, 100));
+    var sstyle = Sstyle();
+    sstyle.stroke = 'red';
+    sstyle.stroke_width = 1;
 
     var defaultGroup = Group();
 
-    var sstyle = Sstyle();
-    sstyle.fill = '#BBC42A';
     var widget = Widget(rectId);
     widget.sstyle = sstyle;
 
