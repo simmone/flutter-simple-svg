@@ -4,6 +4,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/simple_svg.dart';
 
 void main() {
+  test('group', () {
+    final group = Group();
+    expect(group.widgetList.length, 0);
+
+    group.placeWidget(Widget("s1"));
+    expect(group.widgetList.length, 1);
+  });
+
   test('group1', () async {
     final svg = Svg(220, 280);
 
