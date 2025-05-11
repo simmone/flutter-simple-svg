@@ -7,10 +7,10 @@ export 'package:simple_svg/define/shape/polyline.dart' show Polyline;
 export 'package:simple_svg/define/shape/filter.dart' show Filter;
 export 'package:simple_svg/define/shape/path.dart' show Path, ArcDirection;
 export 'package:simple_svg/define/shape/text.dart'
-    show Text, TextKerning, TextSpace, TextDecoration;
+    show Text, TextKerning, TextSpace, TextDecoration, TextKerningType, TextSpaceType;
 export 'package:simple_svg/define/shape/arrow.dart' show Arrow;
 export 'package:simple_svg/define/shape/gradient.dart'
-    show LinearGradient, RadialGradient;
+    show LinearGradient, RadialGradient, SpreadMethod, GradientUnits;
 export 'package:simple_svg/define/widget.dart' show Widget;
 export 'package:simple_svg/define/group.dart' show Group;
 export 'package:simple_svg/define/sstyle.dart'
