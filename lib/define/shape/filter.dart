@@ -10,6 +10,11 @@ class Filter implements Shape {
     dropdownOffset = 3;
     dropdownColor = 'black';
   }
+  
+  @override
+  String unique() {
+    return 'Filter/blur/$blur/dropdownOffset/$dropdownOffset/dropdownColor/$dropdownColor';
+  }
 
   @override
   String format(String shapeId) {

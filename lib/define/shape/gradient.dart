@@ -44,6 +44,11 @@ class LinearGradient implements Shape {
   LinearGradient(this.stops);
 
   @override
+  String unique() {
+    return 'LinearGradient/stops/$stops/x1/$x1/y1/$y1/x2/$x2/y2/$y2/gradientUnits/$gradientUnits/spreadMethod/$spreadMethod';
+  }
+
+  @override
   String format(String shapeId) {
     final buffer = StringBuffer();
 

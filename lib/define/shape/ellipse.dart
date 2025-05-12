@@ -7,6 +7,11 @@ class Ellipse implements Shape {
   Ellipse(this.radiusX, this.radiusY);
 
   @override
+  String unique() {
+    return 'Ellipse/radiusX/$radiusX/radiusY/$radiusY';
+  }
+
+  @override
   String format(String shapeId) {
     final buffer = StringBuffer();
 

@@ -12,6 +12,11 @@ class Line implements Shape {
     endX = endPoint.$1;
     endY = endPoint.$2;
   }
+  
+  @override
+  String unique() {
+    return 'Line/startX/$startX/startY/$startY/endX/$endX/endY/$endY';
+  }
 
   @override
   String format(String shapeId) {
