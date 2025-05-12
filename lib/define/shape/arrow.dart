@@ -28,6 +28,11 @@ class Arrow implements Shape {
   }
 
   @override
+  String unique() {
+    return 'Arrow/startX/$startX/startY/$startY/endX/$endX/endY/$endY/handleBase/$handleBase/headBase/$headBase/headHeight/$headHeight';
+  }
+
+  @override
   String format(String shapeId) {
     final totalBase = handleBase + headBase;
 

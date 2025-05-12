@@ -9,6 +9,11 @@ class Rect implements Shape {
   Rect(this.width, this.height, [this.radiusX, this.radiusY]);
 
   @override
+  String unique() {
+    return 'Rect/width/$width/height/$height/radiusX/$radiusX/radiusY/$radiusY';
+  }
+
+  @override
   String format(String shapeId) {
     final buffer = StringBuffer();
 
