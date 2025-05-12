@@ -82,6 +82,11 @@ class Path implements Shape {
   void close() {
     defs.add('z');
   }
+  
+  @override
+  String unique() {
+    return 'Path/defs/$defs';
+  }
 
   @override
   String format(String shapeId) {
