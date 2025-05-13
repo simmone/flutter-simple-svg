@@ -105,6 +105,14 @@ class Text implements Shape {
   num? pathStartOffset;
 
   Text(this.text);
+  
+  @override
+  String unique() {
+    return
+    'Polyline/text/$text/fontSize/$fontSize/fontFamily/$fontFamily/dx/$dx/dy/$dy' +
+    '/rotate/$rotate/textLength/$textLength/kerning/$kerning/letterSpace/$letterSpace/wordSpace/$wordSpace' +
+    '/textDecoration/$textDecoration/path/$path/pathStartOffset/$pathStartOffset';
+  }
 
   @override
   String format(String shapeId) {

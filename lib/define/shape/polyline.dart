@@ -4,6 +4,11 @@ class Polyline implements Shape {
   List<(num, num)> points;
 
   Polyline(this.points);
+  
+  @override
+  String unique() {
+    return 'Polyline/points/$points';
+  }
 
   @override
   String format(String shapeId) {

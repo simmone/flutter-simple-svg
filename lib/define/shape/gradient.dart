@@ -113,6 +113,11 @@ class RadialGradient implements Shape {
   RadialGradient(this.stops);
 
   @override
+  String unique() {
+    return 'RadialGradient/stops/$stops/cx/$cx/cy/$cy/fx/$fx/fy/$fy/r/$r';
+  }
+
+  @override
   String format(String shapeId) {
     final buffer = StringBuffer();
 

@@ -34,7 +34,7 @@ class Marker implements Shape {
 
   @override
   String unique() {
-    return 'Marker/shape/$shape/size/$size/x/$x/path/$path",
+    return 'Marker/shape/$shape/size/$size/x/$x/path/$path';
   }
 
   @override

@@ -35,7 +35,7 @@ class Svg {
   (num, num, num, num)? viewBox;
   int shapeIdCount = 0;
   int groupIdCount = 0;
-  Map<String, String> jasonToIdMap = {};
+  Map<String, String> uniqueToIdMap = {};
   Map<String, Shape> idToShapeMap = {};
   Map<String, Group> groupDefineMap = {};
   List<(String, (num, num))> groupShowList = [];
@@ -44,12 +44,12 @@ class Svg {
   Svg(this.width, this.height);
 
   String defShape(Shape shape) {
-    if(jasonToIdMap.containsKey(jason.convert(shape))) {
-      return jasonToIdMap[jason.convert(shape)]!;
+    if(uniqueToIdMap.containsKey(shape.unique())) {
+      return uniqueToIdMap[shape.unique()]!;
     } else {
       shapeIdCount += 1;
       String shapeId = 's$shapeIdCount';
-      jasonToIdMap[jason.convert(shape)] = shapeId;
+      uniqueToIdMap[shape.unique()] = shapeId;
       idToShapeMap[shapeId] = shape;
       return shapeId;
     }

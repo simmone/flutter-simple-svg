@@ -6,6 +6,9 @@ class Polygon implements Shape {
   Polygon(this.points);
   
   @override
+  String unique() {
+    return 'Polygon/points/$points';
+  }
 
   @override
   String format(String shapeId) {
