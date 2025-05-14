@@ -125,13 +125,13 @@ class Arrow implements Shape {
 
     buffer.write('    <polygon id="$shapeId"\n');
     buffer.write('          points="\n');
-    buffer.write('            ${Tool.roundTo(handleBottomLeft.$1, 4)},${Tool.roundTo(handleBottomLeft.$2, 4)}\n');
-    buffer.write('            ${Tool.roundTo(handleBottomRight.$1, 4)},${Tool.roundTo(handleBottomRight.$2, 4)}\n');
-    buffer.write('            ${Tool.roundTo(q.$1, 4)},${Tool.roundTo(q.$2, 4)}\n');
-    buffer.write('            ${Tool.roundTo(r.$1, 4)},${Tool.roundTo(r.$2, 4)}\n');
-    buffer.write('            ${Tool.roundTo(s.$1, 4)},${Tool.roundTo(s.$2, 4)}\n');
-    buffer.write('            ${Tool.roundTo(handleTopRight.$1, 4)},${Tool.roundTo(handleTopRight.$2, 4)}\n');
-    buffer.write('            ${Tool.roundTo(handleTopLeft.$1, 4)},${Tool.roundTo(handleTopLeft.$2, 4)}\n');
+    buffer.write('            ${Tool.round(handleBottomLeft.$1)},${Tool.round(handleBottomLeft.$2)}\n');
+    buffer.write('            ${Tool.round(handleBottomRight.$1)},${Tool.round(handleBottomRight.$2)}\n');
+    buffer.write('            ${Tool.round(q.$1)},${Tool.round(q.$2)}\n');
+    buffer.write('            ${Tool.round(r.$1)},${Tool.round(r.$2)}\n');
+    buffer.write('            ${Tool.round(s.$1)},${Tool.round(s.$2)}\n');
+    buffer.write('            ${Tool.round(handleTopRight.$1)},${Tool.round(handleTopRight.$2)}\n');
+    buffer.write('            ${Tool.round(handleTopLeft.$1)},${Tool.round(handleTopLeft.$2)}\n');
     buffer.write('            "/>\n');
 
     return buffer.toString();

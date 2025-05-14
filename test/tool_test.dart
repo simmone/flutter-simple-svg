@@ -4,16 +4,16 @@ import 'package:simple_svg/simple_svg.dart';
 import 'package:simple_svg/tool.dart';
 
 void main() {
-  test('roundTo', () {
-    expect(Tool.roundTo(30.0, 4), '30');
-    expect(Tool.roundTo(30, 4), '30');
-    expect(Tool.roundTo(30.0000, 4), '30');
-    expect(Tool.roundTo(30.0001, 4), '30.0001');
-    expect(Tool.roundTo(30.00001, 4), '30');
-    expect(Tool.roundTo(30, 4), '30');
-    expect(Tool.roundTo(30.123, 4), '30.123');
-    expect(Tool.roundTo(30.1234, 4), '30.1234');
-    expect(Tool.roundTo(30.12344, 4), '30.1234');
-    expect(Tool.roundTo(30.12345, 4), '30.1235');
+  test('round', () {
+      expect(Tool.round(30.0), '30');
+      expect(Tool.round(30), '30');
+      expect(Tool.round(30.0000), '30');
+      expect(Tool.round(30.0001), '30.0001');
+      expect(Tool.round(30.00001), '30');
+      expect(Tool.round(30), '30');
+      expect(Tool.round(30.123), '30.123');
+      expect(Tool.round(30.1234), '30.1234');
+      expect(Tool.round(30.12344), '30.1234');
+      expect(Tool.round(30.12345), '30.1235');
   });
 }
