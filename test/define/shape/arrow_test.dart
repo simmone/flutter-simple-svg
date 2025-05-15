@@ -4,22 +4,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:simple_svg/simple_svg.dart';
 
 void main() {
-  test('precision', () async {
-      expect(Arrow.roundTo(4.12345, 4), '4.1235');
-      expect(Arrow.roundTo(4, 4), '4');
-      expect(Arrow.roundTo(4.00001, 4), '4');
-      expect(Arrow.roundTo(3.9999999, 4), '4');
-  });
-
   test('arrow 1', () async {
     final svg = Svg(300, 300);
 
-    final arrowId = svg.defShape(Arrow(50, 50, 280, 280, 40, 40, 80));
+    final arrowId = svg.defShape(Arrow(50.0, 50.0, 280.0, 280.0, 40.0, 40.0, 80.0));
 
     var arrowSstyle = Sstyle();
     arrowSstyle.stroke = 'teal';
     arrowSstyle.fill = 'lavender';
-    arrowSstyle.strokeWidth = 5;
+    arrowSstyle.strokeWidth = 5.0;
 
     var defaultGroup = Group();
 

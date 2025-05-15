@@ -1,3 +1,5 @@
+import 'package:tool.dart';
+
 enum FillRule {
   nonzero,
   evenodd,
@@ -97,11 +99,11 @@ class Sstyle {
     }
 
     if (fillOpacity != null) {
-      outItems.add('fill-opacity="$fillOpacity"');
+      outItems.add('fill-opacity="${Tool.round(fillOpacity)}"');
     }
 
     if (strokeWidth != null) {
-      outItems.add('stroke-width="$strokeWidth"');
+      outItems.add('stroke-width="${Tool.round(strokeWidth)}"');
     }
 
     if (stroke != null) {
@@ -117,7 +119,7 @@ class Sstyle {
     }
 
     if (strokeMiterLimit != null) {
-      outItems.add('stroke-miterlimit="$strokeMiterLimit"');
+      outItems.add('stroke-miterlimit="${Tool.round(strokeMiterLimit)}"');
     }
 
     if (strokeDashArray != null) {
@@ -125,7 +127,7 @@ class Sstyle {
     }
 
     if (strokeDashOffset != null) {
-      outItems.add('stroke-dashoffset="$strokeDashOffset"');
+      outItems.add('stroke-dashoffset="${Tool.round(strokeDashOffset)}"');
     }
 
     if ((translate != null) ||
@@ -137,27 +139,27 @@ class Sstyle {
       var transforms = <String>[];
 
       if (translate != null) {
-        transforms.add('translate(${translate!.$1} ${translate!.$2})');
+        transforms.add('translate(${Tool.round(translate!.$1)} ${Tool.round(translate!.$2)})');
       }
 
       if (rotate != null) {
-        transforms.add('rotate($rotate)');
+        transforms.add('rotate(${Tool.round(rotate)})');
       }
 
       if ((scaleAll != null) || (scaleXy != null)) {
         if (scaleAll != null) {
-          transforms.add('scale($scaleAll)');
+          transforms.add('scale(${Tool.round(scaleAll)})');
         } else {
-          transforms.add('scale(${scaleXy!.$1} ${scaleXy!.$2})');
+          transforms.add('scale(${Tool.round(scaleXy!.$1)} ${Tool.round(scaleXy!.$2)})');
         }
       }
 
       if (skewX != null) {
-        transforms.add('skewX($skewX)');
+        transforms.add('skewX(${Tool.round(skewX)})');
       }
 
       if (skewY != null) {
-        transforms.add('skewY($skewY)');
+        transforms.add('skewY(${Tool.round(skewY)})');
       }
 
       outItems.add('transform="${transforms.join(' ')}"');

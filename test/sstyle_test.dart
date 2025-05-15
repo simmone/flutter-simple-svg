@@ -22,7 +22,7 @@ void main() {
 
     sstyle.fill = 'red';
     sstyle.fillRule = FillRule.nonzero;
-    sstyle.fillOpacity = 30;
+    sstyle.fillOpacity = 30.0;
 
     expect(sstyle.format(), 'fill="red" fill-rule="nonzero" fill-opacity="30"');
   });
@@ -30,13 +30,13 @@ void main() {
   test('format stroke', () {
     var sstyle = Sstyle();
 
-    sstyle.strokeWidth = 5;
+    sstyle.strokeWidth = 5.0;
     sstyle.stroke = '#ABABAB';
     sstyle.strokeLineJoin = StrokeLineJoin.round;
     sstyle.strokeLineCap = StrokeLineCap.square;
-    sstyle.strokeMiterLimit = 2;
+    sstyle.strokeMiterLimit = 2.0;
     sstyle.strokeDashArray = '40,10';
-    sstyle.strokeDashOffset = 5;
+    sstyle.strokeDashOffset = 5.0;
 
     expect(sstyle.format(),
         'fill="none" stroke-width="5" stroke="#ABABAB" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="2" stroke-dasharray="40,10" stroke-dashoffset="5"');
@@ -46,10 +46,10 @@ void main() {
     var sstyle = Sstyle();
 
     sstyle.translate = (0.1, 0.2);
-    sstyle.rotate = 30;
-    sstyle.scaleAll = 1;
-    sstyle.skewX = 2;
-    sstyle.skewY = 3;
+    sstyle.rotate = 30.0;
+    sstyle.scaleAll = 1.0;
+    sstyle.skewX = 2.0;
+    sstyle.skewY = 3.0;
 
     expect(sstyle.format(),
         'fill="none" transform="translate(0.1 0.2) rotate(30) scale(1) skewX(2) skewY(3)"');
