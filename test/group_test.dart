@@ -51,7 +51,7 @@ void main() {
 
     var defaultGroup = Group();
     var widget1 = Widget(starGroupId);
-    widget1.at = (50, 50);
+    widget1.at = (50.0, 50.0);
     defaultGroup.placeWidget(widget1);
 
     var widget2 = Widget(starGroupId);

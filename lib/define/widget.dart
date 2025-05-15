@@ -1,4 +1,5 @@
 import 'sstyle.dart';
+import 'package:simple_svg/tool.dart';
 
 class Widget {
   final String shapeId;
@@ -17,7 +18,7 @@ class Widget {
     outItems.add('<use xlink:href="#$shapeId"');
 
     if ((at != null) && (at != (0, 0))) {
-      outItems.add('x="${at!.$1}" y="${at!.$2}"');
+      outItems.add('x="${Tool.round(at!.$1)}" y="${Tool.round(at!.$2)}"');
     }
 
     if (sstyle != null) {

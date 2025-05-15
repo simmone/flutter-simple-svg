@@ -7,7 +7,7 @@ void main() {
   test('basic circle', () async {
     final svg = Svg(100, 100);
 
-    final circleId = svg.defShape(Circle(50));
+    final circleId = svg.defShape(Circle(50.0));
 
     var defaultGroup = Group();
 

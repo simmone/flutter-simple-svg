@@ -1,4 +1,4 @@
-import 'package:tool.dart';
+import 'package:simple_svg/tool.dart';
 
 enum FillRule {
   nonzero,
@@ -99,11 +99,11 @@ class Sstyle {
     }
 
     if (fillOpacity != null) {
-      outItems.add('fill-opacity="${Tool.round(fillOpacity)}"');
+      outItems.add('fill-opacity="${Tool.round(fillOpacity!)}"');
     }
 
     if (strokeWidth != null) {
-      outItems.add('stroke-width="${Tool.round(strokeWidth)}"');
+      outItems.add('stroke-width="${Tool.round(strokeWidth!)}"');
     }
 
     if (stroke != null) {
@@ -119,7 +119,7 @@ class Sstyle {
     }
 
     if (strokeMiterLimit != null) {
-      outItems.add('stroke-miterlimit="${Tool.round(strokeMiterLimit)}"');
+      outItems.add('stroke-miterlimit="${Tool.round(strokeMiterLimit!)}"');
     }
 
     if (strokeDashArray != null) {
@@ -127,7 +127,7 @@ class Sstyle {
     }
 
     if (strokeDashOffset != null) {
-      outItems.add('stroke-dashoffset="${Tool.round(strokeDashOffset)}"');
+      outItems.add('stroke-dashoffset="${Tool.round(strokeDashOffset!)}"');
     }
 
     if ((translate != null) ||
@@ -143,23 +143,23 @@ class Sstyle {
       }
 
       if (rotate != null) {
-        transforms.add('rotate(${Tool.round(rotate)})');
+        transforms.add('rotate(${Tool.round(rotate!)})');
       }
 
       if ((scaleAll != null) || (scaleXy != null)) {
         if (scaleAll != null) {
-          transforms.add('scale(${Tool.round(scaleAll)})');
+          transforms.add('scale(${Tool.round(scaleAll!)})');
         } else {
           transforms.add('scale(${Tool.round(scaleXy!.$1)} ${Tool.round(scaleXy!.$2)})');
         }
       }
 
       if (skewX != null) {
-        transforms.add('skewX(${Tool.round(skewX)})');
+        transforms.add('skewX(${Tool.round(skewX!)})');
       }
 
       if (skewY != null) {
-        transforms.add('skewY(${Tool.round(skewY)})');
+        transforms.add('skewY(${Tool.round(skewY!)})');
       }
 
       outItems.add('transform="${transforms.join(' ')}"');

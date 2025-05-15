@@ -1,4 +1,5 @@
 import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/tool.dart';
 
 class Circle implements Shape {
   final num radius;
@@ -14,7 +15,7 @@ class Circle implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
 
-    buffer.write('    <circle id="$shapeId" r="$radius" />\n');
+    buffer.write('    <circle id="$shapeId" r="${Tool.round(radius)}" />\n');
 
     return buffer.toString();
   }

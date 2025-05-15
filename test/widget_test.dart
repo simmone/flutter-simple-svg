@@ -30,7 +30,7 @@ void main() {
     expect(widget1.format(), '<use xlink:href="#s1" />');
 
     var widget2 = Widget('s1');
-    widget2.at = (100, 50);
+    widget2.at = (100.0, 50.0);
     expect(widget2.format(), '<use xlink:href="#s1" x="100" y="50" />');
   });
 
