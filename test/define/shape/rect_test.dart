@@ -86,11 +86,11 @@ void main() {
   });
 
   test('rect radius', () async {
-    final svg = Svg(100, 100);
+    final svg = Svg(100.0, 100.0);
 
-    var rect = Rect(100, 100);
-    rect.radiusX = 5;
-    rect.radiusY = 10;
+    var rect = Rect(100.0, 100.0);
+    rect.radiusX = 5.0;
+    rect.radiusY = 10.0;
     final rectId = svg.defShape(rect);
 
     var defaultGroup = Group();

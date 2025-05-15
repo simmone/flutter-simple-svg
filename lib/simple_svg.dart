@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:simple_svg/tool.dart';
+
 export 'package:simple_svg/define/shape/rect.dart' show Rect;
 export 'package:simple_svg/define/shape/circle.dart' show Circle;
 export 'package:simple_svg/define/shape/ellipse.dart' show Ellipse;
@@ -170,7 +172,7 @@ class Svg {
     outBuffer.write('    version="1.1"\n');
     outBuffer.write('    xmlns="http://www.w3.org/2000/svg"\n');
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
-    outBuffer.write('    width="$width" height="$height"\n');
+    outBuffer.write('    width="${Tool.round(width)}" height="${Tool.round(height)}"\n');
 
     if (viewBox != null) {
       outBuffer.write(
