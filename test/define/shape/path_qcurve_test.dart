@@ -9,8 +9,8 @@ void main() {
 
     var qcurvePath = Path();
     qcurvePath.movetoAbs((10, 60));
-    qcurvePath.qcurveAbs((60, 10), (110, 60));
-    qcurvePath.qcurveAbs((160, 110), (210, 60));
+    qcurvePath.qcurveAbs((60.0, 10.0), (110.0, 60.0));
+    qcurvePath.qcurveAbs((160, 110), (210, 60.0));
     final qcurveId = svg.defShape(qcurvePath);
 
     var defaultGroup = Group();
@@ -66,7 +66,7 @@ void main() {
 
     var qcurvePath = Path();
     qcurvePath.movetoAbs((10, 60));
-    qcurvePath.qcurveRel((50, -50), (100, 0));
+    qcurvePath.qcurveRel((50.0, -50.0), (100.0, 0.0));
     qcurvePath.qcurveRel((50, 50), (100, 0));
     final qcurveId = svg.defShape(qcurvePath);
 

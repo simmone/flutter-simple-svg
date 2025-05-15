@@ -9,7 +9,7 @@ void main() {
 
     var arc1Path = Path();
     arc1Path.movetoAbs((130, 45));
-    arc1Path.arcAbs((170, 85), (80, 40), ArcDirection.leftBig);
+    arc1Path.arcAbs((170.0, 85.0), (80.0, 40.0), ArcDirection.leftBig);
     final arc1Id = svg.defShape(arc1Path);
 
     var arc2Path = Path();

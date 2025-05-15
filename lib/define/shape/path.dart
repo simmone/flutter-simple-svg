@@ -1,4 +1,5 @@
 import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/tool.dart';
 
 enum ArcDirection {
   leftBig,
@@ -29,54 +30,54 @@ class Path implements Shape {
 
   void arcAbs((num, num) point, (num, num) radius, ArcDirection section) {
     defs.add(
-        'A${radius.$1},${radius.$2} 0 ${section.name} ${point.$1},${point.$2}');
+        'A${Tool.round(radius.$1)},${Tool.round(radius.$2)} 0 ${section.name} ${Tool.round(point.$1)},${Tool.round(point.$2)}');
   }
 
   void arcRel((num, num) point, (num, num) radius, ArcDirection section) {
     defs.add(
-        'a${radius.$1},${radius.$2} 0 ${section.name} ${point.$1},${point.$2}');
+        'a${Tool.round(radius.$1)},${Tool.round(radius.$2)} 0 ${section.name} ${Tool.round(point.$1)},${Tool.round(point.$2)}');
   }
 
   void movetoAbs((num, num) point) {
-    defs.add('M${point.$1},${point.$2}');
+    defs.add('M${Tool.round(point.$1)},${Tool.round(point.$2)}');
   }
 
   void movetoRel((num, num) point) {
-    defs.add('m${point.$1},${point.$2}');
+    defs.add('m${Tool.round(point.$1)},${Tool.round(point.$2)}');
   }
 
   void linetoAbs((num, num) point) {
-    defs.add('L${point.$1},${point.$2}');
+    defs.add('L${Tool.round(point.$1)},${Tool.round(point.$2)}');
   }
 
   void linetoRel((num, num) point) {
-    defs.add('l${point.$1},${point.$2}');
+    defs.add('l${Tool.round(point.$1)},${Tool.round(point.$2)}');
   }
 
   void linetoHor(num length) {
-    defs.add('h$length');
+    defs.add('h${Tool.round(length)}');
   }
 
   void linetoVer(num length) {
-    defs.add('v$length');
+    defs.add('v${Tool.round(length)}');
   }
 
   void ccurveAbs((num, num) point1, (num, num) point2, (num, num) point3) {
     defs.add(
-        'C${point1.$1},${point1.$2} ${point2.$1},${point2.$2} ${point3.$1},${point3.$2}');
+        'C${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)} ${Tool.round(point3.$1)},${Tool.round(point3.$2)}');
   }
 
   void ccurveRel((num, num) point1, (num, num) point2, (num, num) point3) {
     defs.add(
-        'c${point1.$1},${point1.$2} ${point2.$1},${point2.$2} ${point3.$1},${point3.$2}');
+        'c${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)} ${Tool.round(point3.$1)},${Tool.round(point3.$2)}');
   }
 
   void qcurveAbs((num, num) point1, (num, num) point2) {
-    defs.add('Q${point1.$1},${point1.$2} ${point2.$1},${point2.$2}');
+    defs.add('Q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
   }
 
   void qcurveRel((num, num) point1, (num, num) point2) {
-    defs.add('q${point1.$1},${point1.$2} ${point2.$1},${point2.$2}');
+    defs.add('q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
   }
 
   void close() {

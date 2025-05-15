@@ -1,4 +1,5 @@
 import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/tool.dart';
 
 enum MarkerType {
   triangle1,
@@ -41,7 +42,7 @@ class Marker implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
 
-    buffer.write('    <marker id="$shapeId" markerWidth="$size" markerHeight="$size" orient="auto-start-reverse" viewBox="0 0 15 15" refX="$x" refY="5" markerUnits="strokeWidth">\n');
+    buffer.write('    <marker id="$shapeId" markerWidth="${Tool.round(size)}" markerHeight="$size" orient="auto-start-reverse" viewBox="0 0 15 15" refX="${Tool.round(x)}" refY="5" markerUnits="strokeWidth">\n');
     buffer.write('      $path fill="context-stroke" />\n');
     buffer.write('    </marker>\n');
 

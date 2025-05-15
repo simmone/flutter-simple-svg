@@ -8,8 +8,8 @@ void main() {
     final svg = Svg(200, 120);
 
     var ccurvePath = Path();
-    ccurvePath.movetoAbs((10, 60));
-    ccurvePath.ccurveAbs((30, 15), (80, 15), (100, 60));
+    ccurvePath.movetoAbs((10.0, 60.0));
+    ccurvePath.ccurveAbs((30.0, 15.0), (80.0, 15.0), (100.0, 60.0));
     ccurvePath.ccurveAbs((120, 105), (170, 105), (190, 60));
     final ccurveId = svg.defShape(ccurvePath);
 
@@ -76,7 +76,7 @@ void main() {
 
     var ccurvePath = Path();
     ccurvePath.movetoAbs((10, 60));
-    ccurvePath.ccurveRel((20, -45), (70, -45), (90, 0));
+    ccurvePath.ccurveRel((20.0, -45.0), (70.0, -45.0), (90.0, 0.0));
     ccurvePath.ccurveRel((20, 45), (70, 45), (90, 0));
     final ccurveId = svg.defShape(ccurvePath);
 

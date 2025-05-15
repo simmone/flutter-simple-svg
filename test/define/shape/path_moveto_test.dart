@@ -8,7 +8,7 @@ void main() {
     final svg = Svg(30, 70);
 
     var movePath = Path();
-    movePath.movetoAbs((20, 60));
+    movePath.movetoAbs((20.0, 60.0));
     final moveId = svg.defShape(movePath);
 
     final circleId = svg.defShape(Circle(5));

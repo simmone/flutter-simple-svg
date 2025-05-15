@@ -9,9 +9,9 @@ void main() {
 
     var linePath = Path();
     linePath.movetoAbs((5, 5));
-    linePath.linetoHor(100);
-    linePath.linetoVer(100);
-    linePath.linetoRel((-50, 50));
+    linePath.linetoHor(100.0);
+    linePath.linetoVer(100.0);
+    linePath.linetoRel((-50.0, 50.0));
     linePath.linetoRel((-50, -50));
     linePath.close();
     final lineId = svg.defShape(linePath);
