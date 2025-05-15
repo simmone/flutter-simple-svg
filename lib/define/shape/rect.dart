@@ -1,4 +1,5 @@
 import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/tool.dart';
 
 class Rect implements Shape {
   final num width;
@@ -19,10 +20,10 @@ class Rect implements Shape {
 
     buffer.write('    <rect id="$shapeId" ');
 
-    buffer.write('width="$width" height="$height"');
+    buffer.write('width="${Tool.round(width)}" height="${Tool.round(height)}"');
 
     if (radiusX != null && radiusY != null) {
-      buffer.write(' rx="$radiusX" ry="$radiusY"');
+      buffer.write(' rx="${Tool.round(radiusX ?? 0)}" ry="${Tool.round(radiusY ?? 0)}"');
     }
 
     buffer.write(' />\n');
