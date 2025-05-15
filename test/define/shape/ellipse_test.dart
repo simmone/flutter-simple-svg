@@ -7,7 +7,7 @@ void main() {
   test('basic ellipse', () async {
     final svg = Svg(200, 100);
 
-    final ellipseId = svg.defShape(Ellipse(100, 50));
+    final ellipseId = svg.defShape(Ellipse(100.0, 50.0));
 
     var defaultGroup = Group();
 

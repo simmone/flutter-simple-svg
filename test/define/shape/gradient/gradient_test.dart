@@ -6,14 +6,14 @@ import 'package:simple_svg/simple_svg.dart';
 void main() {
   test('linear gradient format', () async {
     final gradient = LinearGradient([
-      (0, '#BBC42A', 1),
-      (100, '#ED6E46', 1),
+      (0.0, '#BBC42A', 1.0),
+      (100.0, '#ED6E46', 1.0),
     ]);
 
-    gradient.x1 = 0;
-    gradient.y1 = 1;
-    gradient.x2 = 2;
-    gradient.y2 = 3;
+    gradient.x1 = 0.0;
+    gradient.y1 = 1.0;
+    gradient.x2 = 2.0;
+    gradient.y2 = 3.0;
     gradient.gradientUnits = GradientUnits.userSpaceOnUse;
     gradient.spreadMethod = SpreadMethod.repeat;
 
@@ -25,15 +25,15 @@ void main() {
 
   test('radial gradient format', () async {
     final gradient = RadialGradient([
-      (0, '#BBC42A', 1),
-      (100, '#ED6E46', 1),
+      (0.0, '#BBC42A', 1.0),
+      (100.0, '#ED6E46', 1.0),
     ]);
 
-    gradient.cx = 0;
-    gradient.cy = 1;
-    gradient.fx = 2;
-    gradient.fy = 3;
-    gradient.r = 4;
+    gradient.cx = 0.0;
+    gradient.cy = 1.0;
+    gradient.fx = 2.0;
+    gradient.fy = 3.0;
+    gradient.r = 4.0;
     gradient.gradientUnits = GradientUnits.userSpaceOnUse;
     gradient.spreadMethod = SpreadMethod.repeat;
 

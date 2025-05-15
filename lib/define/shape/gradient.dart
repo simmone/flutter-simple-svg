@@ -1,4 +1,5 @@
 import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/tool.dart';
 
 enum GradientUnits {
   userSpaceOnUse,
@@ -57,19 +58,19 @@ class LinearGradient implements Shape {
     final outItems = <String>[];
 
     if (x1 != null) {
-      outItems.add('x1="$x1"');
+      outItems.add('x1="${Tool.round(x1!)}"');
     }
 
     if (y1 != null) {
-      outItems.add('y1="$y1"');
+      outItems.add('y1="${Tool.round(y1!)}"');
     }
 
     if (x2 != null) {
-      outItems.add('x2="$x2"');
+      outItems.add('x2="${Tool.round(x2!)}"');
     }
 
     if (y2 != null) {
-      outItems.add('y2="$y2"');
+      outItems.add('y2="${Tool.round(y2!)}"');
     }
 
     if (gradientUnits != null) {
@@ -85,10 +86,10 @@ class LinearGradient implements Shape {
     buffer.write('>\n');
 
     for (final stop in stops) {
-      buffer.write('      <stop offset="${stop.$1}%" stop-color="${stop.$2}" ');
+      buffer.write('      <stop offset="${Tool.round(stop.$1)}%" stop-color="${stop.$2}" ');
 
       if (stop.$3 != 1.0) {
-        buffer.write('stop-opacity="${stop.$3}" ');
+        buffer.write('stop-opacity="${Tool.round(stop.$3)}" ');
       }
 
       buffer.write('/>\n');
@@ -126,23 +127,23 @@ class RadialGradient implements Shape {
     final outItems = <String>[];
 
     if (cx != null) {
-      outItems.add('cx="$cx"');
+      outItems.add('cx="${Tool.round(cx!)}"');
     }
 
     if (cy != null) {
-      outItems.add('cy="$cy"');
+      outItems.add('cy="${Tool.round(cy!)}"');
     }
 
     if (fx != null) {
-      outItems.add('fx="$fx"');
+      outItems.add('fx="${Tool.round(fx!)}"');
     }
 
     if (fy != null) {
-      outItems.add('fy="$fy"');
+      outItems.add('fy="${Tool.round(fy!)}"');
     }
 
     if (r != null) {
-      outItems.add('r="$r"');
+      outItems.add('r="${Tool.round(r!)}"');
     }
 
     if (gradientUnits != null) {
@@ -158,10 +159,10 @@ class RadialGradient implements Shape {
     buffer.write('>\n');
 
     for (final stop in stops) {
-      buffer.write('      <stop offset="${stop.$1}%" stop-color="${stop.$2}" ');
+      buffer.write('      <stop offset="${Tool.round(stop.$1)}%" stop-color="${stop.$2}" ');
 
       if (stop.$3 != 1.0) {
-        buffer.write('stop-opacity="${stop.$3}" ');
+        buffer.write('stop-opacity="${Tool.round(stop.$3)}" ');
       }
 
       buffer.write('/>\n');

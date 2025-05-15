@@ -1,4 +1,5 @@
 import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/tool.dart';
 
 class Ellipse implements Shape {
   final num radiusX;
@@ -15,7 +16,7 @@ class Ellipse implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
 
-    buffer.write('    <ellipse id="$shapeId" rx="$radiusX" ry="$radiusY" />\n');
+    buffer.write('    <ellipse id="$shapeId" rx="${Tool.round(radiusX)}" ry="${Tool.round(radiusY)}" />\n');
 
     return buffer.toString();
   }

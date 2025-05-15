@@ -1,4 +1,5 @@
 import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/tool.dart';
 
 class Filter implements Shape {
   num? blur;
@@ -6,8 +7,8 @@ class Filter implements Shape {
   String? dropdownColor;
 
   Filter() {
-    blur = 2;
-    dropdownOffset = 3;
+    blur = 2.0;
+    dropdownOffset = 3.0;
     dropdownColor = 'black';
   }
   
@@ -22,9 +23,9 @@ class Filter implements Shape {
 
     buffer.write('    <filter id="$shapeId">\n');
     buffer.write(
-        '      <feGaussianBlur in="SourceAlpha" stdDeviation="$blur"></feGaussianBlur>\n');
+        '      <feGaussianBlur in="SourceAlpha" stdDeviation="${Tool.round(blur!)}"></feGaussianBlur>\n');
     buffer.write(
-        '      <feOffset dx="$dropdownOffset" dy="$dropdownOffset" result="offsetblur"></feOffset>\n');
+        '      <feOffset dx="${Tool.round(dropdownOffset!)}" dy="${Tool.round(dropdownOffset!)}" result="offsetblur"></feOffset>\n');
     buffer.write('      <feFlood flood-color="$dropdownColor"></feFlood>\n');
     buffer.write(
         '      <feComposite in2="offsetblur" operator="in"></feComposite>\n');
