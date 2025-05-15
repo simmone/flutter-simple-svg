@@ -46,8 +46,6 @@ void main() {
     final file = File('showcase/example/recursive.svg');
     final rectSvgFile = await file.readAsString();
     
-    print('${svg.out()}\n');
-
     expect(svg.out(), rectSvgFile);
   });
 }

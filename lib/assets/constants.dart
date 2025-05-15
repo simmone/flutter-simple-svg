@@ -1,2 +1,2 @@
-const String defaultGroupId = "d0";
-const String backgroundGroupId = "b0";
+const String defaultGroupId = "g0";
+const String backgroundGroupId = "g1";

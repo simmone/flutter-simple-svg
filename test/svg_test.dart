@@ -15,11 +15,11 @@ void main() {
 
     final rect1 = Rect(30.0, 20.0);
     svg.defShape(rect1);
-    expect(svg.shapeDefineMap.length, 1);
+    expect(svg.uniqueToIdMap.length, 1);
 
     final rect2 = Rect(30.0, 20.0);
     svg.defShape(rect2);
-    expect(svg.shapeDefineMap.length, 2);
+    expect(svg.uniqueToIdMap.length, 1);
 
     expect(svg.groupDefineMap.length, 0);
     expect(svg.groupShowList.length, 0);

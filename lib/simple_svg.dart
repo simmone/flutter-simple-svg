@@ -36,7 +36,7 @@ class Svg {
   String? background;
   (num, num, num, num)? viewBox;
   int shapeIdCount = 0;
-  int groupIdCount = 0;
+  int groupIdCount = 1;
   Map<String, String> uniqueToIdMap = {};
   Map<String, Shape> idToShapeMap = {};
   Map<String, Group> groupDefineMap = {};
