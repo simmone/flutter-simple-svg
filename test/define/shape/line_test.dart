@@ -7,7 +7,7 @@ void main() {
   test('basic line', () async {
     final svg = Svg(110, 110);
 
-    final lineId = svg.defShape(Line((0, 0), (100, 100)));
+    final lineId = svg.defShape(Line((0.0, 0.0), (100.0, 100.0)));
 
     var defaultGroup = Group();
 

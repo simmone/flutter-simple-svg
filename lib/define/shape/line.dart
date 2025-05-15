@@ -1,4 +1,5 @@
 import 'package:simple_svg/define/shape.dart';
+import 'package:simple_svg/tool.dart';
 
 class Line implements Shape {
   num startX = 0;
@@ -23,7 +24,7 @@ class Line implements Shape {
     final buffer = StringBuffer();
 
     buffer.write(
-        '    <line id="$shapeId" x1="$startX" y1="$startY" x2="$endX" y2="$endY" />\n');
+        '    <line id="$shapeId" x1="${Tool.round(startX)}" y1="${Tool.round(startY)}" x2="${Tool.round(endX)}" y2="${Tool.round(endY)}" />\n');
 
     return buffer.toString();
   }
