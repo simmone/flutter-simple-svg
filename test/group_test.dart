@@ -12,7 +12,7 @@ void main() {
     expect(group.widgetList.length, 1);
   });
 
-  test('group1', () async {
+  test('basic', () async {
     final svg = Svg(220, 280);
 
     final line1Id = svg.defShape(Line((0, 0), (30, 30)));
@@ -22,24 +22,16 @@ void main() {
 
     var starGroup = Group();
 
-    var sstyle = Sstyle();
-    sstyle.stroke = '#765373';
-    sstyle.strokeWidth = 5;
-
     var widgetLine1 = Widget(line1Id);
-    widgetLine1.sstyle = sstyle;
     widgetLine1.at = (5, 5);
 
     var widgetLine2 = Widget(line2Id);
-    widgetLine2.sstyle = sstyle;
     widgetLine2.at = (5, 5);
 
     var widgetLine3 = Widget(line3Id);
-    widgetLine3.sstyle = sstyle;
     widgetLine3.at = (5, 5);
 
     var widgetLine4 = Widget(line4Id);
-    widgetLine4.sstyle = sstyle;
     widgetLine4.at = (5, 5);
 
     starGroup.placeWidget(widgetLine1);
@@ -49,28 +41,40 @@ void main() {
 
     final starGroupId = svg.addGroup(starGroup);
 
-    var defaultGroup = Group();
+    var topGroup = Group();
     var widget1 = Widget(starGroupId);
     widget1.at = (50.0, 50.0);
-    defaultGroup.placeWidget(widget1);
+    topGroup.placeWidget(widget1);
 
     var widget2 = Widget(starGroupId);
     widget2.at = (100, 100);
-    defaultGroup.placeWidget(widget2);
+    topGroup.placeWidget(widget2);
 
     var widget3 = Widget(starGroupId);
     widget3.at = (80, 200);
-    defaultGroup.placeWidget(widget3);
+    topGroup.placeWidget(widget3);
 
     var widget4 = Widget(starGroupId);
     widget4.at = (150, 100);
-    defaultGroup.placeWidget(widget4);
+    topGroup.placeWidget(widget4);
+
+    final topGroupId = svg.addGroup(topGroup);
+
+    var defaultGroup = Group();
+
+    var sstyle = Sstyle();
+    sstyle.stroke = '#765373';
+    sstyle.strokeWidth = 5;
+
+    var topWidget = Widget(topGroupId);
+    topWidget.sstyle = sstyle;
+    defaultGroup.placeWidget(topWidget);
 
     svg.addDefaultGroup(defaultGroup);
 
     final file = File('showcase/group/group1.svg');
     final rectSvgFile = await file.readAsString();
-
+    
     expect(svg.out(), rectSvgFile);
   });
 

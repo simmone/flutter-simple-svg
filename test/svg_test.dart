@@ -31,7 +31,7 @@ void main() {
     var group = Group();
     svg.addGroup(group);
     expect(svg.groupDefineMap.length, 1);
-    expect(svg.groupDefineMap.containsKey('g1'), true);
+    expect(svg.groupDefineMap.containsKey('g2'), true);
 
     svg.addDefaultGroup(Group());
     expect(svg.groupDefineMap.length, 2);
