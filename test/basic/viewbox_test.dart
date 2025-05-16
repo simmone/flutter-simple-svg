@@ -6,7 +6,7 @@ import 'package:simple_svg/simple_svg.dart';
 void main() {
   test('basic background svg out', () async {
     final svg = Svg(100, 100);
-    svg.setViewBox(50, 0, 100, 100);
+    svg.setViewBox(50.0, 0.0, 100.0, 100.0);
 
     var defaultGroup = Group();
 

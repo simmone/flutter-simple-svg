@@ -176,7 +176,7 @@ class Svg {
 
     if (viewBox != null) {
       outBuffer.write(
-          '    viewBox="${viewBox!.$1} ${viewBox!.$2} ${viewBox!.$3} ${viewBox!.$4}"\n');
+          '    viewBox="${Tool.round(viewBox!.$1)} ${Tool.round(viewBox!.$2)} ${Tool.round(viewBox!.$3)} ${Tool.round(viewBox!.$4)}"\n');
     }
 
     outBuffer.write('    >\n');
