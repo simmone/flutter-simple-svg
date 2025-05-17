@@ -15,7 +15,7 @@ void main() {
   test('basic', () async {
     final svg = Svg(220, 280);
 
-    final line1Id = svg.defShape(Line((0, 0), (30, 30)));
+    final line1Id = svg.defShape(Line((0.00001, 0.00001), (30, 30)));
     final line2Id = svg.defShape(Line((0, 15), (30, 15)));
     final line3Id = svg.defShape(Line((15, 0), (15, 30)));
     final line4Id = svg.defShape(Line((30, 0), (0, 30)));
@@ -114,7 +114,7 @@ void main() {
     patternGroup.placeWidget(widgetRect);
 
     var crossLineWidget1 = Widget(crossLineGroupId);
-    crossLineWidget1.at = (0, 0);
+    crossLineWidget1.at = (0.00001, 0.00001);
     patternGroup.placeWidget(crossLineWidget1);
 
     var crossLineWidget2 = Widget(crossLineGroupId);
@@ -138,7 +138,7 @@ void main() {
     var defaultGroup = Group();
 
     var patternWidget1 = Widget(patternGroupId);
-    patternWidget1.at = (0, 0);
+    patternWidget1.at = (0.00001, 0.00001);
     defaultGroup.placeWidget(patternWidget1);
 
     var patternWidget2 = Widget(patternGroupId);

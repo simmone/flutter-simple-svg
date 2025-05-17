@@ -17,8 +17,11 @@ class Widget {
 
     outItems.add('<use xlink:href="#$shapeId"');
 
-    if ((at != null) && (at != (0, 0))) {
-      outItems.add('x="${Tool.round(at!.$1)}" y="${Tool.round(at!.$2)}"');
+    if (at != null) {
+      final atStr = (Tool.round(at!.$1), Tool.round(at!.$2));
+      if (atStr != ('0', '0')) {
+        outItems.add('x="${atStr.$1}" y="${atStr.$2}"');
+      }
     }
 
     if (sstyle != null) {

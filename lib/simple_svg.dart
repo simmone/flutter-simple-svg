@@ -131,8 +131,9 @@ class Svg {
       final groupPos = groupShow.$2;
 
       outBuffer.write('  <use xlink:href="#$groupId" ');
-      if (groupPos != (0, 0)) {
-        outBuffer.write('x="${groupPos.$1}" y="${groupPos.$2}" ');
+      final groupPosStr = (Tool.round(groupPos.$1), Tool.round(groupPos.$2));
+      if (groupPosStr != ('0', '0')) {
+        outBuffer.write('x="${groupPosStr.$1}" y="${groupPosStr.$2}" ');
       }
       outBuffer.write('/>\n');
     }
