@@ -11,7 +11,13 @@ export 'package:simple_svg/define/shape/polyline.dart' show Polyline;
 export 'package:simple_svg/define/shape/filter.dart' show Filter;
 export 'package:simple_svg/define/shape/path.dart' show Path, ArcDirection;
 export 'package:simple_svg/define/shape/text.dart'
-    show Text, TextKerning, TextSpace, TextDecoration, TextKerningType, TextSpaceType;
+    show
+        Text,
+        TextKerning,
+        TextSpace,
+        TextDecoration,
+        TextKerningType,
+        TextSpaceType;
 export 'package:simple_svg/define/shape/arrow.dart' show Arrow;
 export 'package:simple_svg/define/shape/gradient.dart'
     show LinearGradient, RadialGradient, SpreadMethod, GradientUnits;
@@ -19,8 +25,7 @@ export 'package:simple_svg/define/widget.dart' show Widget;
 export 'package:simple_svg/define/group.dart' show Group;
 export 'package:simple_svg/define/sstyle.dart'
     show Sstyle, StrokeLineJoin, FillRule, StrokeLineCap;
-export 'package:simple_svg/define/shape/marker.dart'
-    show Marker, MarkerType;
+export 'package:simple_svg/define/shape/marker.dart' show Marker, MarkerType;
 import 'package:simple_svg/define/shape.dart';
 import 'package:simple_svg/define/shape/rect.dart';
 import 'package:simple_svg/define/widget.dart';
@@ -46,7 +51,7 @@ class Svg {
   Svg(this.width, this.height);
 
   String defShape(Shape shape) {
-    if(uniqueToIdMap.containsKey(shape.unique())) {
+    if (uniqueToIdMap.containsKey(shape.unique())) {
       return uniqueToIdMap[shape.unique()]!;
     } else {
       shapeIdCount += 1;
@@ -100,7 +105,8 @@ class Svg {
     if (idToShapeMap.isNotEmpty) {
       outBuffer.write("  <defs>\n");
       var sortedKeys = List.from(idToShapeMap.keys);
-      sortedKeys.sort((a, b) => int.parse(a.substring(1)) - int.parse(b.substring(1)));
+      sortedKeys.sort(
+          (a, b) => int.parse(a.substring(1)) - int.parse(b.substring(1)));
       for (final shapeId in sortedKeys) {
         var shape = idToShapeMap[shapeId];
 
@@ -173,7 +179,8 @@ class Svg {
     outBuffer.write('    version="1.1"\n');
     outBuffer.write('    xmlns="http://www.w3.org/2000/svg"\n');
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
-    outBuffer.write('    width="${Tool.round(width)}" height="${Tool.round(height)}"\n');
+    outBuffer.write(
+        '    width="${Tool.round(width)}" height="${Tool.round(height)}"\n');
 
     if (viewBox != null) {
       outBuffer.write(

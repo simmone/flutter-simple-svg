@@ -86,7 +86,8 @@ class LinearGradient implements Shape {
     buffer.write('>\n');
 
     for (final stop in stops) {
-      buffer.write('      <stop offset="${Tool.round(stop.$1)}%" stop-color="${stop.$2}" ');
+      buffer.write(
+          '      <stop offset="${Tool.round(stop.$1)}%" stop-color="${stop.$2}" ');
 
       if (stop.$3 != 1.0) {
         buffer.write('stop-opacity="${Tool.round(stop.$3)}" ');
@@ -159,7 +160,8 @@ class RadialGradient implements Shape {
     buffer.write('>\n');
 
     for (final stop in stops) {
-      buffer.write('      <stop offset="${Tool.round(stop.$1)}%" stop-color="${stop.$2}" ');
+      buffer.write(
+          '      <stop offset="${Tool.round(stop.$1)}%" stop-color="${stop.$2}" ');
 
       if (stop.$3 != 1.0) {
         buffer.write('stop-opacity="${Tool.round(stop.$3)}" ');

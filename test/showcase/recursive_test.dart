@@ -8,16 +8,16 @@ void main() {
     final svg = Svg(400, 400);
 
     var topGroup = Group();
-    
+
     recursiveLoop(loopX, loopY, loopRadius) {
-      if(loopRadius > 6) {
+      if (loopRadius > 6) {
         final circleId = svg.defShape(Circle(loopRadius));
 
         final widget = Widget(circleId);
         widget.at = (loopX, loopY);
-        
+
         topGroup.placeWidget(widget);
-        
+
         recursiveLoop(loopX + loopRadius, loopY, loopRadius / 2);
         recursiveLoop(loopX - loopRadius, loopY, loopRadius / 2);
         recursiveLoop(loopX, loopY + loopRadius, loopRadius / 2);
@@ -26,7 +26,7 @@ void main() {
         return;
       }
     }
-    
+
     recursiveLoop(200, 200, 100);
 
     final topGroupId = svg.addGroup(topGroup);
@@ -45,7 +45,7 @@ void main() {
 
     final file = File('showcase/example/recursive.svg');
     final rectSvgFile = await file.readAsString();
-    
+
     expect(svg.out(), rectSvgFile);
   });
 }

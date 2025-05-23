@@ -62,7 +62,7 @@ void main() {
 
     final file = File('showcase/example/five_circles.svg');
     final rectSvgFile = await file.readAsString();
-    
+
     expect(svg.out(), rectSvgFile);
   });
 }

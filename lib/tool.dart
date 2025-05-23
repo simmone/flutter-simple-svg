@@ -6,7 +6,7 @@ class Tool {
 
     num precisionPow = pow(10, precision);
 
-    num roundedArg = (arg*precisionPow).round()/precisionPow;
+    num roundedArg = (arg * precisionPow).round() / precisionPow;
 
     if (roundedArg == roundedArg.roundToDouble()) {
       return roundedArg.toInt().toString();

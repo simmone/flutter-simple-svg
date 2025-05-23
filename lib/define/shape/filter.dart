@@ -11,7 +11,7 @@ class Filter implements Shape {
     dropdownOffset = 3.0;
     dropdownColor = 'black';
   }
-  
+
   @override
   String unique() {
     return 'Filter/blur/$blur/dropdownOffset/$dropdownOffset/dropdownColor/$dropdownColor';

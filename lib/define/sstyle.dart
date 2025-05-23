@@ -139,7 +139,8 @@ class Sstyle {
       var transforms = <String>[];
 
       if (translate != null) {
-        transforms.add('translate(${Tool.round(translate!.$1)} ${Tool.round(translate!.$2)})');
+        transforms.add(
+            'translate(${Tool.round(translate!.$1)} ${Tool.round(translate!.$2)})');
       }
 
       if (rotate != null) {
@@ -150,7 +151,8 @@ class Sstyle {
         if (scaleAll != null) {
           transforms.add('scale(${Tool.round(scaleAll!)})');
         } else {
-          transforms.add('scale(${Tool.round(scaleXy!.$1)} ${Tool.round(scaleXy!.$2)})');
+          transforms.add(
+              'scale(${Tool.round(scaleXy!.$1)} ${Tool.round(scaleXy!.$2)})');
         }
       }
 

@@ -4,7 +4,7 @@ class Polygon implements Shape {
   List<(num, num)> points;
 
   Polygon(this.points);
-  
+
   @override
   String unique() {
     return 'Polygon/points/$points';

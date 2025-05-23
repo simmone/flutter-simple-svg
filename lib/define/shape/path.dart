@@ -73,17 +73,19 @@ class Path implements Shape {
   }
 
   void qcurveAbs((num, num) point1, (num, num) point2) {
-    defs.add('Q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
+    defs.add(
+        'Q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
   }
 
   void qcurveRel((num, num) point1, (num, num) point2) {
-    defs.add('q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
+    defs.add(
+        'q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
   }
 
   void close() {
     defs.add('z');
   }
-  
+
   @override
   String unique() {
     return 'Path/defs/$defs';

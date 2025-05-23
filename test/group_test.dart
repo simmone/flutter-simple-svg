@@ -74,7 +74,7 @@ void main() {
 
     final file = File('showcase/group/group1.svg');
     final rectSvgFile = await file.readAsString();
-    
+
     expect(svg.out(), rectSvgFile);
   });
 

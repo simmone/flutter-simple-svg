@@ -16,7 +16,8 @@ class Ellipse implements Shape {
   String format(String shapeId) {
     final buffer = StringBuffer();
 
-    buffer.write('    <ellipse id="$shapeId" rx="${Tool.round(radiusX)}" ry="${Tool.round(radiusY)}" />\n');
+    buffer.write(
+        '    <ellipse id="$shapeId" rx="${Tool.round(radiusX)}" ry="${Tool.round(radiusY)}" />\n');
 
     return buffer.toString();
   }

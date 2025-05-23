@@ -151,7 +151,6 @@ void main() {
     expect(svg.out(), markerSvgFile);
   });
 
-
   test('marker curve', () async {
     final svg = Svg(300, 300);
 

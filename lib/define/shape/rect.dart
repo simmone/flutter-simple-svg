@@ -23,7 +23,8 @@ class Rect implements Shape {
     buffer.write('width="${Tool.round(width)}" height="${Tool.round(height)}"');
 
     if (radiusX != null && radiusY != null) {
-      buffer.write(' rx="${Tool.round(radiusX ?? 0)}" ry="${Tool.round(radiusY ?? 0)}"');
+      buffer.write(
+          ' rx="${Tool.round(radiusX ?? 0)}" ry="${Tool.round(radiusY ?? 0)}"');
     }
 
     buffer.write(' />\n');
