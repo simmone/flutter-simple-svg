@@ -109,8 +109,8 @@ class Text implements Shape {
   @override
   String unique() {
     return
-    'Polyline/text/$text/fontSize/$fontSize/fontFamily/$fontFamily/dx/$dx/dy/$dy' +
-    '/rotate/$rotate/textLength/$textLength/kerning/$kerning/letterSpace/$letterSpace/wordSpace/$wordSpace' +
+    'Polyline/text/$text/fontSize/$fontSize/fontFamily/$fontFamily/dx/$dx/dy/$dy'
+    '/rotate/$rotate/textLength/$textLength/kerning/$kerning/letterSpace/$letterSpace/wordSpace/$wordSpace'
     '/textDecoration/$textDecoration/path/$path/pathStartOffset/$pathStartOffset';
   }
 
