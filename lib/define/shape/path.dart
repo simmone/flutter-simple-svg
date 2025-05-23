@@ -82,6 +82,10 @@ class Path implements Shape {
         'q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
   }
 
+  void raw(String rawStr) {
+    defs.add(rawStr);
+  }
+
   void close() {
     defs.add('z');
   }
