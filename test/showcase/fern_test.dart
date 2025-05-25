@@ -26,121 +26,105 @@ const bend = 5;
   return (startPoint.$1 + end.real, startPoint.$2 + end.imaginary);
 }
 
-void recursivePoints((num, num) loopStartPoint, num length, num deg, num width, List<(String, (num, num), (num, num))> lines) {
+void recursivePoints((num, num) loopStartPoint, num length, num deg, num width,
+    List<(String, (num, num), (num, num))> lines) {
   if ((centralReduction * length) >= minLength) {
     final loopEndPoint = getEndPoint(loopStartPoint, length, deg);
 
     final trunctedWidth = '$width';
 
-    lines.add(
-      (
-        trunctedWidth,
-        (loopStartPoint.$1, canvasHeight - loopStartPoint.$2),
-        (loopEndPoint.$1, canvasHeight - loopEndPoint.$2)
-      ));
+    lines.add((
+      trunctedWidth,
+      (loopStartPoint.$1, canvasHeight - loopStartPoint.$2),
+      (loopEndPoint.$1, canvasHeight - loopEndPoint.$2)
+    ));
 
     // central branch
-    recursivePoints(
-      loopEndPoint,
-      length * centralReduction,
-      deg - bend,
-      width * stepWidth,
-      lines);
+    recursivePoints(loopEndPoint, length * centralReduction, deg - bend,
+        width * stepWidth, lines);
 
     // left branch
-    recursivePoints(
-      loopEndPoint,
-      length * lateralReduction,
-      deg + lateralDeg - bend,
-      width * stepWidth,
-      lines);
+    recursivePoints(loopEndPoint, length * lateralReduction,
+        deg + lateralDeg - bend, width * stepWidth, lines);
 
     // right branch
-    recursivePoints(
-      loopEndPoint,
-      length * lateralReduction,
-      deg - lateralDeg - bend,
-      width * stepWidth,
-      lines);
-    }
+    recursivePoints(loopEndPoint, length * lateralReduction,
+        deg - lateralDeg - bend, width * stepWidth, lines);
+  }
 }
 
 void main() {
   test('make poloar test', () async {
-      expect(
-        Complex.polar(10, pi * 0.5),
-        Complex(6.123233995736766e-16, 10.0)
-      );
+    expect(Complex.polar(10, pi * 0.5), Complex(6.123233995736766e-16, 10.0));
 
-      expect(
-        Complex.polar(10, pi * 0.25),
-        Complex(7.0710678118654755, 7.071067811865475)
-      );
+    expect(Complex.polar(10, pi * 0.25),
+        Complex(7.0710678118654755, 7.071067811865475));
   });
-  
+
   test('fern recursivePoints', () async {
-      var lines = <(String, (num, num), (num, num))>[];
-      
-      recursivePoints(startPoint, startLength, startDeg, startWidth, lines);
+    var lines = <(String, (num, num), (num, num))>[];
 
-      expect(lines.length, 4939);
+    recursivePoints(startPoint, startLength, startDeg, startWidth, lines);
+
+    expect(lines.length, 4939);
   });
-  
+
   test('fern test', () async {
     final svg = Svg(canvasWidth, canvasHeight);
 
     var defaultGroup = Group();
 
     var lines = <(String, (num, num), (num, num))>[];
-      
+
     recursivePoints(startPoint, startLength, startDeg, startWidth, lines);
 
-    Map<String, List<((num, num), (num, num))>> widthGroup= HashMap();
+    Map<String, List<((num, num), (num, num))>> widthGroupMap = HashMap();
 
     for (final line in lines) {
-      if (widthGroup.containsKey(line.$1)) {
-        var widthLines = widthGroup[line.$1];
-        
+      if (widthGroupMap.containsKey(line.$1)) {
+        var widthLines = widthGroupMap[line.$1];
+
         widthLines?.add((line.$2, line.$3));
       } else {
         var widthLines = <((num, num), (num, num))>[];
 
         widthLines.add((line.$2, line.$3));
-        
-        widthGroup[line.$1] = widthLines;
+
+        widthGroupMap[line.$1] = widthLines;
       }
     }
-    
-    widthGroup.forEach((width, lines) {
-        var widthGroup = Group();
 
-        for (final line in lines) {
-          final lineId = svg.defShape(Line(line.$1, line.$2));
+    var sortedWidthList = List.from(widthGroupMap.keys);
+    sortedWidthList.sort((a, b) => num.parse(b).compareTo(num.parse(a)));
 
-          var widget = Widget(lineId);
-          widthGroup.placeWidget(widget);
-        }
+    for (final width in sortedWidthList) {
+      var widthGroup = Group();
 
-        var sstyle = Sstyle();
-        sstyle.stroke = color;
-        sstyle.strokeWidth = num.parse(width);
+      final lines = widthGroupMap[width] ?? [];
 
-        final widthGroupId = svg.addGroup(widthGroup);
-        final widthWidget = Widget(widthGroupId);
-        widthWidget.sstyle = sstyle;
+      for (final line in lines) {
+        final lineId = svg.defShape(Line(line.$1, line.$2));
 
-        defaultGroup.placeWidget(widthWidget);
-    });
+        var widget = Widget(lineId);
+        widthGroup.placeWidget(widget);
+      }
+
+      var sstyle = Sstyle();
+      sstyle.stroke = color;
+      sstyle.strokeWidth = num.parse(width);
+
+      final widthGroupId = svg.addGroup(widthGroup);
+      final widthWidget = Widget(widthGroupId);
+      widthWidget.sstyle = sstyle;
+
+      defaultGroup.placeWidget(widthWidget);
+    }
 
     svg.addDefaultGroup(defaultGroup);
 
     final file = File('showcase/example/fern.svg');
     final fernSvgFile = await file.readAsString();
-    
-    print('${svg.out()}\n');
-    
-    expect(1, 1);
 
-//    expect(svg.out(), fernSvgFile);
+    expect(svg.out(), fernSvgFile);
   });
 }
