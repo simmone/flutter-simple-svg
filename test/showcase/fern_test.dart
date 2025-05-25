@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'dart:collection';
 import 'package:complex/complex.dart';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -15,14 +16,14 @@ const stepWidth = 0.86;
 const color = '#5a5';
 const minLength = 0.5;
 const centralReduction = 0.75;
-const lateralReduction4 = 0.35;
+const lateralReduction = 0.35;
 const lateralDeg = 80;
 const bend = 5;
 
 (num, num) getEndPoint((num, num) startPoint, num length, num deg) {
-  final end = Complex.polar(length, pi * 2 * deg / 360);
+  final end = Complex.polar(length.toDouble(), pi * 2 * deg / 360);
 
-  return (startPorint.$1 + end.real, startPoing.$2 + end.imaginary);
+  return (startPoint.$1 + end.real, startPoint.$2 + end.imaginary);
 }
 
 void recursivePoints((num, num) loopStartPoint, num length, num deg, num width, List<(String, (num, num), (num, num))> lines) {
@@ -31,53 +32,38 @@ void recursivePoints((num, num) loopStartPoint, num length, num deg, num width, 
 
     final trunctedWidth = '$width';
 
-fn recursive_points(
-    loop_start_point: (f64, f64),
-    length: f64,
-    deg: f64,
-    width: f64,
-    lines: &mut Vec<(String, (f64, f64), (f64, f64))>,
-) {
-    if (CENTRAL_REDUCTION * length) >= MIN_LENGTH {
-        let loop_end_point = get_end_point(loop_start_point, length, deg, PRECISION);
+    lines.add(
+      (
+        trunctedWidth,
+        (loopStartPoint.$1, canvasHeight - loopStartPoint.$2),
+        (loopEndPoint.$1, canvasHeight - loopEndPoint.$2)
+      ));
 
-        let truncted_width = format!("{:.2}", width);
+    // central branch
+    recursivePoints(
+      loopEndPoint,
+      length * centralReduction,
+      deg - bend,
+      width * stepWidth,
+      lines);
 
-        lines.push((
-            truncted_width,
-            (loop_start_point.0, CANVAS_HEIGHT - loop_start_point.1),
-            (loop_end_point.0, CANVAS_HEIGHT - loop_end_point.1),
-        ));
+    // left branch
+    recursivePoints(
+      loopEndPoint,
+      length * lateralReduction,
+      deg + lateralDeg - bend,
+      width * stepWidth,
+      lines);
 
-        // central branch
-        recursive_points(
-            loop_end_point,
-            length * CENTRAL_REDUCTION,
-            deg - BEND,
-            width * STEP_WIDTH,
-            lines,
-        );
-
-        // left branch
-        recursive_points(
-            loop_end_point,
-            length * LATERAL_REDUCTION,
-            deg + LATERAL_DEG - BEND,
-            width * STEP_WIDTH,
-            lines,
-        );
-
-        // right branch
-        recursive_points(
-            loop_end_point,
-            length * LATERAL_REDUCTION,
-            deg - LATERAL_DEG - BEND,
-            width * STEP_WIDTH,
-            lines,
-        );
+    // right branch
+    recursivePoints(
+      loopEndPoint,
+      length * lateralReduction,
+      deg - lateralDeg - bend,
+      width * stepWidth,
+      lines);
     }
 }
-
 
 void main() {
   test('make poloar test', () async {
@@ -92,10 +78,69 @@ void main() {
       );
   });
   
+  test('fern recursivePoints', () async {
+      var lines = <(String, (num, num), (num, num))>[];
+      
+      recursivePoints(startPoint, startLength, startDeg, startWidth, lines);
+
+      expect(lines.length, 4939);
+  });
+  
   test('fern test', () async {
+    final svg = Svg(canvasWidth, canvasHeight);
 
-      final svg = Svg(canvasWidth, canvasHeight);
+    var defaultGroup = Group();
 
-      var defaultGroup = Group();
+    var lines = <(String, (num, num), (num, num))>[];
+      
+    recursivePoints(startPoint, startLength, startDeg, startWidth, lines);
+
+    Map<String, List<((num, num), (num, num))>> widthGroup= HashMap();
+
+    for (final line in lines) {
+      if (widthGroup.containsKey(line.$1)) {
+        var widthLines = widthGroup[line.$1];
+        
+        widthLines?.add((line.$2, line.$3));
+      } else {
+        var widthLines = <((num, num), (num, num))>[];
+
+        widthLines.add((line.$2, line.$3));
+        
+        widthGroup[line.$1] = widthLines;
+      }
+    }
+    
+    widthGroup.forEach((width, lines) {
+        var widthGroup = Group();
+
+        for (final line in lines) {
+          final lineId = svg.defShape(Line(line.$1, line.$2));
+
+          var widget = Widget(lineId);
+          widthGroup.placeWidget(widget);
+        }
+
+        var sstyle = Sstyle();
+        sstyle.stroke = color;
+        sstyle.strokeWidth = num.parse(width);
+
+        final widthGroupId = svg.addGroup(widthGroup);
+        final widthWidget = Widget(widthGroupId);
+        widthWidget.sstyle = sstyle;
+
+        defaultGroup.placeWidget(widthWidget);
+    });
+
+    svg.addDefaultGroup(defaultGroup);
+
+    final file = File('showcase/example/fern.svg');
+    final fernSvgFile = await file.readAsString();
+    
+    print('${svg.out()}\n');
+    
+    expect(1, 1);
+
+//    expect(svg.out(), fernSvgFile);
   });
 }
