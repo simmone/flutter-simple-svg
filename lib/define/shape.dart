@@ -1,7 +1,9 @@
-abstract interface class Shape {
-  int precision = 4;
+abstract class Shape {
+  int precision;
 
   String format(String shapeId);
 
   String unique();
+  
+  Shape(this.precision);
 }

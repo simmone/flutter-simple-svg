@@ -1,7 +1,7 @@
 import 'package:simple_svg/define/shape.dart';
 import 'package:simple_svg/tool.dart';
 
-class Circle implements Shape {
+class Circle extends Shape {
   final num radius;
 
   Circle(this.radius);
