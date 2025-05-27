@@ -152,16 +152,16 @@ class Sstyle {
           transforms.add('scale(${Tool.round(scaleAll!, super.precision!)})');
         } else {
           transforms.add(
-              'scale(${Tool.round(scaleXy!.$1)} ${Tool.round(scaleXy!.$2)})');
+              'scale(${Tool.round(scaleXy!.$1, super.precision!)} ${Tool.round(scaleXy!.$2, super.precision!)})');
         }
       }
 
       if (skewX != null) {
-        transforms.add('skewX(${Tool.round(skewX!)})');
+        transforms.add('skewX(${Tool.round(skewX!, super.precision!)})');
       }
 
       if (skewY != null) {
-        transforms.add('skewY(${Tool.round(skewY!)})');
+        transforms.add('skewY(${Tool.round(skewY!, super.precision!)})');
       }
 
       outItems.add('transform="${transforms.join(' ')}"');
