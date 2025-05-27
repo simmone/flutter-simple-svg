@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:simple_svg/tool.dart';
 import 'package:simple_svg/define/shape.dart';
 
-class Arrow implements Shape {
+class Arrow extends Shape {
   num startX;
   num startY;
   num endX;

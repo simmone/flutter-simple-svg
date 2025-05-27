@@ -1,5 +1,7 @@
-abstract class Shape {
-  String format(String shapeId);
+class Shape {
+  int? precision;
 
-  String unique();
+  String format(String shapeId) { return ''; }
+
+  String unique() { return ''; }
 }

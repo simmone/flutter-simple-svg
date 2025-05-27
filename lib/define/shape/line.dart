@@ -1,7 +1,7 @@
 import 'package:simple_svg/define/shape.dart';
 import 'package:simple_svg/tool.dart';
 
-class Line implements Shape {
+class Line extends Shape {
   num startX = 0;
   num startY = 0;
   num endX = 0;

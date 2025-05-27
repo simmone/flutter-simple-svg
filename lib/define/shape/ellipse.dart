@@ -1,7 +1,7 @@
 import 'package:simple_svg/define/shape.dart';
 import 'package:simple_svg/tool.dart';
 
-class Ellipse implements Shape {
+class Ellipse extends Shape {
   final num radiusX;
   final num radiusY;
 

@@ -89,7 +89,7 @@ extension TextDecorationExtension on TextDecoration {
   }
 }
 
-class Text implements Shape {
+class Text extends Shape {
   String text;
   num? fontSize;
   String? fontFamily;

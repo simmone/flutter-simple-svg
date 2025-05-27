@@ -1,6 +1,6 @@
 import 'package:simple_svg/define/shape.dart';
 
-class Polyline implements Shape {
+class Polyline extends Shape {
   List<(num, num)> points;
 
   Polyline(this.points);

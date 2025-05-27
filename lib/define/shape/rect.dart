@@ -1,8 +1,7 @@
 import 'package:simple_svg/define/shape.dart';
-import 'package:simple_svg/define/precision.dart';
 import 'package:simple_svg/tool.dart';
 
-class Rect extends Precision implements Shape {
+class Rect extends Shape {
   final num width;
   final num height;
   num? radiusX;

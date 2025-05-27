@@ -33,7 +33,7 @@ extension SpreadMethodExtension on SpreadMethod {
   }
 }
 
-class LinearGradient implements Shape {
+class LinearGradient extends Shape {
   List<(num, String, num)> stops;
   num? x1;
   num? y1;
@@ -102,7 +102,7 @@ class LinearGradient implements Shape {
   }
 }
 
-class RadialGradient implements Shape {
+class RadialGradient extends Shape {
   List<(num, String, num)> stops;
   num? cx;
   num? cy;

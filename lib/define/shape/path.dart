@@ -23,7 +23,7 @@ extension ArcDirectionExtension on ArcDirection {
   }
 }
 
-class Path implements Shape {
+class Path extends Shape {
   List<String> defs = [];
 
   Path();

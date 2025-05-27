@@ -1,7 +1,7 @@
 import 'package:simple_svg/define/shape.dart';
 import 'package:simple_svg/tool.dart';
 
-class Filter implements Shape {
+class Filter extends Shape {
   num? blur;
   num? dropdownOffset;
   String? dropdownColor;

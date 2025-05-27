@@ -13,7 +13,7 @@ enum MarkerType {
   curve2,
 }
 
-class Marker implements Shape {
+class Marker extends Shape {
   MarkerType shape;
   num size = 0;
   num x = 0;

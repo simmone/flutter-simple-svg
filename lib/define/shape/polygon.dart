@@ -1,6 +1,6 @@
 import 'package:simple_svg/define/shape.dart';
 
-class Polygon implements Shape {
+class Polygon extends Shape {
   List<(num, num)> points;
 
   Polygon(this.points);
