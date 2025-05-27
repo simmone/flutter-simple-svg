@@ -99,11 +99,11 @@ class Sstyle {
     }
 
     if (fillOpacity != null) {
-      outItems.add('fill-opacity="${Tool.round(fillOpacity!)}"');
+      outItems.add('fill-opacity="${Tool.round(fillOpacity!, super.precision!)}"');
     }
 
     if (strokeWidth != null) {
-      outItems.add('stroke-width="${Tool.round(strokeWidth!)}"');
+      outItems.add('stroke-width="${Tool.round(strokeWidth!, super.precision!)}"');
     }
 
     if (stroke != null) {
@@ -119,7 +119,7 @@ class Sstyle {
     }
 
     if (strokeMiterLimit != null) {
-      outItems.add('stroke-miterlimit="${Tool.round(strokeMiterLimit!)}"');
+      outItems.add('stroke-miterlimit="${Tool.round(strokeMiterLimit!, super.precision!)}"');
     }
 
     if (strokeDashArray != null) {
@@ -127,7 +127,7 @@ class Sstyle {
     }
 
     if (strokeDashOffset != null) {
-      outItems.add('stroke-dashoffset="${Tool.round(strokeDashOffset!)}"');
+      outItems.add('stroke-dashoffset="${Tool.round(strokeDashOffset!, super.precision!)}"');
     }
 
     if ((translate != null) ||
@@ -140,16 +140,16 @@ class Sstyle {
 
       if (translate != null) {
         transforms.add(
-            'translate(${Tool.round(translate!.$1)} ${Tool.round(translate!.$2)})');
+            'translate(${Tool.round(translate!.$1, super.precision!)} ${Tool.round(translate!.$2, super.precision!)})');
       }
 
       if (rotate != null) {
-        transforms.add('rotate(${Tool.round(rotate!)})');
+        transforms.add('rotate(${Tool.round(rotate!, super.precision!)})');
       }
 
       if ((scaleAll != null) || (scaleXy != null)) {
         if (scaleAll != null) {
-          transforms.add('scale(${Tool.round(scaleAll!)})');
+          transforms.add('scale(${Tool.round(scaleAll!, super.precision!)})');
         } else {
           transforms.add(
               'scale(${Tool.round(scaleXy!.$1)} ${Tool.round(scaleXy!.$2)})');

@@ -1,9 +1,7 @@
 import 'dart:math';
 
 class Tool {
-  static String round(num arg) {
-    final precision = 4;
-
+  static String round(num arg, final int precision) {
     num precisionPow = pow(10, precision);
 
     num roundedArg = (arg * precisionPow).round() / precisionPow;
