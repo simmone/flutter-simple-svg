@@ -39,6 +39,7 @@ class Svg {
   final num width;
   final num height;
   String? background;
+  int? precision;
   (num, num, num, num)? viewBox;
   int shapeIdCount = 0;
   int groupIdCount = 1;
@@ -48,9 +49,11 @@ class Svg {
   List<(String, (num, num))> groupShowList = [];
   final JsonEncoder jason = JsonEncoder();
 
-  Svg(this.width, this.height);
+  Svg(this.width, this.height, [this.precision = 4]);
 
   String defShape(Shape shape) {
+    shape.precision = this.precision;
+
     if (uniqueToIdMap.containsKey(shape.unique())) {
       return uniqueToIdMap[shape.unique()]!;
     } else {

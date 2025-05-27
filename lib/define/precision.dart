@@ -1,0 +1,3 @@
+class Precision {
+  int precision;
+}
