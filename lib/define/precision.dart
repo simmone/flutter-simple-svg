@@ -1,3 +1,3 @@
 mixin Precision {
-  int precision;
+  int? precision;
 }

@@ -30,6 +30,7 @@ void main() {
 
   test('format1', () {
     final rect = Rect(30, 20);
+    rect.precision = 4;
 
     expect(
         rect.format('1'), "    <rect id=\"1\" width=\"30\" height=\"20\" />\n");
@@ -37,6 +38,7 @@ void main() {
 
   test('format2', () {
     final rect = Rect(30, 20, 10, 5.0);
+    rect.precision = 4;
 
     expect(rect.format('1'),
         "    <rect id=\"1\" width=\"30\" height=\"20\" rx=\"10\" ry=\"5\" />\n");

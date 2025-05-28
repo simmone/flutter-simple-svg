@@ -12,6 +12,7 @@ void main() {
     sstyle.fillRule = FillRule.nonzero;
     sstyle.fillGradient = 's1';
     sstyle.fillOpacity = 0.5;
+    sstyle.precision = 4;
 
     expect(sstyle.format(),
         'fill="url(#s1)" fill-rule="nonzero" fill-opacity="0.5"');
@@ -23,6 +24,7 @@ void main() {
     sstyle.fill = 'red';
     sstyle.fillRule = FillRule.nonzero;
     sstyle.fillOpacity = 30.0;
+    sstyle.precision = 4;
 
     expect(sstyle.format(), 'fill="red" fill-rule="nonzero" fill-opacity="30"');
   });
@@ -37,6 +39,7 @@ void main() {
     sstyle.strokeMiterLimit = 2.0;
     sstyle.strokeDashArray = '40,10';
     sstyle.strokeDashOffset = 5.0;
+    sstyle.precision = 4;
 
     expect(sstyle.format(),
         'fill="none" stroke-width="5" stroke="#ABABAB" stroke-linejoin="round" stroke-linecap="square" stroke-miterlimit="2" stroke-dasharray="40,10" stroke-dashoffset="5"');
@@ -50,6 +53,7 @@ void main() {
     sstyle.scaleAll = 1.0;
     sstyle.skewX = 2.0;
     sstyle.skewY = 3.0;
+    sstyle.precision = 4;
 
     expect(sstyle.format(),
         'fill="none" transform="translate(0.1 0.2) rotate(30) scale(1) skewX(2) skewY(3)"');

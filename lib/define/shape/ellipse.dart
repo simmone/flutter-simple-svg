@@ -17,7 +17,7 @@ class Ellipse extends Shape {
     final buffer = StringBuffer();
 
     buffer.write(
-        '    <ellipse id="$shapeId" rx="${Tool.round(radiusX)}" ry="${Tool.round(radiusY)}" />\n');
+        '    <ellipse id="$shapeId" rx="${Tool.round(radiusX, this.precision!)}" ry="${Tool.round(radiusY, this.precision!)}" />\n');
 
     return buffer.toString();
   }

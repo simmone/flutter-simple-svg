@@ -67,6 +67,15 @@ class Svg {
 
   String addNameGroup(String groupId, Group group) {
     groupDefineMap[groupId] = group;
+
+    for (final widget in group.widgetList) {
+      widget.precision = this.precision!;
+      
+      if (widget.sstyle != null) {
+        widget.sstyle!.precision = this.precision!;
+      }
+    }
+
     return groupId;
   }
 
@@ -140,7 +149,7 @@ class Svg {
       final groupPos = groupShow.$2;
 
       outBuffer.write('  <use xlink:href="#$groupId" ');
-      final groupPosStr = (Tool.round(groupPos.$1), Tool.round(groupPos.$2));
+      final groupPosStr = (Tool.round(groupPos.$1, this.precision!), Tool.round(groupPos.$2, this.precision!));
       if (groupPosStr != ('0', '0')) {
         outBuffer.write('x="${groupPosStr.$1}" y="${groupPosStr.$2}" ');
       }
@@ -183,11 +192,11 @@ class Svg {
     outBuffer.write('    xmlns="http://www.w3.org/2000/svg"\n');
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
     outBuffer.write(
-        '    width="${Tool.round(width)}" height="${Tool.round(height)}"\n');
+        '    width="${Tool.round(width, this.precision!)}" height="${Tool.round(height, this.precision!)}"\n');
 
     if (viewBox != null) {
       outBuffer.write(
-          '    viewBox="${Tool.round(viewBox!.$1)} ${Tool.round(viewBox!.$2)} ${Tool.round(viewBox!.$3)} ${Tool.round(viewBox!.$4)}"\n');
+          '    viewBox="${Tool.round(viewBox!.$1, this.precision!)} ${Tool.round(viewBox!.$2, this.precision!)} ${Tool.round(viewBox!.$3, this.precision!)} ${Tool.round(viewBox!.$4, this.precision!)}"\n');
     }
 
     outBuffer.write('    >\n');

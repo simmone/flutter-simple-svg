@@ -11,11 +11,13 @@ void main() {
 
   test('format basic', () {
     final widget = Widget('s1');
+    widget.precision = 4;
     expect(widget.format(), '<use xlink:href="#s1" />');
   });
 
   test('format fill', () {
     var sstyle = Sstyle();
+    widget.precision = 4;
     sstyle.fill = '#BBC42A';
 
     var widget = Widget('s1');
@@ -26,6 +28,7 @@ void main() {
 
   test('format at', () {
     var widget1 = Widget('s1');
+    widget.precision = 4;
     widget1.at = (0, 0);
     expect(widget1.format(), '<use xlink:href="#s1" />');
 
@@ -36,6 +39,7 @@ void main() {
 
   test('format else', () {
     var widget = Widget('s1');
+    widget.precision = 4;
     widget.filterId = 's2';
     widget.markerStartId = 's3';
     widget.markerMidId = 's4';

@@ -30,56 +30,56 @@ class Path extends Shape {
 
   void arcAbs((num, num) point, (num, num) radius, ArcDirection section) {
     defs.add(
-        'A${Tool.round(radius.$1)},${Tool.round(radius.$2)} 0 ${section.name} ${Tool.round(point.$1)},${Tool.round(point.$2)}');
+        'A${Tool.round(radius.$1, this.precision!)},${Tool.round(radius.$2, this.precision!)} 0 ${section.name} ${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
   }
 
   void arcRel((num, num) point, (num, num) radius, ArcDirection section) {
     defs.add(
-        'a${Tool.round(radius.$1)},${Tool.round(radius.$2)} 0 ${section.name} ${Tool.round(point.$1)},${Tool.round(point.$2)}');
+        'a${Tool.round(radius.$1, this.precision!)},${Tool.round(radius.$2, this.precision!)} 0 ${section.name} ${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
   }
 
   void movetoAbs((num, num) point) {
-    defs.add('M${Tool.round(point.$1)},${Tool.round(point.$2)}');
+    defs.add('M${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
   }
 
   void movetoRel((num, num) point) {
-    defs.add('m${Tool.round(point.$1)},${Tool.round(point.$2)}');
+    defs.add('m${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
   }
 
   void linetoAbs((num, num) point) {
-    defs.add('L${Tool.round(point.$1)},${Tool.round(point.$2)}');
+    defs.add('L${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
   }
 
   void linetoRel((num, num) point) {
-    defs.add('l${Tool.round(point.$1)},${Tool.round(point.$2)}');
+    defs.add('l${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
   }
 
   void linetoHor(num length) {
-    defs.add('h${Tool.round(length)}');
+    defs.add('h${Tool.round(length, this.precision!)}');
   }
 
   void linetoVer(num length) {
-    defs.add('v${Tool.round(length)}');
+    defs.add('v${Tool.round(length, this.precision!)}');
   }
 
   void ccurveAbs((num, num) point1, (num, num) point2, (num, num) point3) {
     defs.add(
-        'C${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)} ${Tool.round(point3.$1)},${Tool.round(point3.$2)}');
+        'C${Tool.round(point1.$1, this.precision!)},${Tool.round(point1.$2, this.precision!)} ${Tool.round(point2.$1, this.precision!)},${Tool.round(point2.$2, this.precision!)} ${Tool.round(point3.$1, this.precision!)},${Tool.round(point3.$2, this.precision!)}');
   }
 
   void ccurveRel((num, num) point1, (num, num) point2, (num, num) point3) {
     defs.add(
-        'c${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)} ${Tool.round(point3.$1)},${Tool.round(point3.$2)}');
+        'c${Tool.round(point1.$1, this.precision!)},${Tool.round(point1.$2, this.precision!)} ${Tool.round(point2.$1, this.precision!)},${Tool.round(point2.$2, this.precision!)} ${Tool.round(point3.$1, this.precision!)},${Tool.round(point3.$2, this.precision!)}');
   }
 
   void qcurveAbs((num, num) point1, (num, num) point2) {
     defs.add(
-        'Q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
+        'Q${Tool.round(point1.$1, this.precision!)},${Tool.round(point1.$2, this.precision!)} ${Tool.round(point2.$1, this.precision!)},${Tool.round(point2.$2, this.precision!)}');
   }
 
   void qcurveRel((num, num) point1, (num, num) point2) {
     defs.add(
-        'q${Tool.round(point1.$1)},${Tool.round(point1.$2)} ${Tool.round(point2.$1)},${Tool.round(point2.$2)}');
+        'q${Tool.round(point1.$1, this.precision!)},${Tool.round(point1.$2, this.precision!)} ${Tool.round(point2.$1, this.precision!)},${Tool.round(point2.$2, this.precision!)}');
   }
 
   void raw(String rawStr) {

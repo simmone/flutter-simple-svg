@@ -100,11 +100,11 @@ class Sstyle with Precision {
     }
 
     if (fillOpacity != null) {
-      outItems.add('fill-opacity="${Tool.round(fillOpacity!, super.precision!)}"');
+      outItems.add('fill-opacity="${Tool.round(fillOpacity!, this.precision!)}"');
     }
 
     if (strokeWidth != null) {
-      outItems.add('stroke-width="${Tool.round(strokeWidth!, super.precision!)}"');
+      outItems.add('stroke-width="${Tool.round(strokeWidth!, this.precision!)}"');
     }
 
     if (stroke != null) {
@@ -120,7 +120,7 @@ class Sstyle with Precision {
     }
 
     if (strokeMiterLimit != null) {
-      outItems.add('stroke-miterlimit="${Tool.round(strokeMiterLimit!, super.precision!)}"');
+      outItems.add('stroke-miterlimit="${Tool.round(strokeMiterLimit!, this.precision!)}"');
     }
 
     if (strokeDashArray != null) {
@@ -128,7 +128,7 @@ class Sstyle with Precision {
     }
 
     if (strokeDashOffset != null) {
-      outItems.add('stroke-dashoffset="${Tool.round(strokeDashOffset!, super.precision!)}"');
+      outItems.add('stroke-dashoffset="${Tool.round(strokeDashOffset!, this.precision!)}"');
     }
 
     if ((translate != null) ||
@@ -141,28 +141,28 @@ class Sstyle with Precision {
 
       if (translate != null) {
         transforms.add(
-            'translate(${Tool.round(translate!.$1, super.precision!)} ${Tool.round(translate!.$2, super.precision!)})');
+            'translate(${Tool.round(translate!.$1, this.precision!)} ${Tool.round(translate!.$2, this.precision!)})');
       }
 
       if (rotate != null) {
-        transforms.add('rotate(${Tool.round(rotate!, super.precision!)})');
+        transforms.add('rotate(${Tool.round(rotate!, this.precision!)})');
       }
 
       if ((scaleAll != null) || (scaleXy != null)) {
         if (scaleAll != null) {
-          transforms.add('scale(${Tool.round(scaleAll!, super.precision!)})');
+          transforms.add('scale(${Tool.round(scaleAll!, this.precision!)})');
         } else {
           transforms.add(
-              'scale(${Tool.round(scaleXy!.$1, super.precision!)} ${Tool.round(scaleXy!.$2, super.precision!)})');
+              'scale(${Tool.round(scaleXy!.$1, this.precision!)} ${Tool.round(scaleXy!.$2, this.precision!)})');
         }
       }
 
       if (skewX != null) {
-        transforms.add('skewX(${Tool.round(skewX!, super.precision!)})');
+        transforms.add('skewX(${Tool.round(skewX!, this.precision!)})');
       }
 
       if (skewY != null) {
-        transforms.add('skewY(${Tool.round(skewY!, super.precision!)})');
+        transforms.add('skewY(${Tool.round(skewY!, this.precision!)})');
       }
 
       outItems.add('transform="${transforms.join(' ')}"');

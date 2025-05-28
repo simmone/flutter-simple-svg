@@ -1,7 +1,8 @@
 import 'sstyle.dart';
 import 'package:simple_svg/tool.dart';
+import 'package:simple_svg/define/precision.dart';
 
-class Widget {
+class Widget with Precision {
   final String shapeId;
   (num, num)? at;
   Sstyle? sstyle;
@@ -18,7 +19,7 @@ class Widget {
     outItems.add('<use xlink:href="#$shapeId"');
 
     if (at != null) {
-      final atStr = (Tool.round(at!.$1), Tool.round(at!.$2));
+      final atStr = (Tool.round(at!.$1, this.precision!), Tool.round(at!.$2, this.precision!));
       if (atStr != ('0', '0')) {
         outItems.add('x="${atStr.$1}" y="${atStr.$2}"');
       }

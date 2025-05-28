@@ -12,7 +12,8 @@ void main() {
   });
 
   test('filter format', () {
-    final filter = Filter();
+      final filter = Filter();
+      filter.precision = 4;
 
     expect(filter.format('1'), () {
       final buffer = StringBuffer();

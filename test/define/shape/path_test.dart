@@ -10,6 +10,7 @@ void main() {
   test('format path', () {
     var path = Path();
     path.defs.add('path strs');
+    path.precision = 4;
 
     expect(path.format('1'), () {
       final buffer = StringBuffer();
