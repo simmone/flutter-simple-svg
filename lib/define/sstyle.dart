@@ -1,4 +1,5 @@
 import 'package:simple_svg/tool.dart';
+import 'package:simple_svg/define/precision.dart';
 
 enum FillRule {
   nonzero,
@@ -60,7 +61,7 @@ extension StrokeLineJoinExtension on StrokeLineJoin {
   }
 }
 
-class Sstyle {
+class Sstyle with Precision {
   String? fill;
   FillRule? fillRule;
   num? fillOpacity;

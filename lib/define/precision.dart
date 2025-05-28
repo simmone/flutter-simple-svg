@@ -1,3 +1,3 @@
-class Precision {
+mixin Precision {
   int precision;
 }
