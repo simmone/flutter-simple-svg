@@ -23,27 +23,77 @@ extension ArcDirectionExtension on ArcDirection {
   }
 }
 
+abstract class PathAction {
+  String format();
+}
+
+class PathArcAbs extends PathAction {
+  (num, num) point;
+  (num, num) radius;
+  ArcDirection section;
+  
+  PathArcAbs(point, radius, section);
+  
+  @override
+  String format() {
+    return 'A${Tool.round(radius.$1, this.precision!)},${Tool.round(radius.$2, this.precision!)} 0 ${section.name} ${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
+  }
+}
+
+class PathArcRel extends PathAction {
+  (num, num) point;
+  (num, num) radius;
+  ArcDirection section;
+  
+  PathArcRel(point, radius, section);
+  
+  @override
+  String format() {
+    return 'a${Tool.round(radius.$1, this.precision!)},${Tool.round(radius.$2, this.precision!)} 0 ${section.name} ${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
+  }
+}
+
+class PathMoveToAbs extends PathAction {
+  (num, num) point;
+  
+  PathMoveToAbs(point);
+  
+  @override
+  String format() {
+    return 'M${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
+  }
+}
+
+class PathMoveToRel extends PathAction {
+  (num, num) point;
+  
+  PathMoveToRel(point);
+  
+  @override
+  String format() {
+    return 'm${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
+  }
+}
+
 class Path extends Shape {
-  List<String> defs = [];
+  List<PathAction> actions = [];
 
   Path();
 
   void arcAbs((num, num) point, (num, num) radius, ArcDirection section) {
-    defs.add(
-        'A${Tool.round(radius.$1, this.precision!)},${Tool.round(radius.$2, this.precision!)} 0 ${section.name} ${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
+    actions.add(PathArcAbs(point, radius, section));
   }
 
   void arcRel((num, num) point, (num, num) radius, ArcDirection section) {
-    defs.add(
-        'a${Tool.round(radius.$1, this.precision!)},${Tool.round(radius.$2, this.precision!)} 0 ${section.name} ${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
+    actions.add(PathArcRel(point, radius, section));
   }
 
   void movetoAbs((num, num) point) {
-    defs.add('M${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
+    actions.add(PathMoveToAbs(point));
   }
 
   void movetoRel((num, num) point) {
-    defs.add('m${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}');
+    actions.add(PathMoveToRel(point));
   }
 
   void linetoAbs((num, num) point) {
