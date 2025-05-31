@@ -24,143 +24,143 @@ extension ArcDirectionExtension on ArcDirection {
   }
 }
 
-abstract interface class PathAction {
+abstract class PathAction with Precision {
   String format();
 }
 
-class PathArcAbs extends PathAction width Precision {
-  (num, num)? point;
-  (num, num)? radius;
-  ArcDirection? section;
+class PathArcAbs implements PathAction {
+  final (num, num) point;
+  final (num, num) radius;
+  final ArcDirection section;
   
-  PathArcAbs(point, radius, section);
-  
-  @override
-  String format() {
-    return 'A${Tool.round(radius!.$1, this.precision!)},${Tool.round(radius!.$2, this.precision!)} 0 ${section!.name} ${Tool.round(point!.$1, this.precision!)},${Tool.round(point!.$2, this.precision!)}';
-  }
-}
-
-class PathArcRel extends PathAction width Precision {
-  (num, num)? point;
-  (num, num)? radius;
-  ArcDirection? section;
-  
-  PathArcRel(point, radius, section);
+  PathArcAbs(this.point, this.radius, this.section);
   
   @override
   String format() {
-    return 'a${Tool.round(radius!.$1, this.precision!)},${Tool.round(radius!.$2, this.precision!)} 0 ${section!.name} ${Tool.round(point!.$1, this.precision!)},${Tool.round(point!.$2, this.precision!)}';
+    return 'A${Tool.round(radius.$1, this.precision!)},${Tool.round(radius.$2, this.precision!)} 0 ${section.name} ${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
   }
 }
 
-class PathMoveToAbs extends PathAction width Precision {
-  (num, num)? point;
+class PathArcRel implements PathAction {
+  final (num, num) point;
+  final (num, num) radius;
+  final ArcDirection section;
   
-  PathMoveToAbs(point);
+  PathArcRel(this.point, this.radius, this.section);
   
   @override
   String format() {
-    return 'M${Tool.round(point!.$1, this.precision!)},${Tool.round(point!.$2, this.precision!)}';
+    return 'a${Tool.round(radius.$1, this.precision!)},${Tool.round(radius.$2, this.precision!)} 0 ${section.name} ${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
   }
 }
 
-class PathMoveToRel extends PathAction width Precision {
-  (num, num)? point;
+class PathMoveToAbs implements PathAction {
+  final (num, num) point;
   
-  PathMoveToRel(point);
+  PathMoveToAbs(this.point);
   
   @override
   String format() {
-    return 'm${Tool.round(point!.$1, this.precision!)},${Tool.round(point!.$2, this.precision!)}';
+    return 'M${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
   }
 }
 
-class PathLineToAbs extends PathAction width Precision {
-  (num, num)? point;
+class PathMoveToRel implements PathAction {
+  final (num, num) point;
   
-  PathLineToAbs(point);
+  PathMoveToRel(this.point);
   
   @override
   String format() {
-    return 'L${Tool.round(point!.$1, this.precision!)},${Tool.round(point!.$2, this.precision!)}';
+    return 'm${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
   }
 }
 
-class PathLineToRel extends PathAction width Precision {
-  (num, num)? point;
+class PathLineToAbs implements PathAction {
+  final (num, num) point;
   
-  PathLineToRel(point);
+  PathLineToAbs(this.point);
   
   @override
   String format() {
-    return 'l${Tool.round(point!.$1, this.precision!)},${Tool.round(point!.$2, this.precision!)}';
+    return 'L${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
   }
 }
 
-class PathLineToHor extends PathAction width Precision {
-  num? length;
+class PathLineToRel implements PathAction {
+  final (num, num) point;
   
-  PathLineToHor(point);
+  PathLineToRel(this.point);
   
   @override
   String format() {
-    return 'h${Tool.round(length!, this.precision!)}';
+    return 'l${Tool.round(point.$1, this.precision!)},${Tool.round(point.$2, this.precision!)}';
   }
 }
 
-class PathLineToVer extends PathAction width Precision {
-  num? length;
+class PathLineToHor implements PathAction {
+  final num length;
   
-  PathLineToVer(point);
+  PathLineToHor(this.length);
   
   @override
   String format() {
-    return 'h${Tool.round(length!, this.precision!)}';
+    return 'h${Tool.round(length, this.precision!)}';
   }
 }
 
-class PathCcurveAbs extends PathAction width Precision {
-  (num, num)? point1;
-  (num, num)? point2;
-  (num, num)? point3;
+class PathLineToVer implements PathAction {
+  final num length;
   
-  PathCcurveAbs(point1, point2, point3);
+  PathLineToVer(this.length);
   
   @override
   String format() {
-    return 'C${Tool.round(point1!.$1, this.precision!)},${Tool.round(point1!.$2, this.precision!)} ${Tool.round(point2!.$1, this.precision!)},${Tool.round(point2!.$2, this.precision!)} ${Tool.round(point3!.$1, this.precision!)},${Tool.round(point3!.$2, this.precision!)}';
+    return 'h${Tool.round(length, this.precision!)}';
   }
 }
 
-class PathCcurveRel extends PathAction width Precision {
-  (num, num)? point1;
-  (num, num)? point2;
-  (num, num)? point3;
+class PathCcurveAbs implements PathAction {
+  final (num, num) point1;
+  final (num, num) point2;
+  final (num, num) point3;
   
-  PathCcurveRel(point1, point2, point3);
+  PathCcurveAbs(this.point1, this.point2, this.point3);
   
   @override
   String format() {
-    return 'c${Tool.round(point1!.$1, this.precision!)},${Tool.round(point1!.$2, this.precision!)} ${Tool.round(point2!.$1, this.precision!)},${Tool.round(point2!.$2, this.precision!)} ${Tool.round(point3!.$1, this.precision!)},${Tool.round(point3!.$2, this.precision!)}';
+    return 'C${Tool.round(point1.$1, this.precision!)},${Tool.round(point1.$2, this.precision!)} ${Tool.round(point2.$1, this.precision!)},${Tool.round(point2.$2, this.precision!)} ${Tool.round(point3.$1, this.precision!)},${Tool.round(point3.$2, this.precision!)}';
   }
 }
 
-class PathQcurveAbs extends PathAction width Precision {
-  (num, num)? point1;
-  (num, num)? point2;
+class PathCcurveRel implements PathAction {
+  final (num, num) point1;
+  final (num, num) point2;
+  final (num, num) point3;
   
-  PathQcurveAbs(point1, point2);
+  PathCcurveRel(this.point1, this.point2, this.point3);
   
   @override
   String format() {
-    return 'Q${Tool.round(point1!.$1, this.precision!)},${Tool.round(point1!.$2, this.precision!)} ${Tool.round(point2!.$1, this.precision!)},${Tool.round(point2!.$2, this.precision!)}';
+    return 'c${Tool.round(point1.$1, this.precision!)},${Tool.round(point1.$2, this.precision!)} ${Tool.round(point2.$1, this.precision!)},${Tool.round(point2.$2, this.precision!)} ${Tool.round(point3.$1, this.precision!)},${Tool.round(point3.$2, this.precision!)}';
   }
 }
 
-class PathQcurveRel implement PathAction width Precision {
-  (num, num) point1;
-  (num, num) point2;
+class PathQcurveAbs implements PathAction {
+  final (num, num) point1;
+  final (num, num) point2;
+  
+  PathQcurveAbs(this.point1, this.point2);
+  
+  @override
+  String format() {
+    return 'Q${Tool.round(point1.$1, this.precision!)},${Tool.round(point1.$2, this.precision!)} ${Tool.round(point2.$1, this.precision!)},${Tool.round(point2.$2, this.precision!)}';
+  }
+}
+
+class PathQcurveRel implements PathAction {
+  final (num, num) point1;
+  final (num, num) point2;
   
   PathQcurveRel(this.point1, this.point2);
   
@@ -170,18 +170,18 @@ class PathQcurveRel implement PathAction width Precision {
   }
 }
 
-class PathRaw extends PathAction {
-  String? raw;
+class PathRaw implements PathAction {
+  final String raw;
   
-  PathRaw(raw);
+  PathRaw(this.raw);
   
   @override
   String format() {
-    return raw!;
+    return raw;
   }
 }
 
-class PathClose extends PathAction {
+class PathClose implements PathAction {
   PathClose();
   
   @override
@@ -194,6 +194,12 @@ class Path extends Shape {
   List<PathAction> actions = [];
 
   Path();
+  
+  void setAllActionPrecision(int precision) {
+    for (final action in actions) {
+      action.precision! = precision;
+    }
+  }
 
   void arcAbs((num, num) point, (num, num) radius, ArcDirection section) {
     actions.add(PathArcAbs(point, radius, section));

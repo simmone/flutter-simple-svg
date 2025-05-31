@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:simple_svg/tool.dart';
 
+import 'package:simple_svg/define/shape/path.dart';
+
 export 'package:simple_svg/define/shape/rect.dart' show Rect;
 export 'package:simple_svg/define/shape/circle.dart' show Circle;
 export 'package:simple_svg/define/shape/ellipse.dart' show Ellipse;
@@ -52,7 +54,11 @@ class Svg {
   Svg(this.width, this.height, [this.precision = 4]);
 
   String defShape(Shape shape) {
-    shape.precision = this.precision;
+    if (shape is Path) {
+      shape.setAllActionPrecision(this.precision!);
+    } else {
+      shape.precision = this.precision;
+    }
 
     if (uniqueToIdMap.containsKey(shape.unique())) {
       return uniqueToIdMap[shape.unique()]!;
