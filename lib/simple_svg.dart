@@ -51,13 +51,13 @@ class Svg {
   List<(String, (num, num))> groupShowList = [];
   final JsonEncoder jason = JsonEncoder();
 
-  Svg(this.width, this.height, [this.precision = 4]);
+  Svg(this.width, this.height, [precision = 4]);
 
   String defShape(Shape shape) {
+    shape.precision = precision;
+
     if (shape is Path) {
-      shape.setAllActionPrecision(this.precision!);
-    } else {
-      shape.precision = this.precision;
+      shape.setAllActionPrecision(precision!);
     }
 
     if (uniqueToIdMap.containsKey(shape.unique())) {
@@ -75,10 +75,10 @@ class Svg {
     groupDefineMap[groupId] = group;
 
     for (final widget in group.widgetList) {
-      widget.precision = this.precision!;
-      
+      widget.precision = precision!;
+
       if (widget.sstyle != null) {
-        widget.sstyle!.precision = this.precision!;
+        widget.sstyle!.precision = precision!;
       }
     }
 
@@ -155,7 +155,10 @@ class Svg {
       final groupPos = groupShow.$2;
 
       outBuffer.write('  <use xlink:href="#$groupId" ');
-      final groupPosStr = (Tool.round(groupPos.$1, this.precision!), Tool.round(groupPos.$2, this.precision!));
+      final groupPosStr = (
+        Tool.round(groupPos.$1, precision!),
+        Tool.round(groupPos.$2, precision!)
+      );
       if (groupPosStr != ('0', '0')) {
         outBuffer.write('x="${groupPosStr.$1}" y="${groupPosStr.$2}" ');
       }
@@ -198,11 +201,11 @@ class Svg {
     outBuffer.write('    xmlns="http://www.w3.org/2000/svg"\n');
     outBuffer.write('    xmlns:xlink="http://www.w3.org/1999/xlink"\n');
     outBuffer.write(
-        '    width="${Tool.round(width, this.precision!)}" height="${Tool.round(height, this.precision!)}"\n');
+        '    width="${Tool.round(width, precision!)}" height="${Tool.round(height, precision!)}"\n');
 
     if (viewBox != null) {
       outBuffer.write(
-          '    viewBox="${Tool.round(viewBox!.$1, this.precision!)} ${Tool.round(viewBox!.$2, this.precision!)} ${Tool.round(viewBox!.$3, this.precision!)} ${Tool.round(viewBox!.$4, this.precision!)}"\n');
+          '    viewBox="${Tool.round(viewBox!.$1, precision!)} ${Tool.round(viewBox!.$2, precision!)} ${Tool.round(viewBox!.$3, precision!)} ${Tool.round(viewBox!.$4, precision!)}"\n');
     }
 
     outBuffer.write('    >\n');

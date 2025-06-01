@@ -23,9 +23,9 @@ class Filter extends Shape {
 
     buffer.write('    <filter id="$shapeId">\n');
     buffer.write(
-        '      <feGaussianBlur in="SourceAlpha" stdDeviation="${Tool.round(blur!, this.precision!)}"></feGaussianBlur>\n');
+        '      <feGaussianBlur in="SourceAlpha" stdDeviation="${Tool.round(blur!, precision!)}"></feGaussianBlur>\n');
     buffer.write(
-        '      <feOffset dx="${Tool.round(dropdownOffset!, this.precision!)}" dy="${Tool.round(dropdownOffset!, this.precision!)}" result="offsetblur"></feOffset>\n');
+        '      <feOffset dx="${Tool.round(dropdownOffset!, precision!)}" dy="${Tool.round(dropdownOffset!, precision!)}" result="offsetblur"></feOffset>\n');
     buffer.write('      <feFlood flood-color="$dropdownColor"></feFlood>\n');
     buffer.write(
         '      <feComposite in2="offsetblur" operator="in"></feComposite>\n');

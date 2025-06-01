@@ -17,7 +17,7 @@ void main() {
 
   test('format fill', () {
     var sstyle = Sstyle();
-    widget.precision = 4;
+    sstyle.precision = 4;
     sstyle.fill = '#BBC42A';
 
     var widget = Widget('s1');
@@ -28,11 +28,12 @@ void main() {
 
   test('format at', () {
     var widget1 = Widget('s1');
-    widget.precision = 4;
+    widget1.precision = 4;
     widget1.at = (0, 0);
     expect(widget1.format(), '<use xlink:href="#s1" />');
 
     var widget2 = Widget('s1');
+    widget2.precision = 4;
     widget2.at = (100.0, 50.0);
     expect(widget2.format(), '<use xlink:href="#s1" x="100" y="50" />');
   });

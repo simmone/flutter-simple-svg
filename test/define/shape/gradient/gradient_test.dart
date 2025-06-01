@@ -9,6 +9,7 @@ void main() {
       (0.0, '#BBC42A', 1.0),
       (100.0, '#ED6E46', 1.0),
     ]);
+    gradient.precision = 4;
 
     gradient.x1 = 0.0;
     gradient.y1 = 1.0;
@@ -28,6 +29,7 @@ void main() {
       (0.0, '#BBC42A', 1.0),
       (100.0, '#ED6E46', 1.0),
     ]);
+    gradient.precision = 4;
 
     gradient.cx = 0.0;
     gradient.cy = 1.0;

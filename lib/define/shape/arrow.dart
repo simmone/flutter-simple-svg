@@ -160,16 +160,19 @@ class Arrow extends Shape {
     buffer.write('    <polygon id="$shapeId"\n');
     buffer.write('          points="\n');
     buffer.write(
-        '            ${Tool.round(handleBottomLeft.$1, this.precision!)},${Tool.round(handleBottomLeft.$2, this.precision!)}\n');
+        '            ${Tool.round(handleBottomLeft.$1, precision!)},${Tool.round(handleBottomLeft.$2, precision!)}\n');
     buffer.write(
-        '            ${Tool.round(handleBottomRight.$1, this.precision!)},${Tool.round(handleBottomRight.$2, this.precision!)}\n');
-    buffer.write('            ${Tool.round(q.$1, this.precision!)},${Tool.round(q.$2, this.precision!)}\n');
-    buffer.write('            ${Tool.round(r.$1, this.precision!)},${Tool.round(r.$2, this.precision!)}\n');
-    buffer.write('            ${Tool.round(s.$1, this.precision!)},${Tool.round(s.$2, this.precision!)}\n');
+        '            ${Tool.round(handleBottomRight.$1, precision!)},${Tool.round(handleBottomRight.$2, precision!)}\n');
     buffer.write(
-        '            ${Tool.round(handleTopRight.$1, this.precision!)},${Tool.round(handleTopRight.$2, this.precision!)}\n');
+        '            ${Tool.round(q.$1, precision!)},${Tool.round(q.$2, precision!)}\n');
     buffer.write(
-        '            ${Tool.round(handleTopLeft.$1, this.precision!)},${Tool.round(handleTopLeft.$2, this.precision!)}\n');
+        '            ${Tool.round(r.$1, precision!)},${Tool.round(r.$2, precision!)}\n');
+    buffer.write(
+        '            ${Tool.round(s.$1, precision!)},${Tool.round(s.$2, precision!)}\n');
+    buffer.write(
+        '            ${Tool.round(handleTopRight.$1, precision!)},${Tool.round(handleTopRight.$2, precision!)}\n');
+    buffer.write(
+        '            ${Tool.round(handleTopLeft.$1, precision!)},${Tool.round(handleTopLeft.$2, precision!)}\n');
     buffer.write('            "/>\n');
 
     return buffer.toString();

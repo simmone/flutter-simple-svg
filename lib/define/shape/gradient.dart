@@ -58,19 +58,19 @@ class LinearGradient extends Shape {
     final outItems = <String>[];
 
     if (x1 != null) {
-      outItems.add('x1="${Tool.round(x1!, this.precision!)}"');
+      outItems.add('x1="${Tool.round(x1!, precision!)}"');
     }
 
     if (y1 != null) {
-      outItems.add('y1="${Tool.round(y1!, this.precision!)}"');
+      outItems.add('y1="${Tool.round(y1!, precision!)}"');
     }
 
     if (x2 != null) {
-      outItems.add('x2="${Tool.round(x2!, this.precision!)}"');
+      outItems.add('x2="${Tool.round(x2!, precision!)}"');
     }
 
     if (y2 != null) {
-      outItems.add('y2="${Tool.round(y2!, this.precision!)}"');
+      outItems.add('y2="${Tool.round(y2!, precision!)}"');
     }
 
     if (gradientUnits != null) {
@@ -87,10 +87,10 @@ class LinearGradient extends Shape {
 
     for (final stop in stops) {
       buffer.write(
-          '      <stop offset="${Tool.round(stop.$1, this.precision!)}%" stop-color="${stop.$2}" ');
+          '      <stop offset="${Tool.round(stop.$1, precision!)}%" stop-color="${stop.$2}" ');
 
       if (stop.$3 != 1.0) {
-        buffer.write('stop-opacity="${Tool.round(stop.$3, this.precision!)}" ');
+        buffer.write('stop-opacity="${Tool.round(stop.$3, precision!)}" ');
       }
 
       buffer.write('/>\n');
@@ -128,23 +128,23 @@ class RadialGradient extends Shape {
     final outItems = <String>[];
 
     if (cx != null) {
-      outItems.add('cx="${Tool.round(cx!, this.precision!)}"');
+      outItems.add('cx="${Tool.round(cx!, precision!)}"');
     }
 
     if (cy != null) {
-      outItems.add('cy="${Tool.round(cy!, this.precision!)}"');
+      outItems.add('cy="${Tool.round(cy!, precision!)}"');
     }
 
     if (fx != null) {
-      outItems.add('fx="${Tool.round(fx!, this.precision!)}"');
+      outItems.add('fx="${Tool.round(fx!, precision!)}"');
     }
 
     if (fy != null) {
-      outItems.add('fy="${Tool.round(fy!, this.precision!)}"');
+      outItems.add('fy="${Tool.round(fy!, precision!)}"');
     }
 
     if (r != null) {
-      outItems.add('r="${Tool.round(r!, this.precision!)}"');
+      outItems.add('r="${Tool.round(r!, precision!)}"');
     }
 
     if (gradientUnits != null) {
@@ -161,10 +161,10 @@ class RadialGradient extends Shape {
 
     for (final stop in stops) {
       buffer.write(
-          '      <stop offset="${Tool.round(stop.$1, this.precision!)}%" stop-color="${stop.$2}" ');
+          '      <stop offset="${Tool.round(stop.$1, precision!)}%" stop-color="${stop.$2}" ');
 
       if (stop.$3 != 1.0) {
-        buffer.write('stop-opacity="${Tool.round(stop.$3, this.precision!)}" ');
+        buffer.write('stop-opacity="${Tool.round(stop.$3, precision!)}" ');
       }
 
       buffer.write('/>\n');
