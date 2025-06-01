@@ -124,7 +124,7 @@ void main() {
 
     final file = File('showcase/example/fern.svg');
     final fernSvgFile = await file.readAsString();
-
+    
     expect(svg.out(), fernSvgFile);
   });
 }
